@@ -80,18 +80,17 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, "-nf", white1, "-sb", magenta1, "-sf", black1, NULL };
-static const char *termcmd[]  = { "st", "tmux",  NULL };
+static const char *termcmd[]  = { "st", "-e", "tmux",  NULL };
 
-static const char *mixer[]  = { "st", "pulsemixer", NULL };
-static const char *email[]  = { "st", "neomutt", NULL };
-static const char *reddit[] = { "st", "rtv", NULL };
-static const char *rss[]	= { "st", "newspod", NULL };
-static const char *calender[]  = { "st", "calcurse", NULL };
-static const char *sysmonitor[]  = { "st", "htop", NULL };
-static const char *sysmonitor2[]  = { "st", "vtop", NULL };
+static const char *mixer[]  = { "st", "-e", "pulsemixer", NULL };
+static const char *email[]  = { "st", "-e", "neomutt", NULL };
+static const char *reddit[] = { "st", "-e", "rtv", NULL };
+static const char *rss[]	= { "st", "-e", "newspod", NULL };
+static const char *calender[]  = { "st", "-e", "calcurse", NULL };
+static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };
+static const char *sysmonitor2[]  = { "st", "-e", "vtop", NULL };
 static const char *nm[]  = { "networkmanager_dmenu", NULL };
 static const char *music[]  = { "spotify", NULL };
-static const char *refreshdwm[]  = { "st", "bash \"pushd ~/dwm; sudo make clean install; popd\"", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -103,7 +102,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_n,		spawn,          {.v = reddit } },
 	{ MODKEY,						XK_g,		spawn,          {.v = calender } },
 	{ MODKEY,						XK_m,		spawn,          {.v = music } },
-	{ MODKEY,						XK_asciitilde,		spawn,          {.v = refreshdwm } },
 	{ MODKEY,						XK_i,		spawn,          {.v = sysmonitor2 } },
 	{ MODKEY|ShiftMask,				XK_i,		spawn,          {.v = sysmonitor } },
 	{ MODKEY,						XK_F11,		spawn,          {.v = nm } },
@@ -113,6 +111,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,			XK_f,		spawn,          SHCMD("lmc up 5") },
 	{ MODKEY,                       XK_w,		spawn,          SHCMD("ducksearch") },
 	{ AltMask|ControlMask,          XK_q,		spawn,          SHCMD("dmenu-killall") },
+	{ MODKEY|ShiftMask,				XK_x,		spawn,          SHCMD("power_menu.sh") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -163,4 +162,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
