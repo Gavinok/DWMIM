@@ -41,6 +41,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎶", "📪" 
 //custom functions
 #include "mv.c"
 #include "moveplace.c"
+#include "zoomswap.c"
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -89,9 +90,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, "-nf", white1, "-sb", magenta1, "-sf", black1, NULL };
-// static const char *termcmd[]  = { "st", "-e", "tmux",  NULL };
 static const char *termcmd[]  = { "st", NULL };
-
 static const char *mixer[]  = { "st", "-e", "pulsemixer", NULL };
 static const char *ddterm[]  = { "st", "-e", "tmuxdd", NULL };
 static const char *email[]  = { "st", "-e", "neomutt", NULL };
@@ -112,7 +111,7 @@ static const char *search[]  = { "ducksearch", NULL };
 static const char *clip[]  = { "clipmenu", NULL };
 static const char *killit[]  = { "dmenu-killall", NULL };
 static const char *power[]  = { "power_menu.sh", NULL };
-static const char *filemanager[]  = {"st", "-e", "nnn -l", NULL };
+static const char *filemanager[]  = {"st", "-e", "nnn", "-l", NULL };
 static const char *tutoral[]  = {"tutorialvids", NULL };
 static const char *help[]  = {"st", "-e", "ranger", "~/Documents/cheatsheets/", NULL };
 
@@ -156,10 +155,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_v,		zoom,           {0} },
+	{ MODKEY,                       XK_v,		zoomswap,           {0} },
 	{ MODKEY,                       XK_Tab,     view,           {0} },
 	{ MODKEY,						XK_q,		killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	// { MODKEY,                       XK_z,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,		setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_z,		togglefloating, {0} },
@@ -204,11 +203,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
-// void
-// resizefloat(Arg *arg)
-// {
-//
-// }
-
 // to jump to a floating window make a for loop and check if the client is floating

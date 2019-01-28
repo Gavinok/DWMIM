@@ -230,7 +230,8 @@ email	config.h	/^static const char *email[]  = { "st", "-e", "neomutt", NULL };$
 enternotify	dwm.c	/^enternotify(XEvent *e)$/;"	f	typeref:typename:void
 expose	dwm.c	/^expose(XEvent *e)$/;"	f	typeref:typename:void
 f	dwm.c	/^	float f;$/;"	m	union:__anon0f53a99e060a	typeref:typename:float	file:
-filemanager	config.h	/^static const char *filemanager[]  = {"st", "-e", "nnn -l", NULL };$/;"	v	typeref:typename:const char * []
+filemanager	config.h	/^static const char *filemanager[]  = {"st", "-e", "nnn", "-l", NULL };$/;"	v	typeref:typename:const char * []
+findbefore	zoomswap.c	/^findbefore(Client *c) {$/;"	f	typeref:typename:Client *
 focus	dwm.c	/^focus(Client *c)$/;"	f	typeref:typename:void
 focusin	dwm.c	/^focusin(XEvent *e)$/;"	f	typeref:typename:void
 focusmon	dwm.c	/^focusmon(const Arg *arg)$/;"	f	typeref:typename:void
@@ -345,6 +346,7 @@ options	Makefile	/^options:$/;"	t
 pattern	drw.h	/^	FcPattern *pattern;$/;"	m	struct:Fnt	typeref:typename:FcPattern *
 pop	dwm.c	/^pop(Client *c)$/;"	f	typeref:typename:void
 power	config.h	/^static const char *power[]  = { "power_menu.sh", NULL };$/;"	v	typeref:typename:const char * []
+prevzoom	zoomswap.c	/^static Client *prevzoom = NULL;$/;"	v	typeref:typename:Client *	file:
 propertynotify	dwm.c	/^propertynotify(XEvent *e)$/;"	f	typeref:typename:void
 quit	dwm.c	/^quit(const Arg *arg)$/;"	f	typeref:typename:void
 recttomon	dwm.c	/^recttomon(int x, int y, int w, int h)$/;"	f	typeref:typename:Monitor *
@@ -478,3 +480,4 @@ yellow1	config.h	/^static const char yellow1[]        = "#ddb26f";$/;"	v	typeref
 yellow2	config.def.h	/^static const char yellow2[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
 yellow2	config.h	/^static const char yellow2[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
 zoom	dwm.c	/^zoom(const Arg *arg)$/;"	f	typeref:typename:void
+zoomswap	zoomswap.c	/^ zoomswap(const Arg *arg)$/;"	f
