@@ -2,9 +2,10 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 
+//deltamvmv = the amount of pixels each movement will be by
+static const unsigned int deltamv = 20; 
 // gaps
 static const unsigned int gappx     = 6;
-
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -39,6 +40,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎶", "📪" 
 
 //custom functions
 #include "mv.c"
+#include "moveplace.c"
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -56,6 +58,7 @@ static const Rule rules[] = {
 	{ NULL,		  NULL,      "calcurse",	0,				1,			1,           -1 },
 	{ NULL,		  NULL,      "tmuxdd",		1 << 10,		1,			1,           -1 },
 	{ "sxiv",		  NULL,      NULL,		1 << 10,		1,			1,           -1 },
+	{ "feh",		  NULL,      NULL,		1 << 10,		1,			1,           -1 },
 };
 
 /* layout(s) */
@@ -66,7 +69,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	// { "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -109,14 +112,16 @@ static const char *search[]  = { "ducksearch", NULL };
 static const char *clip[]  = { "clipmenu", NULL };
 static const char *killit[]  = { "dmenu-killall", NULL };
 static const char *power[]  = { "power_menu.sh", NULL };
-static const char *filemanager[]  = {"st", "-e", "nnn", "-l", NULL };
+static const char *filemanager[]  = {"st", "-e", "nnn -l", NULL };
+static const char *tutoral[]  = {"tutorialvids", NULL };
+static const char *help[]  = {"st", "-e", "ranger", "~/Documents/cheatsheets/", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,				XK_l,		mvx,			{.i = -20} },
-	{ MODKEY|ShiftMask,				XK_h,		mvx,			{.i = +20} },
-	{ MODKEY|ShiftMask,				XK_j,		mvy,			{.i = -20} },
-	{ MODKEY|ShiftMask,				XK_k,		mvy,			{.i = +20} },
+	{ MODKEY|ShiftMask,				XK_l,		mv,			{.i = -1} },
+	{ MODKEY|ShiftMask,				XK_h,		mv,			{.i = +1} },
+	{ MODKEY|ShiftMask,				XK_j,		mv,			{.i = -2} },
+	{ MODKEY|ShiftMask,				XK_k,		mv,			{.i = +2} },
 	{ MODKEY,                       XK_d,		spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_y,		spawn,          {.v = mixer } },
 	{ MODKEY,						XK_Return,  spawn,          {.v = termcmd } },
@@ -141,6 +146,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_u,		toggleview,     {.ui = 1 << 10} }, \
 	{ MODKEY,						XK_F11,		spawn,          {.v = nm } },
 	{ MODKEY,						XK_r,		spawn,          {.v = filemanager } },
+	{ MODKEY,						XK_t,		spawn,          {.v = tutoral } },
+	{ MODKEY|ControlMask,			XK_t,		spawn,          {.v = help } },
 
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -153,9 +160,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,     view,           {0} },
 	{ MODKEY,						XK_q,		killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[1]} },
-	// { MODKEY,                       XK_z,		setlayout,      {0} },
+	// { MODKEY,                       XK_z,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_f,		setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_z,		togglefloating, {0} },
 	{ MODKEY,                       XK_0,		view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_grave,   view,           {.ui = ~0 } },
@@ -165,6 +171,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ AltMask,                       XK_g,      moveplace,      {.ui = WIN_C  }},
+	{ AltMask,                       XK_z,      moveplace,      {.ui = WIN_SW }},
+	{ AltMask,                       XK_b,      moveplace,      {.ui = WIN_SE }},
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -195,5 +204,11 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
+// void
+// resizefloat(Arg *arg)
+// {
+//
+// }
 
 // to jump to a floating window make a for loop and check if the client is floating

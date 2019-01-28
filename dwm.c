@@ -44,6 +44,9 @@
 #include "drw.h"
 #include "util.h"
 
+/* home made patches */
+/* #define MONOGAP //add gapps to monicol */
+
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
 #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
@@ -1303,15 +1306,20 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	if (c->isfloating || selmon->lt[selmon->sellt]->arrange == NULL) {
 		gapincr = gapoffset = 0;
 	} else {
-		/* Remove border and gap if layout is monocle or only one client */
-		if (selmon->lt[selmon->sellt]->arrange == monocle || n == 1) {
-			gapoffset = 0;
-			gapincr = -2 * borderpx;
-			wc.border_width = 0;
-		} else {
+		#ifndef MONOGAP
+			/* Remove border p if layout is monocle or only one client */
+			if (selmon->lt[selmon->sellt]->arrange == monocle || n == 1) {
+				gapoffset = 0;
+				gapincr = -2 * borderpx;
+				wc.border_width = 0;
+			} else {
+				gapoffset = gappx;
+				gapincr = 2 * gappx;
+			}
+		#else
 			gapoffset = gappx;
 			gapincr = 2 * gappx;
-		}
+		#endif /* ifndef MONOGAP */
 	}
 
 	c->oldx = c->x; c->x = wc.x = x + gapoffset;
