@@ -1,11 +1,12 @@
 /* See LICENSE file for copyright and license details. */
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 
 //deltamvmv = the amount of pixels each movement will be by
 static const unsigned int deltamv = 20; 
 // gaps
 static const unsigned int gappx     = 6;
+
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -42,6 +43,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎶", "📪" 
 #include "mv.c"
 #include "moveplace.c"
 #include "zoomswap.c"
+#include "warp.c"
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -64,7 +66,7 @@ static const Rule rules[] = {
 
 /* layout(s) */
 static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 2;    /* number of clients in master area */
+static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
@@ -98,7 +100,7 @@ static const char *reddit[] = { "st", "-e", "rtv", NULL };
 static const char *rss[]	= { "st", "-e", "newspod", NULL };
 static const char *calender[]  = { "st", "-e", "calcurse", NULL };
 static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };
-static const char *sysmonitor2[]  = { "st", "-e", "vtop", NULL };
+static const char *sysmonitor2[]  = { "st", "-e", "gotop", NULL };
 static const char *nm[]  = { "networkmanager_dmenu", NULL };
 static const char *music[]  = { "spotify", NULL };
 static const char *Vdown[]  = { "lmc", "down", "5", NULL };
@@ -170,9 +172,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ AltMask,                       XK_g,      moveplace,      {.ui = WIN_C  }},
+	{ MODKEY,                       XK_g,      moveplace,      {.ui = WIN_C  }},
 	{ AltMask,                       XK_z,      moveplace,      {.ui = WIN_SW }},
 	{ AltMask,                       XK_b,      moveplace,      {.ui = WIN_SE }},
+	// { MODKEY,                       XK_slash,      warptoclient,      {0}},
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -203,4 +206,4 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-// to jump to a floating window make a for loop and check if the client is floating
+

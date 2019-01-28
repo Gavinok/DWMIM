@@ -46,6 +46,7 @@
 
 /* home made patches */
 /* #define MONOGAP //add gapps to monicol */
+#define ENABLEWARP
 
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
@@ -837,6 +838,9 @@ focusmon(const Arg *arg)
 	unfocus(selmon->sel, 0);
 	selmon = m;
 	focus(NULL);
+	#ifdef ENABLEWARP
+	warp(selmon->sel);
+	#endif
 }
 
 void
@@ -1412,6 +1416,10 @@ restack(Monitor *m)
 	}
 	XSync(dpy, False);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
+	#ifdef ENABLEWARP
+	if (m == selmon && (m->tagset[m->seltags] & m->sel->tags) && selmon->lt[selmon->sellt] != &layouts[2])
+		warp(m->sel);
+	#endif
 }
 
 void

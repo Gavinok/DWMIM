@@ -9,7 +9,8 @@ findbefore(Client *c) {
 	for(tmp = selmon->clients; tmp && tmp->next != c; tmp = tmp->next) ;
 	return tmp;
 }
- zoomswap(const Arg *arg)
+void
+zoomswap(const Arg *arg)
  {
  	Client *c = selmon->sel;
 	Client *at = NULL, *cold, *cprevious = NULL;

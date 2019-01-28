@@ -40,6 +40,7 @@ CurResize	dwm.c	/^enum { CurNormal, CurResize, CurMove, CurLast }; \/* cursor *\
 DESCRIPTION	dwm.1	/^.SH DESCRIPTION$/;"	s	title:DWM
 DWM	dwm.1	/^.TH DWM 1 dwm\\-VERSION$/;"	t
 Drw	drw.h	/^} Drw;$/;"	t	typeref:struct:__anon0f5116480308
+ENABLEWARP	dwm.c	/^#define ENABLEWARP$/;"	d	file:
 FREETYPEINC	config.mk	/^FREETYPEINC = \/usr\/include\/freetype2$/;"	m
 FREETYPELIBS	config.mk	/^FREETYPELIBS = -lfontconfig -lXft$/;"	m
 Fnt	drw.h	/^typedef struct Fnt {$/;"	s
@@ -154,7 +155,7 @@ blue2	config.def.h	/^static const char blue2[]        = "#6fc2ef";$/;"	v	typeref
 blue2	config.h	/^static const char blue2[]        = "#6fc2ef";$/;"	v	typeref:typename:const char[]
 blw	dwm.c	/^static int bh, blw = 0;      \/* bar geometry *\/$/;"	v	typeref:typename:int	file:
 borderpx	config.def.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
-borderpx	config.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
+borderpx	config.h	/^static const unsigned int borderpx  = 0;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 broken	dwm.c	/^static const char broken[] = "broken";$/;"	v	typeref:typename:const char[]	file:
 button	dwm.c	/^	unsigned int button;$/;"	m	struct:__anon0f53a99e0708	typeref:typename:unsigned int	file:
 buttonpress	dwm.c	/^buttonpress(XEvent *e)$/;"	f	typeref:typename:void
@@ -332,7 +333,7 @@ nexttiled	dwm.c	/^nexttiled(Client *c)$/;"	f	typeref:typename:Client *
 nm	config.def.h	/^static const char *nm[]  = { "networkmanager_dmenu", NULL };$/;"	v	typeref:typename:const char * []
 nm	config.h	/^static const char *nm[]  = { "networkmanager_dmenu", NULL };$/;"	v	typeref:typename:const char * []
 nmaster	config.def.h	/^static const int nmaster     = 2;    \/* number of clients in master area *\/$/;"	v	typeref:typename:const int
-nmaster	config.h	/^static const int nmaster     = 2;    \/* number of clients in master area *\/$/;"	v	typeref:typename:const int
+nmaster	config.h	/^static const int nmaster     = 1;    \/* number of clients in master area *\/$/;"	v	typeref:typename:const int
 nmaster	dwm.c	/^	int nmaster;$/;"	m	struct:Monitor	typeref:typename:int	file:
 num	dwm.c	/^	int num;$/;"	m	struct:Monitor	typeref:typename:int	file:
 numlockmask	dwm.c	/^static unsigned int numlockmask = 0;$/;"	v	typeref:typename:unsigned int	file:
@@ -406,7 +407,7 @@ symbol	dwm.c	/^	const char *symbol;$/;"	m	struct:__anon0f53a99e0908	typeref:type
 sysmonitor	config.def.h	/^static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };$/;"	v	typeref:typename:const char * []
 sysmonitor	config.h	/^static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };$/;"	v	typeref:typename:const char * []
 sysmonitor2	config.def.h	/^static const char *sysmonitor2[]  = { "st", "-e", "vtop", NULL };$/;"	v	typeref:typename:const char * []
-sysmonitor2	config.h	/^static const char *sysmonitor2[]  = { "st", "-e", "vtop", NULL };$/;"	v	typeref:typename:const char * []
+sysmonitor2	config.h	/^static const char *sysmonitor2[]  = { "st", "-e", "gotop", NULL };$/;"	v	typeref:typename:const char * []
 tag	dwm.c	/^tag(const Arg *arg)$/;"	f	typeref:typename:void
 tagmon	dwm.c	/^tagmon(const Arg *arg)$/;"	f	typeref:typename:void
 tags	config.def.h	/^static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎵", "🗞️" };$/;"	v	typeref:typename:const char * []
@@ -453,6 +454,7 @@ v	dwm.c	/^	const void *v;$/;"	m	union:__anon0f53a99e060a	typeref:typename:const 
 view	dwm.c	/^view(const Arg *arg)$/;"	f	typeref:typename:void
 w	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
 w	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
+warp	warp.c	/^warp(const Client *c)$/;"	f	typeref:typename:void
 wh	dwm.c	/^	int wx, wy, ww, wh;   \/* window area  *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
 white1	config.def.h	/^static const char white1[]        = "#d0d0d0";$/;"	v	typeref:typename:const char[]
 white1	config.h	/^static const char white1[]        = "#d0d0d0";$/;"	v	typeref:typename:const char[]
@@ -480,4 +482,4 @@ yellow1	config.h	/^static const char yellow1[]        = "#ddb26f";$/;"	v	typeref
 yellow2	config.def.h	/^static const char yellow2[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
 yellow2	config.h	/^static const char yellow2[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
 zoom	dwm.c	/^zoom(const Arg *arg)$/;"	f	typeref:typename:void
-zoomswap	zoomswap.c	/^ zoomswap(const Arg *arg)$/;"	f
+zoomswap	zoomswap.c	/^zoomswap(const Arg *arg)$/;"	f	typeref:typename:void
