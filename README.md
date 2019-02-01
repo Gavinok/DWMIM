@@ -1,3 +1,15 @@
+Gavins personal fork of dwm
+
+Patches added:
+1. uslessgaps /tilegaps (can be alternated or fully disabled in dwm.c)
+2. center
+3. scratchpad
+4. maximize
+5. moveplace
+6. custome script for moving floating windows
+7. ispermanent 
+8. [statuscolors](statuscolors)
+9. zoomswap
 dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.

@@ -47,6 +47,11 @@
 /* home made patches */
 /* #define MONOGAP //add gapps to monicol */
 #define ENABLEWARP
+#define ENABLESCRATCHPAD
+/* #define ENABLEUSLESSGAPS */
+#define ENABLETILEGAPS
+#define ENABLESTATUSCOLORS
+#define ENABLEMAX
 
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
@@ -56,16 +61,27 @@
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
-/* #define WIDTH(X)                ((X)->w + 2 * (X)->bw) */
-/* #define HEIGHT(X)               ((X)->h + 2 * (X)->bw) */
-#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
-#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
+
+#ifdef ENABLEUSLESSGAPS
+	#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
+	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
+#else
+	#define WIDTH(X)                ((X)->w + 2 * (X)->bw)
+	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
+#endif
+
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+#ifdef ENABLESTATUSCOLORS
+/* enum { SchemeNorm, SchemeSel, SchemeWarn, SchemeUrgent }; #<{(| color schemes |)}># */
+enum { SchemeNorm, SchemeSel, SchemeWarn, SchemeUrgent, SchemeTime, SchemeCharging, SchemeSafe }; /* color schemes */
+#else
 enum { SchemeNorm, SchemeSel }; /* color schemes */
+#endif
+
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -99,7 +115,14 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	//added iscentered
-	int isfixed, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	//added ispermanent
+	//added ismax
+	//added wasfloating
+	#ifdef ENABLEMAX
+	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	#else
+	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	#endif
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -147,6 +170,8 @@ typedef struct {
 	//centering rule
 	int iscentered;
 	int isfloating;
+	//permanent
+	int ispermanent;
 	int monitor;
 } Rule;
 
@@ -309,6 +334,7 @@ applyrules(Client *c)
 			//check for centering
 			c->iscentered = r->iscentered;
 			c->isfloating = r->isfloating;
+			c->ispermanent = r->ispermanent;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
@@ -710,13 +736,35 @@ drawbar(Monitor *m)
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
+	#ifdef ENABLESTATUSCOLORS
+    char *ts = stext;
+    char *tp = stext;
+    int tx = 0;
+    char ctmp;
+	#endif
 	Client *c;
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+	#ifdef ENABLESTATUSCOLORS
+
+		while (1) {
+			if ((unsigned int)*ts > LENGTH(colors)) { ts++; continue ; }
+			ctmp = *ts;
+			*ts = '\0';
+			drw_text(drw, m->ww - sw + tx, 0, sw - tx, bh, 0, tp, 0);
+			tx += TEXTW(tp) -lrpad;
+			if (ctmp == '\0') { break; }
+			drw_setscheme(drw, scheme[(unsigned int)(ctmp-1)]);
+			*ts = ctmp;
+			tp = ++ts;
+		}
+	#else
 		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
+	#endif	
+
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -1015,7 +1063,7 @@ keypress(XEvent *e)
 void
 killclient(const Arg *arg)
 {
-	if (!selmon->sel)
+	if (!selmon->sel || selmon->sel->ispermanent)
 		return;
 	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
 		XGrabServer(dpy);
@@ -1062,6 +1110,14 @@ manage(Window w, XWindowAttributes *wa)
 	c->y = MAX(c->y, ((c->mon->by == c->mon->my) && (c->x + (c->w / 2) >= c->mon->wx)
 		&& (c->x + (c->w / 2) < c->mon->wx + c->mon->ww)) ? bh : c->mon->my);
 	c->bw = borderpx;
+	#ifdef ENABLESCRATCHPAD
+	if (!strcmp(c->name, scratchpadname)) {
+		c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag;
+		c->isfloating = True;
+		c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
+		c->y = c->mon->wy + (c->mon->wh / 2 - HEIGHT(c) / 2);
+	}
+	#endif
 
 	//when centering
 	if(c->iscentered) {
@@ -1078,6 +1134,10 @@ manage(Window w, XWindowAttributes *wa)
 	updatewmhints(c);
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
+	#ifdef ENABLEMAX
+	c->wasfloating = 0;
+	c->ismax = 0;
+	#endif
 	if (!c->isfloating)
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if (c->isfloating)
@@ -1291,7 +1351,7 @@ resize(Client *c, int x, int y, int w, int h, int interact)
 	if (applysizehints(c, &x, &y, &w, &h, interact))
 		resizeclient(c, x, y, w, h);
 }
-
+#ifdef ENABLEUSLESSGAPS
 void
 resizeclient(Client *c, int x, int y, int w, int h)
 {
@@ -1335,6 +1395,22 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	configure(c);
 	XSync(dpy, False);
 }
+#else
+void
+resizeclient(Client *c, int x, int y, int w, int h)
+{
+	XWindowChanges wc;
+
+	c->oldx = c->x; c->x = wc.x = x;
+	c->oldy = c->y; c->y = wc.y = y;
+	c->oldw = c->w; c->w = wc.width = w;
+	c->oldh = c->h; c->h = wc.height = h;
+	wc.border_width = c->bw;
+	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
+	configure(c);
+	XSync(dpy, False);
+}
+#endif
 
 void
 resizemouse(const Arg *arg)
@@ -1722,7 +1798,39 @@ tagmon(const Arg *arg)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
+#ifdef ENABLETILEGAPS
+void
+tile(Monitor *m)
+{
+	unsigned int i, n, h, mw, my, ty, ns;
+	Client *c;
 
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	if (n == 0)
+		return;
+
+	if (n > m->nmaster) {
+		mw = m->nmaster ? m->ww * m->mfact : 0;
+
+		ns = m->nmaster > 0 ? 2 : 1;
+	} else {
+		mw = m->ww;
+		ns = 1;
+	}
+	for(i = 0, my = ty = gappx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		if (i < m->nmaster) {
+
+			h = (m->wh - my) / (MIN(n, m->nmaster) - i) - gappx;
+			resize(c, m->wx + gappx, m->wy + my, mw - (2*c->bw) - gappx*(5-ns)/2, h - (2*c->bw), False);
+			my += HEIGHT(c) + gappx;
+		} else {
+
+			h = (m->wh - ty) / (n - i) - gappx;
+			resize(c, m->wx + mw + gappx/ns, m->wy + ty, m->ww - mw - (2*c->bw) - gappx*(5-ns)/2, h - (2*c->bw), False);
+			ty += HEIGHT(c) + gappx;
+		}
+}
+#else
 void
 tile(Monitor *m)
 {
@@ -1748,6 +1856,7 @@ tile(Monitor *m)
 			ty += HEIGHT(c);
 		}
 }
+#endif
 
 void
 togglebar(const Arg *arg)
