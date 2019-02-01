@@ -11,6 +11,7 @@ Patches added:
 8. [statuscolors](statuscolors)
 9. zoomswap
 10. warp
+11. alwaysfloating
 
 dwm - dynamic window manager
 ============================

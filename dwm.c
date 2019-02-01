@@ -118,11 +118,8 @@ struct Client {
 	//added ispermanent
 	//added ismax
 	//added wasfloating
-	#ifdef ENABLEMAX
-	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-	#else
-	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-	#endif
+	//added alwaysfloating
+	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -172,6 +169,7 @@ typedef struct {
 	int isfloating;
 	//permanent
 	int ispermanent;
+	int alwaysfloating;
 	int monitor;
 } Rule;
 
@@ -335,6 +333,7 @@ applyrules(Client *c)
 			c->iscentered = r->iscentered;
 			c->isfloating = r->isfloating;
 			c->ispermanent = r->ispermanent;
+			c->alwaysfloating = r->alwaysfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
@@ -1872,7 +1871,7 @@ togglefloating(const Arg *arg)
 {
 	if (!selmon->sel)
 		return;
-	if (selmon->sel->isfullscreen) /* no support for fullscreen windows */
+	if (selmon->sel->isfullscreen || selmon->sel->alwaysfloating) /* no support for fullscreen windows */
 		return;
 	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
 	if (selmon->sel->isfloating)

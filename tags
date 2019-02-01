@@ -149,6 +149,8 @@ __anon0f53a99e0908	dwm.c	/^typedef struct {$/;"	s	file:
 __anon0f53a99e0a08	dwm.c	/^typedef struct {$/;"	s	file:
 __anon0f53a99e0b08	dwm.c	/^typedef struct {$/;"	s	file:
 all	Makefile	/^all: options dwm$/;"	t
+alwaysfloating	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
+alwaysfloating	dwm.c	/^	int alwaysfloating;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 applyrules	dwm.c	/^applyrules(Client *c)$/;"	f	typeref:typename:void
 applysizehints	dwm.c	/^applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact)$/;"	f	typeref:typename:int
 arg	dwm.c	/^	const Arg arg;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:const Arg	file:
@@ -289,23 +291,17 @@ incnmaster	dwm.c	/^incnmaster(const Arg *arg)$/;"	f	typeref:typename:void
 incw	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 install	Makefile	/^install: all$/;"	t
 instance	dwm.c	/^	const char *instance;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
+iscentered	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 iscentered	dwm.c	/^	int iscentered;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
-iscentered	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-iscentered	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
-isfixed	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-isfixed	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
-isfloating	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
+isfixed	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
+isfloating	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 isfloating	dwm.c	/^	int isfloating;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
-isfloating	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
-isfullscreen	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-isfullscreen	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
-ismax	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
-ispermanent	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-ispermanent	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
+isfullscreen	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
+ismax	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
+ispermanent	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 ispermanent	dwm.c	/^	int ispermanent;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 isuniquegeom	dwm.c	/^isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)$/;"	f	typeref:typename:int	file:
-isurgent	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-isurgent	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
+isurgent	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 keypress	dwm.c	/^keypress(XEvent *e)$/;"	f	typeref:typename:void
 keys	config.def.h	/^static Key keys[] = {$/;"	v	typeref:typename:Key[]
 keys	config.h	/^static Key keys[] = {$/;"	v	typeref:typename:Key[]
@@ -358,8 +354,7 @@ mx	dwm.c	/^	int mx, my, mw, mh;   \/* screen size *\/$/;"	m	struct:Monitor	typer
 my	dwm.c	/^	int mx, my, mw, mh;   \/* screen size *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
 name	dwm.c	/^	char name[256];$/;"	m	struct:Client	typeref:typename:char[256]	file:
 netatom	dwm.c	/^static Atom wmatom[WMLast], netatom[NetLast];$/;"	v	typeref:typename:Atom[][]	file:
-neverfocus	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-neverfocus	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
+neverfocus	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 next	drw.h	/^	struct Fnt *next;$/;"	m	struct:Fnt	typeref:struct:Fnt *
 next	dwm.c	/^	Client *next;$/;"	m	struct:Client	typeref:typename:Client *	file:
 next	dwm.c	/^	Monitor *next;$/;"	m	struct:Monitor	typeref:typename:Monitor *	file:
@@ -373,8 +368,7 @@ num	dwm.c	/^	int num;$/;"	m	struct:Monitor	typeref:typename:int	file:
 numlockmask	dwm.c	/^static unsigned int numlockmask = 0;$/;"	v	typeref:typename:unsigned int	file:
 oldbw	dwm.c	/^	int bw, oldbw;$/;"	m	struct:Client	typeref:typename:int	file:
 oldh	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
-oldstate	dwm.c	/^	int isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;$/;"	m	struct:Client	typeref:typename:int	file:
-oldstate	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
+oldstate	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 oldw	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 oldx	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 oldy	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -499,7 +493,7 @@ view	dwm.c	/^view(const Arg *arg)$/;"	f	typeref:typename:void
 w	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
 w	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
 warp	warp.c	/^warp(const Client *c)$/;"	f	typeref:typename:void
-wasfloating	dwm.c	/^	int ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, old/;"	m	struct:Client	typeref:typename:int	file:
+wasfloating	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent,/;"	m	struct:Client	typeref:typename:int	file:
 wh	dwm.c	/^	int wx, wy, ww, wh;   \/* window area  *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
 white1	config.def.h	/^static const char white1[]        = "#d0d0d0";$/;"	v	typeref:typename:const char[]
 white1	config.h	/^static const char white1[]      = "#d0d0d0";$/;"	v	typeref:typename:const char[]

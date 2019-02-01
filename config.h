@@ -34,6 +34,7 @@ static const char col_black[]   = "#000000";
 static const char col_red[]     = "#ff0000";
 static const char col_yellow[]  = "#ffff00";
 static const char col_white[]   = "#ffffff";
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { white1, black1, black2 },
@@ -65,15 +66,15 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 
-	/* class      instance    title       tags mask     iscentered     isfloating	ispermanent   monitor */
-	{ "Gimp",     NULL,       NULL,			0,				0,          1,			0,				-1 },
-	{ "Firefox",  NULL,       NULL,			1 << 8,			0,			0,			0,				-1 },
-	{ NULL,		  NULL,      "newspod" ,    1 << 8,			0,          0,			0,				-1 },
-	{ "Spotify",  NULL,		  NULL,			1 << 7,			0,			0,			0,				-1 },
-	{ NULL,		  NULL,      "pulsemixer",  0,				1,			1,			0,				-1 },
-	{ NULL,		  NULL,      "neomutt",		0,				1,			1,			0,				-1 },
-	{ NULL,		  NULL,      "calcurse",	0,				1,			1,			0,				-1 },
-	{ NULL,		  NULL,      "tmuxdd",		0l,				1,			1,			1,				-1 },
+	/* class      instance    title       tags mask     iscentered     isfloating	ispermanent		alwaysfloating		monitor */
+	{ "Gimp",     NULL,       NULL,			0,				0,          1,			0,				0,					-1 },
+	{ "Firefox",  NULL,       NULL,			1 << 8,			0,			0,			0,				0,					-1 },
+	{ NULL,		  NULL,      "newspod" ,    1 << 8,			0,          0,			0,				0,					-1 },
+	{ "Spotify",  NULL,		  NULL,			1 << 7,			0,			0,			0,				0,					-1 },
+	{ NULL,		  NULL,      "pulsemixer",  0,				1,			1,			0,				0,					-1 },
+	{ NULL,		  NULL,      "neomutt",		0,				1,			1,			0,				0,					-1 },
+	{ NULL,		  NULL,      "calcurse",	0,				1,			1,			0,				0,					-1 },
+	{ NULL,		  NULL,      "tmuxdd",		0l,				1,			1,			1,				1,					-1 },
 };
 
 /* layout(s) */
