@@ -50,7 +50,7 @@
 #define ENABLESCRATCHPAD
 /* #define ENABLEUSLESSGAPS */
 #define ENABLETILEGAPS
-#define ENABLESTATUSCOLORS
+/* #define ENABLESTATUSCOLORS */
 #define ENABLEMAX
 
 /* macros */
@@ -77,7 +77,7 @@
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 #ifdef ENABLESTATUSCOLORS
 /* enum { SchemeNorm, SchemeSel, SchemeWarn, SchemeUrgent }; #<{(| color schemes |)}># */
-enum { SchemeNorm, SchemeSel, SchemeWarn, SchemeUrgent, SchemeTime, SchemeCharging, SchemeSafe }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeWarn, SchemeUrgent, SchemeTime, SchemeCharging, SchemeSafe, SchemeCyan }; /* color schemes */
 #else
 enum { SchemeNorm, SchemeSel }; /* color schemes */
 #endif
@@ -115,11 +115,11 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	//added iscentered
-	//added ispermanent
+	//added nokill
 	//added ismax
 	//added wasfloating
 	//added alwaysfloating
-	int alwaysfloating, ismax, wasfloating, isfixed, ispermanent, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -168,7 +168,7 @@ typedef struct {
 	int iscentered;
 	int isfloating;
 	//permanent
-	int ispermanent;
+	int nokill;
 	int alwaysfloating;
 	int monitor;
 } Rule;
@@ -268,7 +268,7 @@ static void zoom(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
-static char stext[256];
+static char stext[256];		/* the text used to fill the status bar */
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
 static int bh, blw = 0;      /* bar geometry */
@@ -332,7 +332,7 @@ applyrules(Client *c)
 			//check for centering
 			c->iscentered = r->iscentered;
 			c->isfloating = r->isfloating;
-			c->ispermanent = r->ispermanent;
+			c->nokill = r->nokill;
 			c->alwaysfloating = r->alwaysfloating;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
@@ -746,7 +746,7 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+		sw = TEXTW(stext) - lrpad - (7*barcolorchanges); /* 2px right padding */
 	#ifdef ENABLESTATUSCOLORS
 
 		while (1) {
@@ -772,6 +772,7 @@ drawbar(Monitor *m)
 			urg |= c->tags;
 	}
 	x = 0;
+	/* this draws the bars tags  */
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
@@ -783,7 +784,9 @@ drawbar(Monitor *m)
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
+	/* sets the color for the current mode  */
 	drw_setscheme(drw, scheme[SchemeNorm]);
+	/* drw_setscheme(drw, scheme[SchemeSel]); */
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - x) > bh) {
@@ -1062,7 +1065,7 @@ keypress(XEvent *e)
 void
 killclient(const Arg *arg)
 {
-	if (!selmon->sel || selmon->sel->ispermanent)
+	if (!selmon->sel || selmon->sel->nokill)
 		return;
 	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
 		XGrabServer(dpy);

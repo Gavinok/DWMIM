@@ -17,8 +17,10 @@ maximize(int x, int y, int w, int h) {
 		selmon->sel->oldy = selmon->sel->y;
 		selmon->sel->oldw = selmon->sel->w;
 		selmon->sel->oldh = selmon->sel->h;
+		/* printf("notify-send \"%d\"",selmon->by); */
 
-		resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my, selmon->sel->mon->mw, selmon->sel->mon->mh);
+		resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight, selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
+		/* resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my, selmon->sel->mon->mw, selmon->wh); */
 		/* resize(selmon->sel, x, y, w, h, True); */
 		selmon->sel->ismax = True;
 	}
