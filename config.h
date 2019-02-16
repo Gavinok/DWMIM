@@ -6,8 +6,8 @@ static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are
 
 static const unsigned int barhight= 19;        /* gap for the bar when in fullscreen */
 
-//deltamvmv = the amount of pixels each movement will be by
-static const unsigned int deltamv = 20; 
+
+static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
 
 // gaps
 static const unsigned int gappx     = 13;
@@ -82,7 +82,7 @@ static const Rule rules[] = {
 	{ NULL,		  NULL,      "pulsemixer",  0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "neomutt",		0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "calcurse",	0,		 1,			 1,			0,		0,			-1 },
-	{ NULL,		  NULL,      "tmuxdd",		0,		 1,			 1,			1,		1,			-1 },
+	{ NULL,		  NULL,      "scratch",		0,		 1,			 1,			1,		1,			-1 },
 	{ "feh",		  NULL,      NULL,		0,		 1,			 1,			0,		0,			-1 },
 };
 
@@ -116,8 +116,8 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, "-nf", white1, "-sb", red1, "-sf", black1, NULL };
 
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = { "tmuxdd"};
-static const char *scratchpadcmd[] = { "st", "-e", scratchpadname, "-g", "120x34", NULL };
+static const char scratchpadname[] = { "scratch"};
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x24", NULL };
 static const char *email[]  = { "st", "-e", "neomutt", NULL };
 static const char *mixer[]  = { "st", "-e", "pulsemixer", NULL };
 static const char *calender[]  = { "st", "-e", "calcurse", NULL }; 
@@ -129,8 +129,8 @@ static const char *nm[]  = { "dmenuconnect.sh", NULL };
 static const char *music[]  = { "spotify", NULL };
 static const char *mute[]  = {"lmc", "mute", NULL };
 static const char *vdown[]  = { "lmc", "down", "5", NULL };
-static const char *ldown[]  = { "xbacklight", "-dec", "7", NULL };
-static const char *lup[]  = { "xbacklight", "-inc", "7", NULL };
+static const char *ldown[]  = { "llc.sh", "down", "7", NULL };
+static const char *lup[]  = { "llc.sh", "up", "7", NULL };
 static const char *vup[]  = { "lmc", "up", "5", NULL };
 static const char *mplay[]  = { "lmc", "toggle", NULL };
 static const char *mnext[]  = { "lmc", "next", NULL };
@@ -164,6 +164,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_n,		spawn,				{.v = reddit } },
 	{ MODKEY,						XK_c,		spawn,				{.v = calender } },
 	{ MODKEY,						XK_m,		spawn,				{.v = music } },
+	{ MODKEY|ControlMask,			XK_m,		spawn,				{.v = mute } },
 	{ MODKEY,						XK_i,		spawn,				{.v = sysmonitor2 } },
 	{ MODKEY|ShiftMask,				XK_i,		spawn,				{.v = sysmonitor } },
 	{ MODKEY|ControlMask,			XK_a,		spawn,				{.v = vdown } },

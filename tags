@@ -208,7 +208,7 @@ cyan1	config.def.h	/^static const char cyan1[]        = "#12cfc0";$/;"	v	typeref
 cyan1	config.h	/^static const char cyan1[]       = "#12cfc0";$/;"	v	typeref:typename:const char[]
 cyan2	config.def.h	/^static const char cyan2[]        = "#12cfc0";$/;"	v	typeref:typename:const char[]
 cyan2	config.h	/^static const char cyan2[]       = "#12cfc0";$/;"	v	typeref:typename:const char[]
-deltamv	config.h	/^static const unsigned int deltamv = 20; $/;"	v	typeref:typename:const unsigned int
+deltamv	config.h	/^static const unsigned int deltamv = 20; \/* deltamvmv = the amount of pixels each movement will /;"	v	typeref:typename:const unsigned int
 destroynotify	dwm.c	/^destroynotify(XEvent *e)$/;"	f	typeref:typename:void
 detach	dwm.c	/^detach(Client *c)$/;"	f	typeref:typename:void
 detachstack	dwm.c	/^detachstack(Client *c)$/;"	f	typeref:typename:void
@@ -306,12 +306,12 @@ killclient	dwm.c	/^killclient(const Arg *arg)$/;"	f	typeref:typename:void
 killit	config.h	/^static const char *killit[]  = { "dmenu-killall", NULL };$/;"	v	typeref:typename:const char * []
 layouts	config.def.h	/^static const Layout layouts[] = {$/;"	v	typeref:typename:const Layout[]
 layouts	config.h	/^static const Layout layouts[] = {$/;"	v	typeref:typename:const Layout[]
-ldown	config.h	/^static const char *ldown[]  = { "xbacklight", "-dec", "7", NULL };$/;"	v	typeref:typename:const char * []
+ldown	config.h	/^static const char *ldown[]  = { "llc.sh", "down", "7", NULL };$/;"	v	typeref:typename:const char * []
 limitexceeded	dwm.c	/^struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };$/;"	m	struct:NumTags	typeref:typename:char[]	file:
 lrpad	dwm.c	/^static int lrpad;            \/* sum of left and right padding for text *\/$/;"	v	typeref:typename:int	file:
 lt	dwm.c	/^	const Layout *lt[2];$/;"	m	struct:Monitor	typeref:typename:const Layout * [2]	file:
 ltsymbol	dwm.c	/^	char ltsymbol[16];$/;"	m	struct:Monitor	typeref:typename:char[16]	file:
-lup	config.h	/^static const char *lup[]  = { "xbacklight", "-inc", "7", NULL };$/;"	v	typeref:typename:const char * []
+lup	config.h	/^static const char *lup[]  = { "llc.sh", "up", "7", NULL };$/;"	v	typeref:typename:const char * []
 magenta1	config.def.h	/^static const char magenta1[]        = "#e1a3ee";$/;"	v	typeref:typename:const char[]
 magenta1	config.h	/^static const char magenta1[]    = "#e1a3ee";$/;"	v	typeref:typename:const char[]
 magenta2	config.def.h	/^static const char magenta2[]        = "##FF99FF";$/;"	v	typeref:typename:const char[]
@@ -408,8 +408,8 @@ running	dwm.c	/^static int running = 1;$/;"	v	typeref:typename:int	file:
 scan	dwm.c	/^scan(void)$/;"	f	typeref:typename:void
 scheme	drw.h	/^	Clr *scheme;$/;"	m	struct:__anon0f5116480308	typeref:typename:Clr *
 scheme	dwm.c	/^static Clr **scheme;$/;"	v	typeref:typename:Clr **	file:
-scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { "st", "-e", scratchpadname, "-g", "120x34", NULL };$/;"	v	typeref:typename:const char * []
-scratchpadname	config.h	/^static const char scratchpadname[] = { "tmuxdd"};$/;"	v	typeref:typename:const char[]
+scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x24", NULL };$/;"	v	typeref:typename:const char * []
+scratchpadname	config.h	/^static const char scratchpadname[] = { "scratch"};$/;"	v	typeref:typename:const char[]
 scratchtag	scratchpad.c	/^static unsigned int scratchtag = 1 << LENGTH(tags);$/;"	v	typeref:typename:unsigned int	file:
 screen	drw.h	/^	int screen;$/;"	m	struct:__anon0f5116480308	typeref:typename:int
 screen	dwm.c	/^static int screen;$/;"	v	typeref:typename:int	file:
