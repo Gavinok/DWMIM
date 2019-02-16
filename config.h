@@ -117,7 +117,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = { "scratch"};
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x24", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-e", "nvimterm.sh", "-g", "90x24", NULL };
 static const char *email[]  = { "st", "-e", "neomutt", NULL };
 static const char *mixer[]  = { "st", "-e", "pulsemixer", NULL };
 static const char *calender[]  = { "st", "-e", "calcurse", NULL }; 
@@ -145,6 +145,7 @@ static const char *filemanager[]  = {"dbrowse.sh", NULL };
 static const char *screenshot[]  = {"windowshot.sh", NULL };
 static const char *tutoral[]  = {"tutorialvids", NULL };
 static const char *help[]  = {"st", "-e", "ranger", "~/Documents/cheatsheets/", NULL };
+static const char *math[]  = {"calc.sh", NULL };
 static const char *dock[]  = {"dock_monitor", NULL };
 static const char *undock[]  = {"single_monitor", NULL };
 
@@ -177,8 +178,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,		spawn,				{.v = clip } },
 	{ AltMask|ControlMask,          XK_q,		spawn,				{.v = killit } },
 	{ MODKEY|ShiftMask,				XK_x,		spawn,				{.v = power } },
+	{ MODKEY,						XK_x,		spawn,				{.v = math } },
 	{ MODKEY,						XK_r,		spawn,				{.v = filemanager } },
-	{ MODKEY|ShiftMask,				XK_t,		spawn,				{.v = tutoral } },
+	{ MODKEY,						XK_t,		spawn,				{.v = tutoral } },
 	{ MODKEY|ControlMask,			XK_t,		spawn,				{.v = help } },
 	{ MODKEY,				XK_backslash,		spawn,				{.v = mplay } },
 	{ MODKEY,				XK_bracketright,	spawn,				{.v = mnext } },

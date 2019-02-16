@@ -322,6 +322,7 @@ manage	dwm.c	/^manage(Window w, XWindowAttributes *wa)$/;"	f	typeref:typename:vo
 mappingnotify	dwm.c	/^mappingnotify(XEvent *e)$/;"	f	typeref:typename:void
 maprequest	dwm.c	/^maprequest(XEvent *e)$/;"	f	typeref:typename:void
 mask	dwm.c	/^	unsigned int mask;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:unsigned int	file:
+math	config.h	/^static const char *math[]  = {"calc.sh", NULL };$/;"	v	typeref:typename:const char * []
 maxa	dwm.c	/^	float mina, maxa;$/;"	m	struct:Client	typeref:typename:float	file:
 maxh	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 maximize	maximize.c	/^maximize(int x, int y, int w, int h) {$/;"	f	typeref:typename:void
@@ -408,7 +409,7 @@ running	dwm.c	/^static int running = 1;$/;"	v	typeref:typename:int	file:
 scan	dwm.c	/^scan(void)$/;"	f	typeref:typename:void
 scheme	drw.h	/^	Clr *scheme;$/;"	m	struct:__anon0f5116480308	typeref:typename:Clr *
 scheme	dwm.c	/^static Clr **scheme;$/;"	v	typeref:typename:Clr **	file:
-scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "90x24", NULL };$/;"	v	typeref:typename:const char * []
+scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-e", "nvimterm.sh", "-g", "9/;"	v	typeref:typename:const char * []
 scratchpadname	config.h	/^static const char scratchpadname[] = { "scratch"};$/;"	v	typeref:typename:const char[]
 scratchtag	scratchpad.c	/^static unsigned int scratchtag = 1 << LENGTH(tags);$/;"	v	typeref:typename:unsigned int	file:
 screen	drw.h	/^	int screen;$/;"	m	struct:__anon0f5116480308	typeref:typename:int
