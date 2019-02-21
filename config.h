@@ -41,11 +41,14 @@ static const char col_black[]   = "#000000";
 static const char col_red[]     = "#ff0000";
 static const char col_yellow[]  = "#ffff00";
 static const char col_white[]   = "#ffffff";
+static const char walbg[]   	= "#372d33";
+static const char walred[]   	= "#e36177";
+static const char walwhite[]   	= "#c3dee1";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] =	  { white1, black1, black2 },
-	[SchemeSel]  =	  { black1, red1,  white2 },
+	[SchemeNorm] =	  { white1, black1, black1 },
+	[SchemeSel]  =	  { black1, red1,  white1 },
 	//status colors 
 	// [SchemeWarn] =	  { yellow1, black1, black1 },
 	// [SchemeUrgent]=	  { magenta1, black1, black1 },
@@ -80,6 +83,7 @@ static const Rule rules[] = {
 	{ NULL,		  NULL,      "newspod" ,    1 << 8,	 0,          0,			0,		0,			-1 },
 	{ "Spotify",  NULL,		  NULL,			1 << 7,	 0,			 0,			0,		0,			-1 },
 	{ NULL,		  NULL,      "pulsemixer",  0,		 1,			 1,			0,		0,			-1 },
+	{ NULL,		  NULL,      "launch_once.sh",  0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "neomutt",		0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "calcurse",	0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "scratch",		0,		 1,			 1,			1,		1,			-1 },
@@ -118,9 +122,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = { "scratch"};
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-e", "nvimterm.sh", "-g", "90x24", NULL };
-static const char *email[]  = { "st", "-e", "neomutt", NULL };
-static const char *mixer[]  = { "st", "-e", "pulsemixer", NULL };
-static const char *calender[]  = { "st", "-e", "calcurse", NULL }; 
+static const char *email[]  = { "st", "-e", "launch_once.sh", "neomutt", NULL };
+static const char *mixer[]  = { "st", "-e", "launch_once.sh", "pulsemixer", NULL };
+static const char *calender[]  = { "st", "-e", "launch_once.sh", "calcurse", NULL }; 
 static const char *reddit[] = { "st", "-e", "rtv", NULL };
 static const char *rss[]	= { "st", "-e", "newspod", NULL };
 static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };
@@ -141,9 +145,10 @@ static const char *search[]  = { "ducksearch", NULL };
 static const char *clip[]  = { "clipmenu", NULL };
 static const char *killit[]  = { "dmenu-killall", NULL };
 static const char *power[]  = { "power_menu.sh", NULL };
-static const char *filemanager[]  = {"dbrowse.sh", NULL };
+static const char *filemanager[]  = {"fileopen.sh", NULL };
 static const char *screenshot[]  = {"windowshot.sh", NULL };
 static const char *tutoral[]  = {"tutorialvids", NULL };
+static const char *td[]  = {"td-toggle", NULL };
 static const char *help[]  = {"st", "-e", "ranger", "~/Documents/cheatsheets/", NULL };
 static const char *math[]  = {"calc.sh", NULL };
 static const char *dock[]  = {"dock_monitor", NULL };
@@ -165,7 +170,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_n,		spawn,				{.v = reddit } },
 	{ MODKEY,						XK_c,		spawn,				{.v = calender } },
 	{ MODKEY,						XK_m,		spawn,				{.v = music } },
-	{ MODKEY|ControlMask,			XK_m,		spawn,				{.v = mute } },
+	{ MODKEY|ShiftMask,			XK_m,		spawn,				{.v = mute } },
 	{ MODKEY,						XK_i,		spawn,				{.v = sysmonitor2 } },
 	{ MODKEY|ShiftMask,				XK_i,		spawn,				{.v = sysmonitor } },
 	{ MODKEY|ControlMask,			XK_a,		spawn,				{.v = vdown } },
@@ -182,6 +187,7 @@ static Key keys[] = {
 	{ MODKEY,						XK_r,		spawn,				{.v = filemanager } },
 	{ MODKEY,						XK_t,		spawn,				{.v = tutoral } },
 	{ MODKEY|ControlMask,			XK_t,		spawn,				{.v = help } },
+	{ ControlMask|AltMask,				XK_t,		spawn,				{.v = td } },
 	{ MODKEY,				XK_backslash,		spawn,				{.v = mplay } },
 	{ MODKEY,				XK_bracketright,	spawn,				{.v = mnext } },
 	{ MODKEY,				XK_bracketleft,		spawn,				{.v = mprev } },

@@ -6,6 +6,9 @@ maximize(int x, int y, int w, int h) {
 	if(!selmon->sel || selmon->sel->isfixed)
 		return;
 	XRaiseWindow(dpy, selmon->sel->win);
+	if(selmon->sel->isfullscreen)
+		setfullscreen(selmon->sel, 0);
+
 	if(!selmon->sel->ismax) {
 		if(!selmon->lt[selmon->sellt]->arrange || selmon->sel->isfloating)
 			selmon->sel->wasfloating = True;
@@ -17,11 +20,8 @@ maximize(int x, int y, int w, int h) {
 		selmon->sel->oldy = selmon->sel->y;
 		selmon->sel->oldw = selmon->sel->w;
 		selmon->sel->oldh = selmon->sel->h;
-		/* printf("notify-send \"%d\"",selmon->by); */
 
 		resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight, selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
-		/* resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my, selmon->sel->mon->mw, selmon->wh); */
-		/* resize(selmon->sel, x, y, w, h, True); */
 		selmon->sel->ismax = True;
 	}
 	else {
@@ -37,14 +37,4 @@ maximize(int x, int y, int w, int h) {
 void
 togglemaximize(const Arg *arg) {
 	maximize(selmon->wx, selmon->wy, selmon->ww - 2 * borderpx, selmon->wh - 2 * borderpx);
-}
-
-void
-toggleverticalmax(const Arg *arg) {
-	maximize(selmon->sel->x, selmon->wy, selmon->sel->w, selmon->wh - 2 * borderpx);
-}
-
-void
-togglehorizontalmax(const Arg *arg) {
-	maximize(selmon->wx, selmon->sel->y, selmon->ww - 2 * borderpx, selmon->sel->h);
 }
