@@ -87,7 +87,7 @@ static const Rule rules[] = {
 	{ NULL,		  NULL,      "neomutt",		0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "calcurse",	0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "scratch",		0,		 1,			 1,			1,		1,			-1 },
-	{ "feh",		  NULL,      NULL,		0,		 1,			 1,			0,		0,			-1 },
+	{ "feh", 	  NULL,      NULL,			0,		 1,			 1,			0,		0,			-1 },
 };
 
 /* layout(s) */
@@ -149,20 +149,18 @@ static const char *filemanager[]  = {"fileopen.sh", NULL };
 static const char *screenshot[]  = {"windowshot.sh", NULL };
 static const char *tutoral[]  = {"tutorialvids", NULL };
 static const char *td[]  = {"td-toggle", NULL };
-static const char *help[]  = {"st", "-e", "ranger", "~/Documents/cheatsheets/", NULL };
 static const char *math[]  = {"calc.sh", NULL };
 static const char *dock[]  = {"dock_monitor", NULL };
 static const char *undock[]  = {"single_monitor", NULL };
+static const char *spell[]  = {"spellcheck.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_u,		togglescratch,	    {.v = scratchpadcmd } },
-	{ AltMask,                      XK_u,		tag,				{.ui = 1 << 9}},
 	{ MODKEY|ShiftMask,				XK_l,		mv,					{.i = -1} },
 	{ MODKEY|ShiftMask,				XK_h,		mv,					{.i = +1} },
 	{ MODKEY|ShiftMask,				XK_j,		mv,					{.i = -2} },
 	{ MODKEY|ShiftMask,				XK_k,		mv,					{.i = +2} },
-	{ MODKEY,                       XK_d,		spawn,				{.v = dmenucmd } },
 	{ MODKEY,                       XK_y,		spawn,				{.v = mixer } },
 	{ MODKEY,						XK_Return,  spawn,				{.v = termcmd } },
 	{ MODKEY,						XK_e,		spawn,				{.v = email } },
@@ -170,7 +168,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_n,		spawn,				{.v = reddit } },
 	{ MODKEY,						XK_c,		spawn,				{.v = calender } },
 	{ MODKEY,						XK_m,		spawn,				{.v = music } },
-	{ MODKEY|ShiftMask,			XK_m,		spawn,				{.v = mute } },
+	{ MODKEY|ShiftMask,				XK_m,		spawn,				{.v = mute } },
 	{ MODKEY,						XK_i,		spawn,				{.v = sysmonitor2 } },
 	{ MODKEY|ShiftMask,				XK_i,		spawn,				{.v = sysmonitor } },
 	{ MODKEY|ControlMask,			XK_a,		spawn,				{.v = vdown } },
@@ -184,10 +182,10 @@ static Key keys[] = {
 	{ AltMask|ControlMask,          XK_q,		spawn,				{.v = killit } },
 	{ MODKEY|ShiftMask,				XK_x,		spawn,				{.v = power } },
 	{ MODKEY,						XK_x,		spawn,				{.v = math } },
+	{ MODKEY|ShiftMask,				XK_s,		spawn,				{.v = spell } },
 	{ MODKEY,						XK_r,		spawn,				{.v = filemanager } },
 	{ MODKEY,						XK_t,		spawn,				{.v = tutoral } },
-	{ MODKEY|ControlMask,			XK_t,		spawn,				{.v = help } },
-	{ ControlMask|AltMask,				XK_t,		spawn,				{.v = td } },
+	{ ControlMask|AltMask,			XK_t,		spawn,				{.v = td } },
 	{ MODKEY,				XK_backslash,		spawn,				{.v = mplay } },
 	{ MODKEY,				XK_bracketright,	spawn,				{.v = mnext } },
 	{ MODKEY,				XK_bracketleft,		spawn,				{.v = mprev } },
@@ -227,7 +225,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,                       XK_g,      moveplace,      {.ui = WIN_C  }},
 	{ MODKEY,                       XK_z,      moveplace,      {.ui = WIN_SW }},
-	{ MODKEY,                       XK_b,      moveplace,      {.ui = WIN_SE }},
 	{ MODKEY,                       XK_b,      moveplace,      {.ui = WIN_SE }},
 
 	TAGKEYS(                        XK_1,                      0)

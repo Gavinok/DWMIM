@@ -282,7 +282,6 @@ h	drw.h	/^	unsigned int h;$/;"	m	struct:Fnt	typeref:typename:unsigned int
 h	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
 h	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
 handler	dwm.c	/^static void (*handler[LASTEvent]) (XEvent *) = {$/;"	v	typeref:typename:void (* [LASTEvent])(XEvent *)	file:
-help	config.h	/^static const char *help[]  = {"st", "-e", "ranger", "~\/Documents\/cheatsheets\/", NULL };$/;"	v	typeref:typename:const char * []
 i	dwm.c	/^	int i;$/;"	m	union:__anon0f53a99e070a	typeref:typename:int	file:
 inch	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 incnmaster	dwm.c	/^incnmaster(const Arg *arg)$/;"	f	typeref:typename:void
@@ -439,6 +438,7 @@ snap	config.def.h	/^static const unsigned int snap      = 32;       \/* snap pix
 snap	config.h	/^static const unsigned int snap      = 32; \/* snap pixel *\/$/;"	v	typeref:typename:const unsigned int
 snext	dwm.c	/^	Client *snext;$/;"	m	struct:Client	typeref:typename:Client *	file:
 spawn	dwm.c	/^spawn(const Arg *arg)$/;"	f	typeref:typename:void
+spell	config.h	/^static const char *spell[]  = {"spellcheck.sh", NULL };$/;"	v	typeref:typename:const char * []
 stack	dwm.c	/^	Client *stack;$/;"	m	struct:Monitor	typeref:typename:Client *	file:
 stext	dwm.c	/^static char stext[256];		\/* the text used to fill the status bar *\/$/;"	v	typeref:typename:char[256]	file:
 sw	dwm.c	/^static int sw, sh;           \/* X display screen geometry width, height *\/$/;"	v	typeref:typename:int	file:
