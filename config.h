@@ -157,6 +157,7 @@ static const char *spell[]  = {"spellcheck.sh", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_u,		togglescratch,	    {.v = scratchpadcmd } },
+	{ MODKEY,						XK_d,		spawn,				{.v = dmenucmd } },
 	{ MODKEY|ShiftMask,				XK_l,		mv,					{.i = -1} },
 	{ MODKEY|ShiftMask,				XK_h,		mv,					{.i = +1} },
 	{ MODKEY|ShiftMask,				XK_j,		mv,					{.i = -2} },
