@@ -383,6 +383,7 @@ pop	dwm.c	/^pop(Client *c)$/;"	f	typeref:typename:void
 power	config.h	/^static const char *power[]  = { "power_menu.sh", NULL };$/;"	v	typeref:typename:const char * []
 prevzoom	zoomswap.c	/^static Client *prevzoom = NULL;$/;"	v	typeref:typename:Client *	file:
 propertynotify	dwm.c	/^propertynotify(XEvent *e)$/;"	f	typeref:typename:void
+qrclip	config.h	/^static const char *qrclip[]  = { "qrclip.sh", NULL };$/;"	v	typeref:typename:const char * []
 quit	dwm.c	/^quit(const Arg *arg)$/;"	f	typeref:typename:void
 recttomon	dwm.c	/^recttomon(int x, int y, int w, int h)$/;"	f	typeref:typename:Monitor *
 red1	config.def.h	/^static const char red1[]       = "#fb9fb1";$/;"	v	typeref:typename:const char[]
