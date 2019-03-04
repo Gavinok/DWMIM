@@ -6,7 +6,6 @@ static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are
 
 static const unsigned int barhight= 19;        /* gap for the bar when in fullscreen */
 
-
 static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
 
 // gaps
@@ -119,9 +118,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, "-nf", white1, "-sb", red1, "-sf", black1, NULL };
 
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st", "-e", "fish", NULL };
 static const char scratchpadname[] = { "scratch"};
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-e", "nvimterm.sh", "-g", "90x24", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
 static const char *email[]  = { "st", "-e", "launch_once.sh", "neomutt", NULL };
 static const char *mixer[]  = { "st", "-e", "launch_once.sh", "pulsemixer", NULL };
 static const char *calender[]  = { "st", "-e", "launch_once.sh", "calcurse", NULL }; 
@@ -143,10 +142,10 @@ static const char *mount[]  = { "dmenumount", NULL };
 static const char *unmount[]  = { "dmenuumount", NULL };
 static const char *search[]  = { "ducksearch", NULL };
 static const char *clip[]  = { "clipmenu", NULL };
-static const char *qrclip[]  = { "qrclip.sh", NULL };
+static const char *qrclip[]  = { "dmenuqrclip.sh", NULL };
 static const char *killit[]  = { "dmenu-killall", NULL };
 static const char *power[]  = { "power_menu.sh", NULL };
-static const char *filemanager[]  = {"fileopen.sh", NULL };
+static const char *filemanager[]  = {"dmenu-open.sh", NULL };
 static const char *screenshot[]  = {"windowshot.sh", NULL };
 static const char *tutoral[]  = {"tutorialvids", NULL };
 static const char *td[]  = {"td-toggle", NULL };
@@ -177,6 +176,10 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,			XK_s,		spawn,				{.v = ldown } },
 	{ MODKEY|ControlMask,			XK_d,		spawn,				{.v = lup } },
 	{ MODKEY|ControlMask,			XK_f,		spawn,				{.v = vup } },
+	{ MODKEY|ControlMask,			XK_h,		spawn,				{.v = vdown } },
+	{ MODKEY|ControlMask,			XK_j,		spawn,				{.v = ldown } },
+	{ MODKEY|ControlMask,			XK_k,		spawn,				{.v = lup } },
+	{ MODKEY|ControlMask,			XK_l,		spawn,				{.v = vup } },
 	{ MODKEY,                       XK_o,		spawn,				{.v = mount } },
 	{ MODKEY|ShiftMask,             XK_o,		spawn,				{.v = unmount } },
 	{ MODKEY,                       XK_w,		spawn,				{.v = search } },
@@ -184,18 +187,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_p,		spawn,				{.v = qrclip } },
 	{ AltMask|ControlMask,          XK_q,		spawn,				{.v = killit } },
 	{ MODKEY|ShiftMask,				XK_x,		spawn,				{.v = power } },
-	{ MODKEY,						XK_x,		spawn,				{.v = math } },
 	{ MODKEY|ShiftMask,				XK_s,		spawn,				{.v = spell } },
 	{ MODKEY,						XK_r,		spawn,				{.v = filemanager } },
 	{ MODKEY,						XK_t,		spawn,				{.v = tutoral } },
 	{ ControlMask|AltMask,			XK_t,		spawn,				{.v = td } },
-	{ MODKEY,				XK_backslash,		spawn,				{.v = mplay } },
+	{ MODKEY,						XK_minus,	spawn,				{.v = math } },
+	{ MODKEY,					XK_backslash,	spawn,				{.v = mplay } },
 	{ MODKEY,				XK_bracketright,	spawn,				{.v = mnext } },
 	{ MODKEY,				XK_bracketleft,		spawn,				{.v = mprev } },
 	{ MODKEY,						XK_F7,		spawn,				{.v = dock } },
 	{ MODKEY,						XK_F8,		spawn,				{.v = undock } },
 	{ MODKEY,						XK_F11,		spawn,				{.v = nm } },
-	{ 0,                       XK_Print,		spawn,				{.v = screenshot }},
+	{ 0,                       	XK_Print,		spawn,				{.v = screenshot }},
 	{ 0,						0x1008ff41,		spawn,				SHCMD("xset dpms force off")},
 	{ 0,						0x1008ff11,		spawn,				{.v = vdown } },
 	{ 0,						0x1008ff13,		spawn,				{.v = vup } },
@@ -213,9 +216,6 @@ static Key keys[] = {
 	{ MODKEY,						XK_q,		killclient,     {0} },
 	{ MODKEY,						XK_BackSpace,		killclient,     {0} },
 	{ MODKEY,						XK_apostrophe,		nokill,     {0} },
-	// { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	// { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	// { MODKEY,                       XK_f,		setlayout,      {0} },
 	{ MODKEY,                       XK_f,		togglemaximize,      {0} },
 	{ MODKEY|ShiftMask,             XK_z,		togglefloating, {0} },
 	{ MODKEY,                       XK_0,		view,           {.ui = ~0 } },
