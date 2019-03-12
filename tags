@@ -1257,7 +1257,6 @@ EMSGSIZE	.ccls-cache/@@home@gavinok@dwm/@usr@include@asm-generic@errno.h	/^#defi
 EMULTIHOP	.ccls-cache/@@home@gavinok@dwm/@usr@include@asm-generic@errno.h	/^#define	EMULTIHOP	/;"	d
 ENABLEMAX	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^#define ENABLEMAX$/;"	d	file:
 ENABLEMAX	.ccls-cache/@home@gavinok@dwm/dwm.c	/^#define ENABLEMAX$/;"	d	file:
-ENABLEMAX	dwm.c	/^#define ENABLEMAX$/;"	d	file:
 ENABLESCRATCHPAD	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^#define ENABLESCRATCHPAD$/;"	d	file:
 ENABLESCRATCHPAD	.ccls-cache/@home@gavinok@dwm/dwm.c	/^#define ENABLESCRATCHPAD$/;"	d	file:
 ENABLESCRATCHPAD	dwm.c	/^#define ENABLESCRATCHPAD$/;"	d	file:
@@ -6898,7 +6897,7 @@ alwaysfloating	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c
 alwaysfloating	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating;$/;"	m	struct:__anon64c047a40b08	typeref:typename:int	file:
 alwaysfloating	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 alwaysfloating	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating;$/;"	m	struct:__anone6b78b100b08	typeref:typename:int	file:
-alwaysfloating	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+alwaysfloating	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 alwaysfloating	dwm.c	/^	int alwaysfloating;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 angle1	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^    short angle1, angle2;$/;"	m	struct:__anon45ba96541108	typeref:typename:short
 angle2	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^    short angle1, angle2;$/;"	m	struct:__anon45ba96541108	typeref:typename:short
@@ -7730,29 +7729,28 @@ iscentered	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	
 iscentered	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int iscentered;$/;"	m	struct:__anon64c047a40b08	typeref:typename:int	file:
 iscentered	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 iscentered	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int iscentered;$/;"	m	struct:__anone6b78b100b08	typeref:typename:int	file:
-iscentered	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+iscentered	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 iscentered	dwm.c	/^	int iscentered;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 isfixed	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 isfixed	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-isfixed	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+isfixed	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 isfloating	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 isfloating	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int isfloating;$/;"	m	struct:__anon64c047a40b08	typeref:typename:int	file:
 isfloating	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 isfloating	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int isfloating;$/;"	m	struct:__anone6b78b100b08	typeref:typename:int	file:
-isfloating	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+isfloating	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 isfloating	dwm.c	/^	int isfloating;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 isfullscreen	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 isfullscreen	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-isfullscreen	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+isfullscreen	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 ismax	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 ismax	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-ismax	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 isuniquegeom	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)$/;"	f	typeref:typename:int	file:
 isuniquegeom	.ccls-cache/@home@gavinok@dwm/dwm.c	/^isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)$/;"	f	typeref:typename:int	file:
 isuniquegeom	dwm.c	/^isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)$/;"	f	typeref:typename:int	file:
 isurgent	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 isurgent	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-isurgent	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+isurgent	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 join_style	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^	int join_style;	 	\/* JoinMiter, JoinRound, JoinBevel *\/$/;"	m	struct:__anon45ba96540308	typeref:typename:int
 key	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^        int key;$/;"	m	struct:__anon45ba96541208	typeref:typename:int
 key	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^    XIMHotKeyTrigger	*key;$/;"	m	struct:_XIMHotKeyTriggers	typeref:typename:XIMHotKeyTrigger *
@@ -8072,7 +8070,7 @@ netatom	.ccls-cache/@home@gavinok@dwm/dwm.c	/^static Atom wmatom[WMLast], netato
 netatom	dwm.c	/^static Atom wmatom[WMLast], netatom[NetLast];$/;"	v	typeref:typename:Atom[][]	file:
 neverfocus	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 neverfocus	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-neverfocus	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+neverfocus	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 next	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^	struct _XExtData *next;	\/* next item on list of data for structure *\/$/;"	m	struct:_XExtData	typeref:struct:_XExtData *
 next	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	Client *next;$/;"	m	struct:Client	typeref:typename:Client *	file:
 next	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	Monitor *next;$/;"	m	struct:Monitor	typeref:typename:Monitor *	file:
@@ -8104,7 +8102,7 @@ nokill	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int 
 nokill	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int nokill;$/;"	m	struct:__anon64c047a40b08	typeref:typename:int	file:
 nokill	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 nokill	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int nokill;$/;"	m	struct:__anone6b78b100b08	typeref:typename:int	file:
-nokill	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+nokill	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 nokill	dwm.c	/^	int nokill;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 nokill	nokill.c	/^nokill(const Arg *arg)$/;"	f	typeref:typename:void
 nscreens	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^	int nscreens;		\/* number of screens on this server*\/$/;"	m	struct:_XDisplay	typeref:typename:int
@@ -8146,7 +8144,7 @@ oldmask	.ccls-cache/@@home@gavinok@dwm/@usr@include@bits@sigcontext.h	/^  __uint
 oldmask	.ccls-cache/@@home@gavinok@dwm/@usr@include@bits@sigcontext.h	/^  unsigned long oldmask;$/;"	m	struct:sigcontext	typeref:typename:unsigned long
 oldstate	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 oldstate	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-oldstate	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+oldstate	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 oldw	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 oldw	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 oldw	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -9392,7 +9390,7 @@ walwhite	config.h	/^static const char walwhite[]   	= "#c3dee1";$/;"	v	typeref:t
 warp	warp.c	/^warp(const Client *c)$/;"	f	typeref:typename:void
 wasfloating	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
 wasfloating	.ccls-cache/@home@gavinok@dwm/dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
-wasfloating	dwm.c	/^	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neve/;"	m	struct:Client	typeref:typename:int	file:
+wasfloating	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 wchar_t	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^typedef unsigned long wchar_t;$/;"	t	typeref:typename:unsigned long
 wcs	.ccls-cache/@@home@gavinok@dwm/@usr@include@X11@Xlib.h	/^	wchar_t *wcs;$/;"	m	union:_XIMStringConversionText::__anon45ba96544a0a	typeref:typename:wchar_t *
 wh	.ccls-cache/@home@gavinok@dwm/.ccls-cache@@home@gavinok@dwm@dwm.c	/^	int wx, wy, ww, wh;   \/* window area  *\/$/;"	m	struct:Monitor	typeref:typename:int	file:

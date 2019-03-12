@@ -51,6 +51,7 @@
 /* #define ENABLEUSLESSGAPS */
 #define ENABLETILEGAPS
 /* #define ENABLESTATUSCOLORS */
+#define ENABLEMAX
 
 /* macros */
 #define BUTTONMASK              (ButtonPressMask|ButtonReleaseMask)
@@ -60,6 +61,7 @@
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
+
 #ifdef ENABLEUSLESSGAPS
 	#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
 	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
@@ -114,8 +116,10 @@ struct Client {
 	unsigned int tags;
 	//added iscentered
 	//added nokill
+	//added ismax
+	//added wasfloating
 	//added alwaysfloating
-	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+	int alwaysfloating, ismax, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -1132,6 +1136,10 @@ manage(Window w, XWindowAttributes *wa)
 	updatewmhints(c);
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
+	#ifdef ENABLEMAX
+	c->wasfloating = 0;
+	c->ismax = 0;
+	#endif
 	if (!c->isfloating)
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if (c->isfloating)
@@ -1603,13 +1611,7 @@ setfullscreen(Client *c, int fullscreen)
 		c->oldbw = c->bw;
 		c->bw = 0;
 		c->isfloating = 1;
-		if(fullscreen == 1){
-			resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
-		}else{
-			/* if just wanted to maximize */
-			resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight,
-					selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
-		}
+		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,

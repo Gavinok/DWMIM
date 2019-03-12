@@ -12,6 +12,8 @@ moveplace(const Arg *arg)
 	c = selmon->sel;
 	if (!c || (arg->ui >= 9))
 		 return;
+	if (selmon->lt[selmon->sellt]->arrange && c->isfullscreen)
+		setfullscreen(c, 0);
 	if (selmon->lt[selmon->sellt]->arrange && !c->isfloating)
 		togglefloating(NULL);
 	nh = (selmon->wh / 2) - (c->bw * 2);
