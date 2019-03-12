@@ -83,10 +83,10 @@ static const Rule rules[] = {
 	{ "Spotify",  NULL,		  NULL,			1 << 7,	 0,			 0,			0,		0,			-1 },
 	{ NULL,		  NULL,      "pulsemixer",  0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "launch_once.sh",  0,		 1,			 1,			0,		0,			-1 },
-	{ NULL,		  NULL,      "fzf-open",  	0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "neomutt",		0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "calcurse",	0,		 1,			 1,			0,		0,			-1 },
 	{ NULL,		  NULL,      "scratch",		0,		 1,			 1,			1,		1,			-1 },
+	{ NULL,		  NULL,      "castnow",		0,		 0,			 1,			0,		0,			-1 },
 	{ "feh", 	  NULL,      NULL,			0,		 1,			 1,			0,		0,			-1 },
 };
 
@@ -128,7 +128,7 @@ static const char *calender[]  = { "st", "-e", "launch_once.sh", "calcurse", NUL
 static const char *reddit[] = { "st", "-e", "rtv", NULL };
 static const char *rss[]	= { "st", "-e", "newspod", NULL };
 static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };
-static const char *sysmonitor2[]  = { "st", "-e", "gotop", NULL };
+static const char *sysmonitor2[]  = { "st", "-e", "vtop", NULL };
 static const char *nm[]  = { "dmenuconnect.sh", NULL };
 static const char *music[]  = { "spotify", NULL };
 static const char *mute[]  = {"lmc", "mute", NULL };
@@ -143,11 +143,10 @@ static const char *mount[]  = { "dmenumount", NULL };
 static const char *unmount[]  = { "dmenuumount", NULL };
 static const char *search[]  = { "ducksearch", NULL };
 static const char *clip[]  = { "clipmenu", NULL };
-static const char *qrclip[]  = { "dmenuqrclip.sh", NULL };
+static const char *plumb[]  = { "cabl", NULL };
 static const char *killit[]  = { "dmenu-killall", NULL };
 static const char *power[]  = { "power_menu.sh", NULL };
 static const char *filemanager[]  = {"dmenu-open.sh", NULL };
-static const char *fzf[]  = { "st", "-e", "fzf-open.sh", NULL };
 static const char *screenshot[]  = {"windowshot.sh", NULL };
 static const char *tutoral[]  = {"tutorialvids", NULL };
 static const char *td[]  = {"td-toggle", NULL };
@@ -155,6 +154,7 @@ static const char *math[]  = {"calc.sh", NULL };
 static const char *dock[]  = {"dock_monitor", NULL };
 static const char *undock[]  = {"single_monitor", NULL };
 static const char *spell[]  = {"spellcheck.sh", NULL };
+static const char *cast[]  = {"castcontrol.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -186,15 +186,15 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_o,		spawn,				{.v = unmount } },
 	{ MODKEY,                       XK_w,		spawn,				{.v = search } },
 	{ MODKEY,                       XK_p,		spawn,				{.v = clip } },
-	{ MODKEY|ShiftMask,             XK_p,		spawn,				{.v = qrclip } },
+	{ MODKEY|ShiftMask,             XK_p,		spawn,				{.v = plumb } },
 	{ AltMask|ControlMask,          XK_q,		spawn,				{.v = killit } },
 	{ MODKEY|ShiftMask,				XK_x,		spawn,				{.v = power } },
 	{ MODKEY|ShiftMask,				XK_s,		spawn,				{.v = spell } },
 	{ MODKEY,						XK_r,		spawn,				{.v = filemanager } },
-	{ MODKEY|ShiftMask,				XK_r,		spawn,				{.v = fzf } },
 	{ MODKEY,						XK_t,		spawn,				{.v = tutoral } },
 	{ ControlMask|AltMask,			XK_t,		spawn,				{.v = td } },
 	{ MODKEY,						XK_minus,	spawn,				{.v = math } },
+	{ MODKEY,						XK_equal,	spawn,				{.v = cast } },
 	{ MODKEY,					XK_backslash,	spawn,				{.v = mplay } },
 	{ MODKEY,				XK_bracketright,	spawn,				{.v = mnext } },
 	{ MODKEY,				XK_bracketleft,		spawn,				{.v = mprev } },

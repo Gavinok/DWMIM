@@ -1610,7 +1610,13 @@ setfullscreen(Client *c, int fullscreen)
 		c->oldbw = c->bw;
 		c->bw = 0;
 		c->isfloating = 1;
-		resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
+		if(fullscreen == 1){
+			resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
+		}else{
+			/* if just wanted to maximize */
+			resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight,
+					selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
+		}
 		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
@@ -1626,6 +1632,20 @@ setfullscreen(Client *c, int fullscreen)
 		arrange(c->mon);
 	}
 }
+
+/* void */
+/* max(const Arg *arg) */
+/* { */
+/* 	if (!selmon->sel) */
+/* 	return; */
+/*  */
+/* 	if (!selmon->sel->isfullscreen) */
+/* 	{ */
+/* 		setfullscreen(selmon->sel, 2); */
+/* 	} */
+/* 	else if (selmon->sel->isfullscreen) */
+/* 		setfullscreen(selmon->sel, 0); */
+/* } */
 
 void
 setlayout(const Arg *arg)

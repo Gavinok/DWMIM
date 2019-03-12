@@ -61,7 +61,6 @@
 #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
 #define LENGTH(X)               (sizeof X / sizeof X[0])
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
-
 #ifdef ENABLEUSLESSGAPS
 	#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
 	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
