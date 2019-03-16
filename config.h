@@ -4,8 +4,6 @@ static const unsigned int borderpx  = 0;        /* border pixel of windows */
 
 static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are changed in your status bar*/
 
-static const unsigned int barhight= 19;        /* gap for the bar when in fullscreen */
-
 static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
 
 // gaps
@@ -15,9 +13,7 @@ static const unsigned int snap      = 32; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
 static const char *fonts[]          = { "Siji:style=Regular:size=10" };
-// static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "Siji:style=Regular:size=10";
-// static const char dmenufont[]       = "monospace:size=10";
 
 static const char black1[]      = "#151515";
 static const char black2[]      = "#505050";
@@ -155,6 +151,7 @@ static const char *dock[]  = {"dock_monitor", NULL };
 static const char *undock[]  = {"single_monitor", NULL };
 static const char *spell[]  = {"spellcheck.sh", NULL };
 static const char *cast[]  = {"castcontrol.sh", NULL };
+static const char *todo[]  = {"dmenu_todo.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -191,7 +188,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_x,		spawn,				{.v = power } },
 	{ MODKEY|ShiftMask,				XK_s,		spawn,				{.v = spell } },
 	{ MODKEY,						XK_r,		spawn,				{.v = filemanager } },
-	{ MODKEY,						XK_t,		spawn,				{.v = tutoral } },
+	{ MODKEY,						XK_t,		spawn,				{.v = todo } },
+	{ ShiftMask|MODKEY,				XK_t,		spawn,				{.v = tutoral } },
 	{ ControlMask|AltMask,			XK_t,		spawn,				{.v = td } },
 	{ MODKEY,						XK_minus,	spawn,				{.v = math } },
 	{ MODKEY,						XK_equal,	spawn,				{.v = cast } },

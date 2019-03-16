@@ -1595,6 +1595,7 @@ setfocus(Client *c)
 void
 setfullscreen(Client *c, int fullscreen)
 {
+
 	if (fullscreen && !c->isfullscreen) {
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
 			PropModeReplace, (unsigned char*)&netatom[NetWMFullscreen], 1);
@@ -1607,6 +1608,7 @@ setfullscreen(Client *c, int fullscreen)
 			resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		}else{
 			/* if just wanted to maximize */
+			int barhight = drw->fonts->h; /* gap for the bar when in fullscreen */
 			resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight,
 					selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
 		}

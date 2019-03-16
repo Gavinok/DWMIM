@@ -156,7 +156,6 @@ arrangemon	dwm.c	/^arrangemon(Monitor *m)$/;"	f	typeref:typename:void
 attach	dwm.c	/^attach(Client *c)$/;"	f	typeref:typename:void
 attachstack	dwm.c	/^attachstack(Client *c)$/;"	f	typeref:typename:void
 barcolorchanges	config.h	/^static const unsigned int barcolorchanges  = 0; \/* number oftimes the colors are changed in you/;"	v	typeref:typename:const unsigned int
-barhight	config.h	/^static const unsigned int barhight= 19;        \/* gap for the bar when in fullscreen *\/$/;"	v	typeref:typename:const unsigned int
 barwin	dwm.c	/^	Window barwin;$/;"	m	struct:Monitor	typeref:typename:Window	file:
 baseh	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 basew	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -459,6 +458,7 @@ termcmd	config.def.h	/^static const char *termcmd[]  = { "st", "-e", "tmux",  NU
 termcmd	config.h	/^static const char *termcmd[]  = { "st", "-e", "fish", NULL };$/;"	v	typeref:typename:const char * []
 tile	dwm.c	/^tile(Monitor *m)$/;"	f	typeref:typename:void
 title	dwm.c	/^	const char *title;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
+todo	config.h	/^static const char *todo[]  = {"dmenu_todo.sh", NULL };$/;"	v	typeref:typename:const char * []
 togglebar	dwm.c	/^togglebar(const Arg *arg)$/;"	f	typeref:typename:void
 togglefloating	dwm.c	/^togglefloating(const Arg *arg)$/;"	f	typeref:typename:void
 togglescratch	scratchpad.c	/^togglescratch(const Arg *arg)$/;"	f	typeref:typename:void
