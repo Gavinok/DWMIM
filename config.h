@@ -1,15 +1,11 @@
-
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-
 static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are changed in your status bar*/
-
 static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
 
 // gaps
 static const unsigned int gappx     = 13;
-
-static const unsigned int snap      = 32; /* snap pixel */
+static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
 static const char *fonts[]          = { "Siji:style=Regular:size=10" };
@@ -31,7 +27,7 @@ static const char cyan1[]       = "#12cfc0";
 static const char cyan2[]       = "#12cfc0";
 static const char white1[]      = "#d0d0d0";
 static const char white2[]      = "#f5f5f5";
-static const char grey[]		= "#e60053";
+static const char pink[]		= "#e60053";
 static const char col_black[]   = "#000000";
 static const char col_red[]     = "#ff0000";
 static const char col_yellow[]  = "#ffff00";
@@ -43,18 +39,10 @@ static const char walwhite[]   	= "#c3dee1";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] =	  { white1, black1, black1 },
-	[SchemeSel]  =	  { black1, red1,  white1 },
-	//status colors 
-	// [SchemeWarn] =	  { yellow1, black1, black1 },
-	// [SchemeUrgent]=	  { magenta1, black1, black1 },
-	// [SchemeTime]=	  { blue1, black1, black1 },
-	// [SchemeCharging]= { yellow2, black1, black1 },
-	// [SchemeSafe]=	  { green1, black1, black1 },
-	// [SchemeCyan]=	  { cyan1, black1, black1 },
+	[SchemeSel]  =	  { black1, blue1,  white1 },
 };
 
 /* tagging */
-// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎶", "📪", "☕️"};
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 //custom functions
@@ -73,17 +61,18 @@ static const Rule rules[] = {
 	 */
 
 	/* class      instance    title       tags mask  iscentered isfloating	nokill alwaysfloat monitor */
-	{ "Gimp",     NULL,       NULL,			0,		 0,          1,			0,		0,			-1 },
-	{ "Firefox",  NULL,       NULL,			1 << 8,	 0,			 0,			0,		0,			-1 },
-	{ NULL,		  NULL,      "newspod" ,    1 << 8,	 0,          0,			0,		0,			-1 },
-	{ "Spotify",  NULL,		  NULL,			1 << 7,	 0,			 0,			0,		0,			-1 },
-	{ NULL,		  NULL,      "pulsemixer",  0,		 1,			 1,			0,		0,			-1 },
-	{ NULL,		  NULL,      "launch_once.sh",  0,		 1,			 1,			0,		0,			-1 },
-	{ NULL,		  NULL,      "neomutt",		0,		 1,			 1,			0,		0,			-1 },
-	{ NULL,		  NULL,      "calcurse",	0,		 1,			 1,			0,		0,			-1 },
-	{ NULL,		  NULL,      "scratch",		0,		 1,			 1,			1,		1,			-1 },
-	{ NULL,		  NULL,      "castnow",		0,		 0,			 1,			0,		0,			-1 },
-	{ "feh", 	  NULL,      NULL,			0,		 1,			 1,			0,		0,			-1 },
+	{ "Gimp",    NULL, NULL,             0,      0, 1, 0, 0, -1 },
+	{ "Firefox", NULL, NULL,             1 << 8, 0, 0, 0, 0, -1 },
+	{ NULL,      NULL, "newspod",        1 << 8, 0, 0, 0, 0, -1 },
+	{ "Spotify", NULL, NULL,             1 << 7, 0, 0, 0, 0, -1 },
+	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "launch_once.sh", 0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "neomutt",        0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "calcurse",       0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "scratch",        0,      1, 1, 1, 1, -1 },
+	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
+	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
 };
 
 /* layout(s) */
@@ -113,7 +102,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, "-nf", white1, "-sb", red1, "-sf", black1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, "-nf", white1, "-sb", pink, "-sf", black1, NULL };
 
 static const char *termcmd[]  = { "st", "-e", "fish", NULL };
 static const char scratchpadname[] = { "scratch"};
@@ -151,7 +140,7 @@ static const char *dock[]  = {"dock_monitor", NULL };
 static const char *undock[]  = {"single_monitor", NULL };
 static const char *spell[]  = {"spellcheck.sh", NULL };
 static const char *cast[]  = {"castcontrol.sh", NULL };
-static const char *todo[]  = {"dmenu_todo.sh", NULL };
+static const char *todo[]  = {"dmenu_googletasks.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -218,7 +207,8 @@ static Key keys[] = {
 	{ MODKEY,						XK_BackSpace,		killclient,     {0} },
 	{ MODKEY,						XK_apostrophe,		nokill,     {0} },
 	// { MODKEY,                       XK_f,		togglemaximize,      {0} },
-	{ MODKEY,                       XK_f,		max,      {0} },
+	{ MODKEY,                       XK_f,		max,      {.i = 2} },
+	{ MODKEY|ShiftMask,             XK_f,		max,      {.i = 1} },
 	{ MODKEY|ShiftMask,             XK_z,		togglefloating, {0} },
 	{ MODKEY,                       XK_0,		view,           {.ui = ~0 } },
 	{ MODKEY,                       XK_grave,   view,           {.ui = ~0 } },
