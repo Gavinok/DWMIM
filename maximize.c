@@ -2,12 +2,13 @@ void
 max(const Arg *arg)
 {
 	if (!selmon->sel)
-	return;
-
-	if (!selmon->sel->isfullscreen)
-	{
-		setfullscreen(selmon->sel, 2);
+		return;
+	if (!selmon->sel->isfullscreen){
+		if(selmon->showbar){
+			setfullscreen(selmon->sel, 2);
+		}else
+			setfullscreen(selmon->sel, 1);
 	}
-	else if (selmon->sel->isfullscreen)
+	else
 		setfullscreen(selmon->sel, 0);
 }

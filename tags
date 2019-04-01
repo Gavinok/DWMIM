@@ -276,7 +276,6 @@ green1	config.def.h	/^static const char green1[]        = "#acc267";$/;"	v	typer
 green1	config.h	/^static const char green1[]      = "#acc267";$/;"	v	typeref:typename:const char[]
 green2	config.def.h	/^static const char green2[]        = "#acc267";$/;"	v	typeref:typename:const char[]
 green2	config.h	/^static const char green2[]      = "#acc267";$/;"	v	typeref:typename:const char[]
-grey	config.h	/^static const char grey[]		= "#e60053";$/;"	v	typeref:typename:const char[]
 h	drw.h	/^	unsigned int h;$/;"	m	struct:Fnt	typeref:typename:unsigned int
 h	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
 h	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -377,6 +376,7 @@ oldx	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:i
 oldy	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 options	Makefile	/^options:$/;"	t
 pattern	drw.h	/^	FcPattern *pattern;$/;"	m	struct:Fnt	typeref:typename:FcPattern *
+pink	config.h	/^static const char pink[]		= "#e60053";$/;"	v	typeref:typename:const char[]
 plumb	config.h	/^static const char *plumb[]  = { "cabl", NULL };$/;"	v	typeref:typename:const char * []
 pop	dwm.c	/^pop(Client *c)$/;"	f	typeref:typename:void
 power	config.h	/^static const char *power[]  = { "power_menu.sh", NULL };$/;"	v	typeref:typename:const char * []
@@ -434,7 +434,7 @@ showbar	dwm.c	/^	int showbar;$/;"	m	struct:Monitor	typeref:typename:int	file:
 showhide	dwm.c	/^showhide(Client *c)$/;"	f	typeref:typename:void
 sigchld	dwm.c	/^sigchld(int unused)$/;"	f	typeref:typename:void
 snap	config.def.h	/^static const unsigned int snap      = 32;       \/* snap pixel *\/$/;"	v	typeref:typename:const unsigned int
-snap	config.h	/^static const unsigned int snap      = 32; \/* snap pixel *\/$/;"	v	typeref:typename:const unsigned int
+snap	config.h	/^static const unsigned int snap      = 60; \/* snap pixel *\/$/;"	v	typeref:typename:const unsigned int
 snext	dwm.c	/^	Client *snext;$/;"	m	struct:Client	typeref:typename:Client *	file:
 spawn	dwm.c	/^spawn(const Arg *arg)$/;"	f	typeref:typename:void
 spell	config.h	/^static const char *spell[]  = {"spellcheck.sh", NULL };$/;"	v	typeref:typename:const char * []
@@ -458,7 +458,7 @@ termcmd	config.def.h	/^static const char *termcmd[]  = { "st", "-e", "tmux",  NU
 termcmd	config.h	/^static const char *termcmd[]  = { "st", "-e", "fish", NULL };$/;"	v	typeref:typename:const char * []
 tile	dwm.c	/^tile(Monitor *m)$/;"	f	typeref:typename:void
 title	dwm.c	/^	const char *title;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
-todo	config.h	/^static const char *todo[]  = {"dmenu_todo.sh", NULL };$/;"	v	typeref:typename:const char * []
+todo	config.h	/^static const char *todo[]  = {"dmenu_googletasks.sh", NULL };$/;"	v	typeref:typename:const char * []
 togglebar	dwm.c	/^togglebar(const Arg *arg)$/;"	f	typeref:typename:void
 togglefloating	dwm.c	/^togglefloating(const Arg *arg)$/;"	f	typeref:typename:void
 togglescratch	scratchpad.c	/^togglescratch(const Arg *arg)$/;"	f	typeref:typename:void

@@ -1607,8 +1607,8 @@ setfullscreen(Client *c, int fullscreen)
 		if(fullscreen == 1){
 			resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		}else{
+			int barhight = drw->fonts->h;
 			/* if just wanted to maximize */
-			int barhight = drw->fonts->h; /* gap for the bar when in fullscreen */
 			resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight,
 					selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
 		}
