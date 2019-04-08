@@ -21,4 +21,3 @@ togglescratch(const Arg *arg)
 	} else
 		spawn(arg);
 }
-
