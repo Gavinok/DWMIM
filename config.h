@@ -19,8 +19,8 @@ static const char black1[]      = "#505050";
 static const char black2[]      = "#505050";
                                           
                                           
-static const char red1[]		= "#fb9fb1";
-static const char red2[]		= "#B04C50";
+static const char red1[]	= "#fb9fb1";
+static const char red2[]	= "#B04C50";
                                           
                                           
 static const char green1[]      = "#acc267";
@@ -105,7 +105,7 @@ static const Layout layouts[] = {
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ AltMask,						KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ AltMask|ShiftMask,			KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ AltMask|ControlMask,			KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -124,9 +124,9 @@ static const char *reddit[] = { "st", "-e", "rtv", NULL };
 static const char *rss[]	= { "st", "-e", "newspod", NULL };
 static const char *sysmonitor2[]  = { "st", "-e", "htop", NULL };
 static const char *sysmonitor[]  = { "st", "-e", "vtop", NULL };
-static const char *nm[]  = { "dmenuconnect.sh", NULL };
-static const char *music[]  = { "spotify", NULL };
-static const char *mute[]  = {"lmc", "mute", NULL };
+static const char *nm[]  = { "dmenu_connection_manager.sh", NULL };
+static const char *music[]  = { "launch_once.sh", "spotify", NULL };
+static const char *mute[]  = { "lmc", "mute", NULL };
 static const char *vdown[]  = { "lmc", "down", "5", NULL };
 static const char *ldown[]  = { "llc.sh", "down", "7", NULL };
 static const char *lup[]  = { "llc.sh", "up", "7", NULL };
@@ -141,16 +141,17 @@ static const char *clip[]  = { "clipmenu", NULL };
 static const char *plumb[]  = { "cabl", NULL };
 static const char *killit[]  = { "dmenu-killall", NULL };
 static const char *power[]  = { "power_menu.sh", NULL };
-static const char *filemanager[]  = {"dmenu-open.sh", NULL };
-static const char *screenshot[]  = {"windowshot.sh", NULL };
-static const char *tutoral[]  = {"tutorialvids", NULL };
-static const char *td[]  = {"td-toggle", NULL };
-static const char *math[]  = {"calc.sh", NULL };
-static const char *dock[]  = {"dock_monitor", NULL };
-static const char *undock[]  = {"single_monitor", NULL };
-static const char *spell[]  = {"spellcheck.sh", NULL };
-static const char *cast[]  = {"castcontrol.sh", NULL };
-static const char *todo[]  = {"dmenu_googletasks.sh", NULL };
+static const char *filemanager[]  = { "dmenu-open.sh", NULL };
+static const char *screenshot[]  = { "windowshot.sh", NULL };
+static const char *tutoral[]  = { "tutorialvids", NULL };
+static const char *td[]  = { "td-toggle", NULL };
+static const char *math[]  = { "calc.sh", NULL };
+static const char *dock[]  = { "dock_monitor", NULL };
+static const char *undock[]  = { "single_monitor", NULL };
+static const char *spell[]  = { "spellcheck.sh", NULL };
+static const char *cast[]  = { "castcontrol.sh", NULL };
+static const char *todo[]  = { "dmenu_googletasks.sh", NULL };
+static const char *kdeconnect[] = { "dmenu_kdeconnect.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -191,8 +192,9 @@ static Key keys[] = {
 	{ ShiftMask|MODKEY,				XK_t,		spawn,				{.v = tutoral } },
 	{ ControlMask|AltMask,			XK_t,		spawn,				{.v = td } },
 	{ MODKEY,						XK_minus,	spawn,				{.v = math } },
-	{ MODKEY,						XK_equal,	spawn,				{.v = cast } },
+	{ MODKEY,						XK_equal,	spawn,				{.v = kdeconnect } },
 	{ MODKEY,					XK_backslash,	spawn,				{.v = mplay } },
+	{ MODKEY|ShiftMask,			XK_backslash,	spawn,				{.v = cast } },
 	{ MODKEY,				XK_bracketright,	spawn,				{.v = mnext } },
 	{ MODKEY,				XK_bracketleft,		spawn,				{.v = mprev } },
 	{ MODKEY,						XK_F7,		spawn,				{.v = dock } },
