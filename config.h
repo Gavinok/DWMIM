@@ -90,12 +90,24 @@ static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
+//custom functions
+#include "maximize.c"
+#include "nokill.c"
+#include "mv.c"
+#include "moveplace.c"
+#include "zoomswap.c"
+#include "warp.c"
+#include "scratchpad.c"
+#include "layouts.c"
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	// { "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
+
+#include "cyclelayout.c"
 
 /* key definitions */
 #define MODKEY Mod4Mask
