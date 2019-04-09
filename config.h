@@ -2,9 +2,7 @@
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are changed in your status bar*/
 static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
-
-// gaps
-static const unsigned int gappx     = 13;
+static const unsigned int gappx     = 4;
 static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
