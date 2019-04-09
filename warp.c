@@ -1,16 +1,4 @@
-
 static void warp(const Client *c);
-
-/* void */
-/* warptoclient( const Arg *arg) */
-/* { */
-/* 	Client *c; */
-/* 	if (!(c = selmon->sel)) */
-/* 		return; */
-/* 	#<{(| if (c->isfloating) |)}># */
-/* 	#<{(| 	return; |)}># */
-/* 	warp(c);	 */
-/* } */
 
 void
 warp(const Client *c)

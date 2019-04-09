@@ -48,8 +48,9 @@
 /* #define MONOGAP //add gapps to monicol */
 #define ENABLEWARP
 #define ENABLESCRATCHPAD
-/* #define ENABLEUSLESSGAPS */
-#define ENABLETILEGAPS
+#define ENABLEUSLESSGAPS
+#define ENABLECENTERWINDOWNAME
+/* #define ENABLETILEGAPS */
 /* #define ENABLESTATUSCOLORS */
 
 /* macros */
@@ -62,7 +63,8 @@
 #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
 #ifdef ENABLEUSLESSGAPS
 	#define WIDTH(X)                ((X)->w + 2 * (X)->bw + gappx)
-	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + gappx)
+        //added *2 to the hight gaps to keep width and hight equil
+	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw + (gappx * 2))
 #else
 	#define WIDTH(X)                ((X)->w + 2 * (X)->bw)
 	#define HEIGHT(X)               ((X)->h + 2 * (X)->bw)
@@ -788,7 +790,12 @@ drawbar(Monitor *m)
 	if ((w = m->ww - sw - x) > bh) {
 		if (m->sel) {
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+                    #ifdef ENABLECENTERWINDOWNAME
+			int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
+			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
+                    #else
 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+                    #endif
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
@@ -1607,10 +1614,9 @@ setfullscreen(Client *c, int fullscreen)
 		if(fullscreen == 1){
 			resizeclient(c, c->mon->mx, c->mon->my, c->mon->mw, c->mon->mh);
 		}else{
-			int barhight = drw->fonts->h;
 			/* if just wanted to maximize */
-			resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + barhight,
-					selmon->sel->mon->mw, selmon->sel->mon->mh - barhight);
+			resizeclient(selmon->sel, selmon->sel->mon->mx, selmon->sel->mon->my + bh,
+					selmon->sel->mon->mw, selmon->sel->mon->mh - bh);
 		}
 		XRaiseWindow(dpy, c->win);
 	} else if (!fullscreen && c->isfullscreen){

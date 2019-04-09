@@ -7,8 +7,6 @@
 !_TAG_PROGRAM_VERSION	0.0.0	/45968eff/
 ${OBJ}	Makefile	/^${OBJ}: config.h config.mk$/;"	t
 .c.o	Makefile	/^.c.o:$/;"	t
-0	.vscode/c_cpp_properties.json	/^                "${workspaceFolder}\/**"$/;"	s	array:configurations.0.includePath
-0	.vscode/c_cpp_properties.json	/^        {$/;"	o	array:configurations
 AltMask	config.def.h	/^#define AltMask /;"	d
 AltMask	config.h	/^#define AltMask /;"	d
 Arg	dwm.c	/^} Arg;$/;"	t	typeref:union:__anon0f53a99e070a	file:
@@ -43,8 +41,9 @@ CurResize	dwm.c	/^enum { CurNormal, CurResize, CurMove, CurLast }; \/* cursor *\
 DESCRIPTION	dwm.1	/^.SH DESCRIPTION$/;"	s	title:DWM
 DWM	dwm.1	/^.TH DWM 1 dwm\\-VERSION$/;"	t
 Drw	drw.h	/^} Drw;$/;"	t	typeref:struct:__anon0f5116480308
+ENABLECENTERWINDOWNAME	dwm.c	/^#define ENABLECENTERWINDOWNAME$/;"	d	file:
 ENABLESCRATCHPAD	dwm.c	/^#define ENABLESCRATCHPAD$/;"	d	file:
-ENABLETILEGAPS	dwm.c	/^#define ENABLETILEGAPS$/;"	d	file:
+ENABLEUSLESSGAPS	dwm.c	/^#define ENABLEUSLESSGAPS$/;"	d	file:
 ENABLEWARP	dwm.c	/^#define ENABLEWARP$/;"	d	file:
 FREETYPEINC	config.mk	/^FREETYPEINC = \/usr\/include\/freetype2$/;"	m
 FREETYPELIBS	config.mk	/^FREETYPELIBS = -lfontconfig -lXft$/;"	m
@@ -181,10 +180,11 @@ buttons	config.def.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button
 buttons	config.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button[]
 bw	dwm.c	/^	int bw, oldbw;$/;"	m	struct:Client	typeref:typename:int	file:
 by	dwm.c	/^	int by;               \/* bar geometry *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
-cStandard	.vscode/c_cpp_properties.json	/^            "cStandard": "c11",$/;"	s	object:configurations.0
 calender	config.def.h	/^static const char *calender[]  = { "st", "-e", "calcurse", NULL };$/;"	v	typeref:typename:const char * []
 calender	config.h	/^static const char *calender[]  = { "st", "-e", "launch_once.sh", "calcurse", NULL }; $/;"	v	typeref:typename:const char * []
 cast	config.h	/^static const char *cast[]  = { "castcontrol.sh", NULL };$/;"	v	typeref:typename:const char * []
+centeredfloatingmaster	layouts.c	/^centeredfloatingmaster(Monitor *m)$/;"	f	typeref:typename:void
+centeredmaster	layouts.c	/^centeredmaster(Monitor *m)$/;"	f	typeref:typename:void
 checkotherwm	dwm.c	/^checkotherwm(void)$/;"	f	typeref:typename:void
 class	dwm.c	/^	const char *class;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
 clean	Makefile	/^clean:$/;"	t
@@ -196,13 +196,10 @@ clients	dwm.c	/^	Client *clients;$/;"	m	struct:Monitor	typeref:typename:Client *
 clip	config.h	/^static const char *clip[]  = { "clipmenu", NULL };$/;"	v	typeref:typename:const char * []
 colors	config.def.h	/^static const char *colors[][3]      = {$/;"	v	typeref:typename:const char * [][3]
 colors	config.h	/^static const char *colors[][3]      = {$/;"	v	typeref:typename:const char * [][3]
-compilerPath	.vscode/c_cpp_properties.json	/^            "compilerPath": "\/usr\/bin\/clang",$/;"	s	object:configurations.0
 config.h	Makefile	/^config.h:$/;"	t
-configurations	.vscode/c_cpp_properties.json	/^    "configurations": [$/;"	a
 configure	dwm.c	/^configure(Client *c)$/;"	f	typeref:typename:void
 configurenotify	dwm.c	/^configurenotify(XEvent *e)$/;"	f	typeref:typename:void
 configurerequest	dwm.c	/^configurerequest(XEvent *e)$/;"	f	typeref:typename:void
-cppStandard	.vscode/c_cpp_properties.json	/^            "cppStandard": "c++17",$/;"	s	object:configurations.0
 createmon	dwm.c	/^createmon(void)$/;"	f	typeref:typename:Monitor *
 cursor	drw.h	/^	Cursor cursor;$/;"	m	struct:__anon0f5116480108	typeref:typename:Cursor
 cursor	dwm.c	/^static Cur *cursor[CurLast];$/;"	v	typeref:typename:Cur * []	file:
@@ -210,7 +207,7 @@ cyan1	config.def.h	/^static const char cyan1[]        = "#12cfc0";$/;"	v	typeref
 cyan1	config.h	/^static const char cyan1[]       = "#53cdbd";$/;"	v	typeref:typename:const char[]
 cyan2	config.def.h	/^static const char cyan2[]        = "#12cfc0";$/;"	v	typeref:typename:const char[]
 cyan2	config.h	/^static const char cyan2[]       = "#527C77";$/;"	v	typeref:typename:const char[]
-defines	.vscode/c_cpp_properties.json	/^            "defines": [],$/;"	a	object:configurations.0
+cyclelayout	cyclelayout.c	/^cyclelayout(const Arg *arg) {$/;"	f	typeref:typename:void
 deltamv	config.h	/^static const unsigned int deltamv = 20; \/* deltamvmv = the amount of pixels each movement will /;"	v	typeref:typename:const unsigned int
 destroynotify	dwm.c	/^destroynotify(XEvent *e)$/;"	f	typeref:typename:void
 detach	dwm.c	/^detach(Client *c)$/;"	f	typeref:typename:void
@@ -221,7 +218,7 @@ dist	Makefile	/^dist: clean$/;"	t
 dmenucmd	config.def.h	/^static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, /;"	v	typeref:typename:const char * []
 dmenucmd	config.h	/^static const char *dmenucmd[] = { "dmenu_run", NULL };$/;"	v	typeref:typename:const char * []
 dmenufont	config.def.h	/^static const char dmenufont[]       = "monospace:size=10";$/;"	v	typeref:typename:const char[]
-dmenufont	config.h	/^static const char dmenufont[]       = "Siji:style=Regular:size=10";$/;"	v	typeref:typename:const char[]
+dmenufont	config.h	/^static const char dmenufont[]       = "Siji:style=Regular:size=13";$/;"	v	typeref:typename:const char[]
 dmenumon	config.def.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v	typeref:typename:char[2]
 dmenumon	config.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v	typeref:typename:char[2]
 dock	config.h	/^static const char *dock[]  = { "dock_monitor", NULL };$/;"	v	typeref:typename:const char * []
@@ -257,20 +254,20 @@ enternotify	dwm.c	/^enternotify(XEvent *e)$/;"	f	typeref:typename:void
 expose	dwm.c	/^expose(XEvent *e)$/;"	f	typeref:typename:void
 f	dwm.c	/^	float f;$/;"	m	union:__anon0f53a99e070a	typeref:typename:float	file:
 filemanager	config.h	/^static const char *filemanager[]  = { "dmenu-open.sh", NULL };$/;"	v	typeref:typename:const char * []
-files.associations	.vscode/settings.json	/^    "files.associations": {$/;"	o
 findbefore	zoomswap.c	/^findbefore(Client *c) {$/;"	f	typeref:typename:Client *
 focus	dwm.c	/^focus(Client *c)$/;"	f	typeref:typename:void
 focusin	dwm.c	/^focusin(XEvent *e)$/;"	f	typeref:typename:void
 focusmon	dwm.c	/^focusmon(const Arg *arg)$/;"	f	typeref:typename:void
 focusstack	dwm.c	/^focusstack(const Arg *arg)$/;"	f	typeref:typename:void
 fonts	config.def.h	/^static const char *fonts[]          = { "monospace:size=10" };$/;"	v	typeref:typename:const char * []
-fonts	config.h	/^static const char *fonts[]          = { "Siji:style=Regular:size=10" };$/;"	v	typeref:typename:const char * []
+fonts	config.h	/^static const char *fonts[]          = { "Siji:style=Regular:size=13" };$/;"	v	typeref:typename:const char * []
 fonts	drw.h	/^	Fnt *fonts;$/;"	m	struct:__anon0f5116480308	typeref:typename:Fnt *
 foreground	config.h	/^static const char foreground[]  = "#B7BBB7";$/;"	v	typeref:typename:const char[]
 func	dwm.c	/^	void (*func)(const Arg *);$/;"	m	struct:__anon0f53a99e0908	typeref:typename:void (*)(const Arg *)	file:
 func	dwm.c	/^	void (*func)(const Arg *arg);$/;"	m	struct:__anon0f53a99e0808	typeref:typename:void (*)(const Arg * arg)	file:
+gaplessgrid	layouts.c	/^gaplessgrid(Monitor *m) {$/;"	f	typeref:typename:void
 gappx	config.def.h	/^static const unsigned int gappx     = 6;$/;"	v	typeref:typename:const unsigned int
-gappx	config.h	/^static const unsigned int gappx     = 13;$/;"	v	typeref:typename:const unsigned int
+gappx	config.h	/^static const unsigned int gappx     = 4;$/;"	v	typeref:typename:const unsigned int
 gc	drw.h	/^	GC gc;$/;"	m	struct:__anon0f5116480308	typeref:typename:GC
 getatomprop	dwm.c	/^getatomprop(Client *c, Atom prop)$/;"	f	typeref:typename:Atom
 getrootptr	dwm.c	/^getrootptr(int *x, int *y)$/;"	f	typeref:typename:int
@@ -288,12 +285,10 @@ h	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
 handler	dwm.c	/^static void (*handler[LASTEvent]) (XEvent *) = {$/;"	v	typeref:typename:void (* [LASTEvent])(XEvent *)	file:
 i	dwm.c	/^	int i;$/;"	m	union:__anon0f53a99e070a	typeref:typename:int	file:
 inch	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
-includePath	.vscode/c_cpp_properties.json	/^            "includePath": [$/;"	a	object:configurations.0
 incnmaster	dwm.c	/^incnmaster(const Arg *arg)$/;"	f	typeref:typename:void
 incw	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 install	Makefile	/^install: all$/;"	t
 instance	dwm.c	/^	const char *instance;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
-intelliSenseMode	.vscode/c_cpp_properties.json	/^            "intelliSenseMode": "clang-x64"$/;"	s	object:configurations.0
 iscentered	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 iscentered	dwm.c	/^	int iscentered;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
 isfixed	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
@@ -360,7 +355,6 @@ mv	mv.c	/^mv(const Arg *arg) $/;"	f	typeref:typename:void
 mw	dwm.c	/^	int mx, my, mw, mh;   \/* screen size *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
 mx	dwm.c	/^	int mx, my, mw, mh;   \/* screen size *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
 my	dwm.c	/^	int mx, my, mw, mh;   \/* screen size *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
-name	.vscode/c_cpp_properties.json	/^            "name": "Linux",$/;"	s	object:configurations.0
 name	dwm.c	/^	char name[256];$/;"	m	struct:Client	typeref:typename:char[256]	file:
 netatom	dwm.c	/^static Atom wmatom[WMLast], netatom[NetLast];$/;"	v	typeref:typename:Atom[][]	file:
 neverfocus	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
@@ -458,7 +452,7 @@ sysmonitor2	config.h	/^static const char *sysmonitor2[]  = { "st", "-e", "htop",
 tag	dwm.c	/^tag(const Arg *arg)$/;"	f	typeref:typename:void
 tagmon	dwm.c	/^tagmon(const Arg *arg)$/;"	f	typeref:typename:void
 tags	config.def.h	/^static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎵", "🗞️" };$/;"	v	typeref:typename:const char * []
-tags	config.h	/^static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};$/;"	v	typeref:typename:const char * []
+tags	config.h	/^static const char *tags[] = { "home", "extra", "music", "news"};$/;"	v	typeref:typename:const char * []
 tags	dwm.c	/^	unsigned int tags;$/;"	m	struct:Client	typeref:typename:unsigned int	file:
 tags	dwm.c	/^	unsigned int tags;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:unsigned int	file:
 tagset	dwm.c	/^	unsigned int tagset[2];$/;"	m	struct:Monitor	typeref:typename:unsigned int[2]	file:
@@ -503,7 +497,6 @@ utfmax	drw.c	/^static const long utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0
 utfmin	drw.c	/^static const long utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  0x800,  0x10000};$/;"	v	typeref:typename:const long[]	file:
 v	dwm.c	/^	const void *v;$/;"	m	union:__anon0f53a99e070a	typeref:typename:const void *	file:
 vdown	config.h	/^static const char *vdown[]  = { "lmc", "down", "5", NULL };$/;"	v	typeref:typename:const char * []
-version	.vscode/c_cpp_properties.json	/^    "version": 4$/;"	n
 view	dwm.c	/^view(const Arg *arg)$/;"	f	typeref:typename:void
 vup	config.h	/^static const char *vup[]  = { "lmc", "up", "5", NULL };$/;"	v	typeref:typename:const char * []
 w	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
@@ -531,7 +524,6 @@ xerrorxlib	dwm.c	/^static int (*xerrorxlib)(Display *, XErrorEvent *);$/;"	v	typ
 xfont	drw.h	/^	XftFont *xfont;$/;"	m	struct:Fnt	typeref:typename:XftFont *
 xfont_create	drw.c	/^xfont_create(Drw *drw, const char *fontname, FcPattern *fontpattern)$/;"	f	typeref:typename:Fnt *	file:
 xfont_free	drw.c	/^xfont_free(Fnt *font)$/;"	f	typeref:typename:void	file:
-xlib.h	.vscode/settings.json	/^        "xlib.h": "c"$/;"	s	object:files.associations
 y	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
 yellow1	config.def.h	/^static const char yellow1[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
 yellow1	config.h	/^static const char yellow1[]     = "#ddb26f";$/;"	v	typeref:typename:const char[]
