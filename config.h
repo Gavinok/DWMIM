@@ -8,8 +8,8 @@ static const unsigned int gappx     = 13;
 static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
-static const char *fonts[]          = { "Siji:style=Regular:size=10" };
-static const char dmenufont[]       = "Siji:style=Regular:size=10";
+static const char *fonts[]          = { "Siji:style=Regular:size=13" };
+static const char dmenufont[]       = "Siji:style=Regular:size=13";
 
 static const char background[]  = "#111314";
 static const char foreground[]  = "#B7BBB7";
