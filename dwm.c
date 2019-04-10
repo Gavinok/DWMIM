@@ -45,7 +45,7 @@
 #include "util.h"
 
 /* home made patches */
-/* #define MONOGAP //add gapps to monicol */
+#define MONOGAP //add gapps to monicol
 #define ENABLEWARP
 #define ENABLESCRATCHPAD
 #define ENABLEUSLESSGAPS
