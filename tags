@@ -263,6 +263,7 @@ focusstack	dwm.c	/^focusstack(const Arg *arg)$/;"	f	typeref:typename:void
 fonts	config.def.h	/^static const char *fonts[]          = { "monospace:size=10" };$/;"	v	typeref:typename:const char * []
 fonts	config.h	/^static const char *fonts[]          = { "Siji:style=Regular:size=13" };$/;"	v	typeref:typename:const char * []
 fonts	drw.h	/^	Fnt *fonts;$/;"	m	struct:__anon0f5116480308	typeref:typename:Fnt *
+forcekill	nokill.c	/^forcekill(const Arg *arg)$/;"	f	typeref:typename:void
 foreground	config.h	/^static const char foreground[]  = "#B7BBB7";$/;"	v	typeref:typename:const char[]
 func	dwm.c	/^	void (*func)(const Arg *);$/;"	m	struct:__anon0f53a99e0908	typeref:typename:void (*)(const Arg *)	file:
 func	dwm.c	/^	void (*func)(const Arg *arg);$/;"	m	struct:__anon0f53a99e0808	typeref:typename:void (*)(const Arg * arg)	file:

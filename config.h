@@ -219,6 +219,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_v,            zoomswap,       {0} },
 	// { MODKEY,              XK_Tab,          view,           {0} },
 	{ MODKEY,              XK_q,            killclient,     {0} },
+	{ MODKEY|ShiftMask,    XK_q,            forcekill,     {0} },
 	{ MODKEY,              XK_BackSpace,    killclient,     {0} },
 	{ MODKEY,              XK_apostrophe,   nokill,         {0} },
 	// { MODKEY,                       XK_f,		togglemaximize,      {0} },
