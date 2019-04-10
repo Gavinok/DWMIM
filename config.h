@@ -72,6 +72,7 @@ static const Rule rules[] = {
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
+	{ "mpv",     NULL, NULL,             0,      0, 0, 1, 0, -1 },
 };
 
 /* layout(s) */
