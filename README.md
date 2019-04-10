@@ -4,14 +4,16 @@ Patches added:
 1. uslessgaps /tilegaps (can be alternated or fully disabled in dwm.c)
 2. center
 3. scratchpad
-4. maximize
-5. moveplace
-6. custome script for moving floating windows
+4. max (custom script to merge fullscreen and monocle)
+5. moveplace (customized for corners and centering windows)
+6. mv (custom script for moving floating windows)
 7. ispermanent 
-8. [statuscolors](statuscolors)
+8. statuscolors
 9. zoomswap
 10. warp
-11. alwaysfloating
+11. alwaysfloating (custom script to keep a client floating)
+11. centerwindowname
+11. nokill (custom script for prevent accidentally killing a client)
 
 dwm - dynamic window manager
 ============================
