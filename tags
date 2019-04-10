@@ -66,6 +66,7 @@ MAX	util.h	/^#define MAX(/;"	d
 MIN	util.h	/^#define MIN(/;"	d
 MODKEY	config.def.h	/^#define MODKEY /;"	d
 MODKEY	config.h	/^#define MODKEY /;"	d
+MONOGAP	dwm.c	/^#define MONOGAP /;"	d	file:
 MOUSEMASK	dwm.c	/^#define MOUSEMASK /;"	d	file:
 Monitor	dwm.c	/^struct Monitor {$/;"	s	file:
 Monitor	dwm.c	/^typedef struct Monitor Monitor;$/;"	t	typeref:struct:Monitor	file:
@@ -349,7 +350,6 @@ moveplace	moveplace.c	/^moveplace(const Arg *arg)$/;"	f	typeref:typename:void
 mplay	config.h	/^static const char *mplay[]  = { "lmc", "toggle", NULL };$/;"	v	typeref:typename:const char * []
 mprev	config.h	/^static const char *mprev[]  = { "lmc", "prev", NULL };$/;"	v	typeref:typename:const char * []
 music	config.def.h	/^static const char *music[]  = { "spotify", NULL };$/;"	v	typeref:typename:const char * []
-music	config.h	/^static const char *music[]  = { "launch_once.sh", "spotify", NULL };$/;"	v	typeref:typename:const char * []
 mute	config.h	/^static const char *mute[]  = { "lmc", "mute", NULL };$/;"	v	typeref:typename:const char * []
 mv	mv.c	/^mv(const Arg *arg) $/;"	f	typeref:typename:void
 mw	dwm.c	/^	int mx, my, mw, mh;   \/* screen size *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
