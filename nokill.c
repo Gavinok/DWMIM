@@ -7,8 +7,9 @@ forcekill(const Arg *arg)
         c->nokill = False;
         killclient(0);
 }
+
 void
-nokill(const Arg *arg)
+toggleNoKill(const Arg *arg)
 {
 	Client *c;
 	if (!(c = selmon->sel))

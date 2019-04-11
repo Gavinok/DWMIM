@@ -221,7 +221,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_q,            killclient,     {0} },
 	{ MODKEY|ShiftMask,    XK_q,            forcekill,     {0} },
 	{ MODKEY,              XK_BackSpace,    killclient,     {0} },
-	{ MODKEY,              XK_apostrophe,   nokill,         {0} },
+	{ MODKEY,              XK_apostrophe,   toggleNoKill,         {0} },
 	// { MODKEY,                       XK_f,		togglemaximize,      {0} },
 	{ MODKEY,              XK_f,            max,            {.i = 2} },
 	{ MODKEY|ShiftMask,    XK_f,            max,            {.i = 1} },

@@ -66,7 +66,6 @@ MAX	util.h	/^#define MAX(/;"	d
 MIN	util.h	/^#define MIN(/;"	d
 MODKEY	config.def.h	/^#define MODKEY /;"	d
 MODKEY	config.h	/^#define MODKEY /;"	d
-MONOGAP	dwm.c	/^#define MONOGAP /;"	d	file:
 MOUSEMASK	dwm.c	/^#define MOUSEMASK /;"	d	file:
 Monitor	dwm.c	/^struct Monitor {$/;"	s	file:
 Monitor	dwm.c	/^typedef struct Monitor Monitor;$/;"	t	typeref:struct:Monitor	file:
@@ -370,7 +369,6 @@ nmaster	config.h	/^static const int nmaster     = 1;    \/* number of clients in
 nmaster	dwm.c	/^	int nmaster;$/;"	m	struct:Monitor	typeref:typename:int	file:
 nokill	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 nokill	dwm.c	/^	int nokill;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
-nokill	nokill.c	/^nokill(const Arg *arg)$/;"	f	typeref:typename:void
 num	dwm.c	/^	int num;$/;"	m	struct:Monitor	typeref:typename:int	file:
 numlockmask	dwm.c	/^static unsigned int numlockmask = 0;$/;"	v	typeref:typename:unsigned int	file:
 oldbw	dwm.c	/^	int bw, oldbw;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -412,7 +410,7 @@ scan	dwm.c	/^scan(void)$/;"	f	typeref:typename:void
 scheme	drw.h	/^	Clr *scheme;$/;"	m	struct:__anon0f5116480308	typeref:typename:Clr *
 scheme	dwm.c	/^static Clr **scheme;$/;"	v	typeref:typename:Clr **	file:
 scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24"/;"	v	typeref:typename:const char * []
-scratchpadname	config.h	/^static const char scratchpadname[] = { "scratch"};$/;"	v	typeref:typename:const char[]
+scratchpadname	config.h	/^static const char scratchpadname[] = { "scratch"}; \/\/here to allow max on scratchpad$/;"	v	typeref:typename:const char[]
 scratchtag	scratchpad.c	/^static unsigned int scratchtag = 1 << LENGTH(tags);$/;"	v	typeref:typename:unsigned int	file:
 screen	drw.h	/^	int screen;$/;"	m	struct:__anon0f5116480308	typeref:typename:int
 screen	dwm.c	/^static int screen;$/;"	v	typeref:typename:int	file:
@@ -463,6 +461,7 @@ termcmd	config.h	/^static const char *termcmd[]  = { "st", "-e", "fish", NULL };
 tile	dwm.c	/^tile(Monitor *m)$/;"	f	typeref:typename:void
 title	dwm.c	/^	const char *title;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
 todo	config.h	/^static const char *todo[]  = { "dmenu_googletasks.sh", NULL };$/;"	v	typeref:typename:const char * []
+toggleNoKill	nokill.c	/^toggleNoKill(const Arg *arg)$/;"	f	typeref:typename:void
 togglebar	dwm.c	/^togglebar(const Arg *arg)$/;"	f	typeref:typename:void
 togglefloating	dwm.c	/^togglefloating(const Arg *arg)$/;"	f	typeref:typename:void
 togglescratch	scratchpad.c	/^togglescratch(const Arg *arg)$/;"	f	typeref:typename:void
