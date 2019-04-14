@@ -34,7 +34,7 @@ static const char blue2[]       = "#66899D";
                                           
                                           
 static const char magenta1[]    = "#e1a3ee";
-static const char magenta2[]    = "#FF99FFf";
+static const char magenta2[]    = "#FF99FF";
                                           
                                           
 static const char cyan1[]       = "#53cdbd";
