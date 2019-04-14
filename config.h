@@ -79,7 +79,6 @@ static const Rule rules[] = {
 static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
-static const char scratchpadname[] = { "scratch"}; //here to allow max on scratchpad
 //custom functions
 #include "maximize.c"
 #include "nokill.c"
@@ -121,8 +120,9 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 
 static const char term[]           = { "st"};
 static const char exec[]           = { "-e" };
+static const char scratchpadname[] = { "tmuxdd" };
 static const char *termcmd[]       = { term, exec, "fish", NULL };
-static const char *scratchpadcmd[] = { term, exec, "-t", scratchpadname, "tmuxdd", "-g", "90x24", NULL };
+static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
 static const char *email[]         = { term, exec, "launch_once.sh", "neomutt", NULL };
 static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer", NULL };
 static const char *calender[]      = { term, exec, "launch_once.sh", "calcurse", NULL };
