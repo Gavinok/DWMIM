@@ -9,10 +9,8 @@ mv(const Arg *arg)
 	int axis = arg->i;
 	if (!(c = selmon->sel))
 		return;
-	if (c->isfullscreen) /* no support moving fullscreen */
+	if (c->isfullscreen || !c->isfloating) /* no support moving fullscreen */
 		return;
-	if(!c->isfloating)
-		return; /* togglefloating(0); */
 	if ((axis == 1) || (axis == -1)) {
 		int delta = (deltamv * axis);
 		XMoveWindow(dpy, c->win, (c->x - delta), c->y);

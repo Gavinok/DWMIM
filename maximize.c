@@ -8,7 +8,7 @@ max(const Arg *arg)
 	/* count the number of clients  */
 	for (n = 0, nbc = nexttiled(selmon->clients); nbc; nbc = nexttiled(nbc->next), n++);
 	/* if the client is not fullscreen, alone, or monocle */
-	if (!selmon->sel->isfullscreen && !(n == 1 && (selmon->sel->name == scratchpadname)) && !(selmon->lt[selmon->sellt]->arrange == monocle)){
+	if (!selmon->sel->isfullscreen && (n != 1 || selmon->sel->isfloating)  && !(selmon->lt[selmon->sellt]->arrange == monocle)){
 		if(selmon->showbar){
 			setfullscreen(selmon->sel, 2);
 		}else

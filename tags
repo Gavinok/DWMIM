@@ -180,6 +180,7 @@ buttons	config.def.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button
 buttons	config.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button[]
 bw	dwm.c	/^	int bw, oldbw;$/;"	m	struct:Client	typeref:typename:int	file:
 by	dwm.c	/^	int by;               \/* bar geometry *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
+calc	config.h	/^static const char *calc[]          = { "calc.sh", NULL };$/;"	v	typeref:typename:const char * []
 calender	config.def.h	/^static const char *calender[]  = { "st", "-e", "calcurse", NULL };$/;"	v	typeref:typename:const char * []
 calender	config.h	/^static const char *calender[]      = { term, exec, "launch_once.sh", "calcurse", NULL };$/;"	v	typeref:typename:const char * []
 cast	config.h	/^static const char *cast[]          = { "castcontrol.sh", NULL };$/;"	v	typeref:typename:const char * []
@@ -317,14 +318,13 @@ lup	config.h	/^static const char *lup[]           = { "llc.sh", "up", "7", NULL 
 magenta1	config.def.h	/^static const char magenta1[]        = "#e1a3ee";$/;"	v	typeref:typename:const char[]
 magenta1	config.h	/^static const char magenta1[]    = "#e1a3ee";$/;"	v	typeref:typename:const char[]
 magenta2	config.def.h	/^static const char magenta2[]        = "##FF99FF";$/;"	v	typeref:typename:const char[]
-magenta2	config.h	/^static const char magenta2[]    = "#FF99FFf";$/;"	v	typeref:typename:const char[]
+magenta2	config.h	/^static const char magenta2[]    = "#FF99FF";$/;"	v	typeref:typename:const char[]
 main	dwm.c	/^main(int argc, char *argv[])$/;"	f	typeref:typename:int
 main	transient.c	/^int main(void) {$/;"	f	typeref:typename:int
 manage	dwm.c	/^manage(Window w, XWindowAttributes *wa)$/;"	f	typeref:typename:void
 mappingnotify	dwm.c	/^mappingnotify(XEvent *e)$/;"	f	typeref:typename:void
 maprequest	dwm.c	/^maprequest(XEvent *e)$/;"	f	typeref:typename:void
 mask	dwm.c	/^	unsigned int mask;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:unsigned int	file:
-math	config.h	/^static const char *math[]          = { "calc.sh", NULL };$/;"	v	typeref:typename:const char * []
 max	maximize.c	/^max(const Arg *arg)$/;"	f	typeref:typename:void
 maxa	dwm.c	/^	float mina, maxa;$/;"	m	struct:Client	typeref:typename:float	file:
 maxh	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -410,8 +410,8 @@ running	dwm.c	/^static int running = 1;$/;"	v	typeref:typename:int	file:
 scan	dwm.c	/^scan(void)$/;"	f	typeref:typename:void
 scheme	drw.h	/^	Clr *scheme;$/;"	m	struct:__anon0f5116480308	typeref:typename:Clr *
 scheme	dwm.c	/^static Clr **scheme;$/;"	v	typeref:typename:Clr **	file:
-scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { term, exec, "-t", scratchpadname, "tmuxdd", "-g", "90x24"/;"	v	typeref:typename:const char * []
-scratchpadname	config.h	/^static const char scratchpadname[] = { "scratch"}; \/\/here to allow max on scratchpad$/;"	v	typeref:typename:const char[]
+scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24"/;"	v	typeref:typename:const char * []
+scratchpadname	config.h	/^static const char scratchpadname[] = { "tmuxdd" };$/;"	v	typeref:typename:const char[]
 scratchtag	scratchpad.c	/^static unsigned int scratchtag = 1 << LENGTH(tags);$/;"	v	typeref:typename:unsigned int	file:
 screen	drw.h	/^	int screen;$/;"	m	struct:__anon0f5116480308	typeref:typename:int
 screen	dwm.c	/^static int screen;$/;"	v	typeref:typename:int	file:

@@ -1602,7 +1602,6 @@ setfocus(Client *c)
 void
 setfullscreen(Client *c, int fullscreen)
 {
-
 	if (fullscreen && !c->isfullscreen) {
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
 			PropModeReplace, (unsigned char*)&netatom[NetWMFullscreen], 1);
