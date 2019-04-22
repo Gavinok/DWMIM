@@ -14,6 +14,7 @@ Patches added:
 11. alwaysfloating (custom script to keep a client floating)
 11. centerwindowname
 11. nokill (custom script for prevent accidentally killing a client)
+12. alpha for transparency in the bar
 
 dwm - dynamic window manager
 ============================

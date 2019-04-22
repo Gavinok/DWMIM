@@ -754,7 +754,7 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		sw = TEXTW(stext) - lrpad - (7*barcolorchanges); /* 2px right padding */
+		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
 	#ifdef ENABLESTATUSCOLORS
 
 		while (1) {

@@ -1,6 +1,5 @@
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are changed in your status bar*/
 static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
 static const unsigned int gappx     = 5;
 static const unsigned int snap      = 60; /* snap pixel */
