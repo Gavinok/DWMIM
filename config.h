@@ -2,7 +2,7 @@
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int barcolorchanges  = 0; /* number oftimes the colors are changed in your status bar*/
 static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
-static const unsigned int gappx     = 4;
+static const unsigned int gappx     = 5;
 static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
@@ -44,12 +44,23 @@ static const char cyan2[]       = "#527C77";
 static const char white1[]      = "#d0d0d0";
 static const char white2[]      = "#f5f5f5";
 
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] =	  { blue1, background, background },
 	[SchemeSel]  =	  { red2 , background,  background },
 };
 
+//-----------alpha---------------
+static const unsigned int baralpha = 245;
+static const unsigned int borderalpha = OPAQUE;
+
+static const unsigned int alphas[][3]      = {
+	/*               fg      bg        border     */
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+};
+//-------------------------------
 /* tagging */
 static const char *tags[] = { "home", "extra", "music", "news","💰"};
 
@@ -73,6 +84,7 @@ static const Rule rules[] = {
 	{ NULL,      NULL, "popup",          0,      1, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "tmuxdd",         0,      1, 1, 1, 1, -1 },
 	{ "mpv",     NULL, NULL,             0,      0, 0, 1, 0, -1 },
 };
 
@@ -129,7 +141,7 @@ static const char *email[]         = { term, exec, "launch_once.sh", "neomutt", 
 static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer", NULL };
 // static const char *calender[]      = { term, exec, "launch_once.sh", "calcurse", NULL };
 static const char *reddit[]        = { term, exec, "rtv", NULL };
-static const char *rss[]           = { term, exec, "newspod", NULL };
+static const char *rss[]           = { term, exec, "newsboat", NULL };
 static const char *sysmonitor2[]   = { term, exec, "htop", NULL };
 static const char *sysmonitor[]    = { term, exec, "vtop", NULL };
 static const char *nm[]            = { "dmenu_connection_manager.sh", NULL };
@@ -162,91 +174,91 @@ static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,              XK_u,          togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,              XK_d,          spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,    XK_l,          mv,             {.i = -1} },
-	{ MODKEY|ShiftMask,    XK_h,          mv,             {.i = +1} },
-	{ MODKEY|ShiftMask,    XK_j,          mv,             {.i = -2} },
-	{ MODKEY|ShiftMask,    XK_k,          mv,             {.i = +2} },
-	{ MODKEY,              XK_y,          spawn,          {.v = mixer } },
-	{ MODKEY,              XK_Return,     spawn,          {.v = termcmd } },
-	{ MODKEY,              XK_e,          spawn,          {.v = email } },
-	{ MODKEY,              XK_n,          spawn,          {.v = rss } },
-	{ MODKEY|ShiftMask,    XK_n,          spawn,          {.v = reddit } },
-	{ MODKEY,              XK_c,          spawn,          {.v = calc } },
-	{ MODKEY,              XK_m,          spawn,          {.v = mute } },
-	{ MODKEY,              XK_i,          spawn,          {.v = sysmonitor2 } },
-	{ MODKEY|ShiftMask,    XK_i,          spawn,          {.v = sysmonitor } },
-	{ MODKEY|ControlMask,  XK_a,          spawn,          {.v = vdown } },
-	{ MODKEY|ControlMask,  XK_s,          spawn,          {.v = ldown } },
-	{ MODKEY|ControlMask,  XK_d,          spawn,          {.v = lup } },
-	{ MODKEY|ControlMask,  XK_f,          spawn,          {.v = vup } },
-	{ MODKEY|ControlMask,  XK_h,          spawn,          {.v = vdown } },
-	{ MODKEY|ControlMask,  XK_j,          spawn,          {.v = ldown } },
-	{ MODKEY|ControlMask,  XK_k,          spawn,          {.v = lup } },
-	{ MODKEY|ControlMask,  XK_l,          spawn,          {.v = vup } },
-	{ MODKEY,              XK_o,          spawn,          {.v = mount } },
-	{ MODKEY|ShiftMask,    XK_o,          spawn,          {.v = unmount } },
-	{ MODKEY,              XK_w,          spawn,          {.v = search } },
-	{ MODKEY,              XK_p,          spawn,          {.v = clip } },
-	{ MODKEY|ShiftMask,    XK_p,          spawn,          {.v = plumb } },
-	{ AltMask|ControlMask, XK_q,          spawn,          {.v = killit } },
-	{ MODKEY|ShiftMask,    XK_x,          spawn,          {.v = power } },
-	{ MODKEY|ShiftMask,    XK_s,          spawn,          {.v = spell } },
-	{ MODKEY,              XK_r,          spawn,          {.v = filemanager } },
-	{ MODKEY,              XK_t,          spawn,          {.v = todo } },
-	{ ShiftMask|MODKEY,    XK_t,          spawn,          {.v = tutoral } },
-	{ ControlMask|AltMask, XK_t,          spawn,          {.v = td } },
-	{ MODKEY,              XK_equal,      spawn,          {.v = kdeconnect } },
-	{ MODKEY,              XK_Right,      spawn,          {.v = mnext } },
-	{ MODKEY,              XK_Left,       spawn,          {.v = mprev } },
-	{ MODKEY,              XK_Down,       spawn,          {.v = mplay } },
-	{ MODKEY|ShiftMask,    XK_backslash,  spawn,          {.v = cast } },
-	{ MODKEY,              XK_F7,         spawn,          {.v = dock } },
-	{ MODKEY,              XK_F8,         spawn,          {.v = undock } },
-	{ MODKEY,              XK_F11,        spawn,          {.v = nm } },
-	{ 0,                   XK_Print,      spawn,          {.v = screenshot }},
-	{ 0,                   0x1008ff41,    spawn,          SHCMD("xset dpms force off")},
-	{ 0,                   0x1008ff11,    spawn,          {.v = vdown } },
-	{ 0,                   0x1008ff13,    spawn,          {.v = vup } },
-	{ 0,                   0x1008ff12,    spawn,          {.v = mute } },
+	{ MODKEY,              XK_u,            togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,              XK_d,            spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,    XK_l,            mv,             {.i = -1} },
+	{ MODKEY|ShiftMask,    XK_h,            mv,             {.i = +1} },
+	{ MODKEY|ShiftMask,    XK_j,            mv,             {.i = -2} },
+	{ MODKEY|ShiftMask,    XK_k,            mv,             {.i = +2} },
+	{ MODKEY,              XK_y,            spawn,          {.v = mixer } },
+	{ MODKEY,              XK_Return,       spawn,          {.v = termcmd } },
+	{ MODKEY,              XK_e,            spawn,          {.v = email } },
+	{ MODKEY,              XK_n,            spawn,          {.v = rss } },
+	{ MODKEY|ShiftMask,    XK_n,            spawn,          {.v = reddit } },
+	{ MODKEY,              XK_c,            spawn,          {.v = calc } },
+	{ MODKEY,              XK_m,            spawn,          {.v = mute } },
+	{ MODKEY,              XK_i,            spawn,          {.v = sysmonitor2 } },
+	{ MODKEY|ShiftMask,    XK_i,            spawn,          {.v = sysmonitor } },
+	{ MODKEY|ControlMask,  XK_a,            spawn,          {.v = vdown } },
+	{ MODKEY|ControlMask,  XK_s,            spawn,          {.v = ldown } },
+	{ MODKEY|ControlMask,  XK_d,            spawn,          {.v = lup } },
+	{ MODKEY|ControlMask,  XK_f,            spawn,          {.v = vup } },
+	{ MODKEY|ControlMask,  XK_h,            spawn,          {.v = vdown } },
+	{ MODKEY|ControlMask,  XK_j,            spawn,          {.v = ldown } },
+	{ MODKEY|ControlMask,  XK_k,            spawn,          {.v = lup } },
+	{ MODKEY|ControlMask,  XK_l,            spawn,          {.v = vup } },
+	{ MODKEY,              XK_o,            spawn,          {.v = mount } },
+	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
+	{ MODKEY,              XK_w,            spawn,          {.v = search } },
+	{ MODKEY,              XK_p,            spawn,          {.v = clip } },
+	{ MODKEY|ShiftMask,    XK_p,            spawn,          {.v = plumb } },
+	{ AltMask|ControlMask, XK_q,            spawn,          {.v = killit } },
+	{ MODKEY|ShiftMask,    XK_x,            spawn,          {.v = power } },
+	{ MODKEY|ShiftMask,    XK_s,            spawn,          {.v = spell } },
+	{ MODKEY,              XK_r,            spawn,          {.v = filemanager } },
+	{ MODKEY,              XK_t,            spawn,          {.v = todo } },
+	{ ShiftMask|MODKEY,    XK_t,            spawn,          {.v = tutoral } },
+	{ ControlMask|AltMask, XK_t,            spawn,          {.v = td } },
+	{ MODKEY,              XK_equal,        spawn,          {.v = kdeconnect } },
+	{ MODKEY,              XK_bracketright, spawn,          {.v = mnext } },
+	{ MODKEY,              XK_bracketleft,  spawn,          {.v = mprev } },
+	{ MODKEY,              XK_backslash,    spawn,          {.v = mplay } },
+	{ MODKEY|ShiftMask,    XK_backslash,    spawn,          {.v = cast } },
+	{ MODKEY,              XK_F7,           spawn,          {.v = dock } },
+	{ MODKEY,              XK_F8,           spawn,          {.v = undock } },
+	{ MODKEY,              XK_F11,          spawn,          {.v = nm } },
+	{ 0,                   XK_Print,        spawn,          {.v = screenshot }},
+	{ 0,                   0x1008ff41,      spawn,          SHCMD("xset dpms force off")},
+	{ 0,                   0x1008ff11,      spawn,          {.v = vdown } },
+	{ 0,                   0x1008ff13,      spawn,          {.v = vup } },
+	{ 0,                   0x1008ff12,      spawn,          {.v = mute } },
 
-	{ MODKEY|ControlMask,  XK_b,          togglebar,      {0} },
-	{ MODKEY,              XK_j,          focusstack,     {.i = +1 } },
-	{ MODKEY,              XK_k,          focusstack,     {.i = -1 } },
-	{ MODKEY,              XK_a,          incnmaster,     {.i = +1 } },
-	{ MODKEY,              XK_s,          incnmaster,     {.i = -1 } },
-	{ MODKEY,              XK_h,          setmfact,       {.f = -0.05} },
-	{ MODKEY,              XK_l,          setmfact,       {.f = +0.05} },
-	{ MODKEY,              XK_v,          zoomswap,       {0} },
-	{ MODKEY,              XK_semicolon,  view,           {0} },
-	{ MODKEY,              XK_6,          view,           {0} },
-	{ MODKEY,              XK_q,          killclient,     {0} },
-	{ MODKEY|ShiftMask,    XK_q,          forcekill,      {0} },
-	{ MODKEY,              XK_BackSpace,  killclient,     {0} },
-	{ MODKEY|ShiftMask,    XK_BackSpace,  forcekill,      {0} },
-	{ MODKEY,              XK_apostrophe, toggleNoKill,   {0} },
-	{ MODKEY,              XK_f,          max,            {.i = 2} },
-	{ MODKEY,              XK_Tab,        cyclelayout,    {.i = +1} },
-	{ MODKEY|ShiftMask,    XK_Tab,        cyclelayout,    {.i = -1} },
-	{ MODKEY,              XK_backslash,  cyclelayout,    {.v = +1} },
-	{ MODKEY|ShiftMask,    XK_z,          togglefloating, {0} },
+	{ MODKEY|ControlMask,  XK_b,            togglebar,      {0} },
+	{ MODKEY,              XK_j,            focusstack,     {.i = +1 } },
+	{ MODKEY,              XK_k,            focusstack,     {.i = -1 } },
+	{ MODKEY,              XK_a,            incnmaster,     {.i = +1 } },
+	{ MODKEY,              XK_s,            incnmaster,     {.i = -1 } },
+	{ MODKEY,              XK_h,            setmfact,       {.f = -0.05} },
+	{ MODKEY,              XK_l,            setmfact,       {.f = +0.05} },
+	{ MODKEY,              XK_v,            zoomswap,       {0} },
+	{ MODKEY,              XK_semicolon,    view,		{0} },
+	{ MODKEY,              XK_5,		view,		{0} },
+	{ MODKEY,              XK_q,            killclient,     {0} },
+	{ MODKEY|ShiftMask,    XK_q,            forcekill,      {0} },
+	{ MODKEY,              XK_BackSpace,    killclient,     {0} },
+	{ MODKEY|ShiftMask,    XK_BackSpace,    forcekill,      {0} },
+	{ MODKEY,              XK_apostrophe,   toggleNoKill,   {0} },
+	{ MODKEY,              XK_f,            max,            {.i = 2} },
+	{ MODKEY,              XK_Tab,          cyclelayout,    {.i = +1} },
+	{ MODKEY|ShiftMask,    XK_Tab,          cyclelayout,    {.i = -1} },
+	{ MODKEY,		XK_6,		cyclelayout,    {.i = +1} },
+	{ MODKEY|ShiftMask,    XK_z,            togglefloating, {0} },
 	// { MODKEY,              XK_0,            view,           {.ui = ~0 } },
-	{ MODKEY,              XK_grave,      view,           {.ui = ~0 } },
+	{ MODKEY,              XK_grave,        view,           {.ui = ~0 } },
 	// { MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
-	{ MODKEY|ShiftMask,    XK_grave,      tag,            {.ui = ~0 } },
-	{ MODKEY,              XK_comma,      focusmon,       {.i = -1 } },
-	{ MODKEY,              XK_period,     focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,    XK_comma,      tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,    XK_period,     tagmon,         {.i = +1 } },
-	{ MODKEY,              XK_g,          moveplace,      {.ui = WIN_C  }},
-	{ MODKEY,              XK_Up,         moveplace,      {.ui = WIN_C  }},
-	{ MODKEY,              XK_z,          moveplace,      {.ui = WIN_SW }},
-	{ MODKEY,              XK_b,          moveplace,      {.ui = WIN_SE }},
-	// { MODKEY,              XK_Left,         moveplace,      {.ui = WIN_SW }},
-	// { MODKEY,              XK_Right,        moveplace,      {.ui = WIN_SE }},
-	{ MODKEY,              0x1008ff27,    moveplace,      {.ui = WIN_NE }},
-	{ MODKEY,              0x1008ff26,    moveplace,      {.ui = WIN_NW }},
+	{ MODKEY|ShiftMask,    XK_grave,        tag,            {.ui = ~0 } },
+	{ MODKEY,              XK_comma,        focusmon,       {.i = -1 } },
+	{ MODKEY,              XK_period,       focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,    XK_comma,        tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,    XK_period,       tagmon,         {.i = +1 } },
+	{ MODKEY,              XK_g,            moveplace,      {.ui = WIN_C  }},
+	{ MODKEY,              XK_Up,           moveplace,      {.ui = WIN_C  }},
+	{ MODKEY,              XK_z,            moveplace,      {.ui = WIN_SW }},
+	{ MODKEY,              XK_b,            moveplace,      {.ui = WIN_SE }},
+	{ MODKEY,              XK_Left,         moveplace,      {.ui = WIN_SW }},
+	{ MODKEY,              XK_Right,        moveplace,      {.ui = WIN_SE }},
+	{ MODKEY,              0x1008ff27,      moveplace,      {.ui = WIN_NE }},
+	{ MODKEY,              0x1008ff26,      moveplace,      {.ui = WIN_NW }},
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
