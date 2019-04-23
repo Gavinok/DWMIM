@@ -8,7 +8,8 @@ static const int topbar             = 1;  /* 0 means bottom bar */
 static const char *fonts[]          = { "Siji:style=Regular:size=13" };
 static const char dmenufont[]       = "Siji:style=Regular:size=13";
 
-static const char background[]  = "#111314";
+
+static const char background[]  = "#151515";
 static const char foreground[]  = "#B7BBB7";
 
 
@@ -52,7 +53,7 @@ static const char *colors[][3]      = {
 
 //-----------alpha---------------
 static const unsigned int baralpha = 245;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int borderalpha = 245;
 
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -72,7 +73,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask  iscentered isfloating	nokill alwaysfloat monitor */
 	{ "Gimp",    NULL, NULL,             0,      0, 1, 0, 0, -1 },
 	{ "Firefox", NULL, NULL,             1 << 3, 0, 0, 0, 0, -1 },
-	{ NULL,      NULL, "newspod",        1 << 3, 0, 0, 0, 0, -1 },
+	{ NULL,      NULL, "newsboat",       1 << 3, 0, 0, 0, 0, -1 },
 	{ "Spotify", NULL, NULL,             1 << 2, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "launch_once.sh", 0,      1, 1, 0, 0, -1 },
@@ -156,7 +157,7 @@ static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
-static const char *plumb[]         = { "cabl", NULL };
+static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
 static const char *power[]         = { "power_menu.sh", NULL };
 static const char *filemanager[]   = { "dmenu-open.sh", NULL };
