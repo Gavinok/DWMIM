@@ -1,6 +1,6 @@
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
+static const unsigned int deltamv   = 20; /* deltamvmv = the amount of pixels each movement will be by */
 static const unsigned int gappx     = 5;
 static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
@@ -9,11 +9,11 @@ static const char *fonts[]          = { "Siji:style=Regular:size=13" };
 static const char dmenufont[]       = "Siji:style=Regular:size=13";
 
 
-static const char background[]  = "#151515";
+static const char background[]  = "#131313";
 static const char foreground[]  = "#B7BBB7";
-
-
-static const char black1[]      = "#505050";
+                                          
+                                          
+static const char black1[]      = "#151515";
 static const char black2[]      = "#505050";
                                           
                                           
@@ -34,7 +34,7 @@ static const char blue2[]       = "#66899D";
                                           
                                           
 static const char magenta1[]    = "#e1a3ee";
-static const char magenta2[]    = "#FF99FF";
+static const char magenta2[]    = "#ff99ff";
                                           
                                           
 static const char cyan1[]       = "#53cdbd";
@@ -135,7 +135,7 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char term[]           = { "st"};
 static const char exec[]           = { "-e" };
 static const char scratchpadname[] = { "tmuxdd" };
-static const char *termcmd[]       = { term, exec, "fish", NULL };
+static const char *termcmd[]       = { term, exec, "zsh", NULL };
 static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
 static const char *email[]         = { term, exec, "launch_once.sh", "neomutt", NULL };
 static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer", NULL };
@@ -156,6 +156,7 @@ static const char *mprev[]         = { "lmc", "prev", NULL };
 static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
+static const char *browser[]       = { "chromium", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
 static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
@@ -200,6 +201,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_o,            spawn,          {.v = mount } },
 	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
 	{ MODKEY,              XK_w,            spawn,          {.v = search } },
+	{ MODKEY|ShiftMask,    XK_w,            spawn,          {.v = browser } },
 	{ MODKEY,              XK_p,            spawn,          {.v = clip } },
 	{ MODKEY|ShiftMask,    XK_p,            spawn,          {.v = plumb } },
 	{ AltMask|ControlMask, XK_q,            spawn,          {.v = killit } },
