@@ -62,7 +62,7 @@ static const unsigned int alphas[][3]      = {
 };
 //-------------------------------
 /* tagging */
-static const char *tags[] = { "home", "extra", "music", "news","💰"};
+static const char *tags[] = { "home", "extra", "music", "news"};
 
 
 static const Rule rules[] = {
@@ -266,10 +266,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_7,                      1)
-	TAGKEYS(                        XK_8,                      2)
-	TAGKEYS(                        XK_9,                      3)
-	TAGKEYS(                        XK_0,                      4)
+	TAGKEYS(                        XK_7,                      0)
+	TAGKEYS(                        XK_8,                      1)
+	TAGKEYS(                        XK_9,                      2)
+	TAGKEYS(                        XK_0,                      3)
 	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 

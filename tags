@@ -460,7 +460,7 @@ sysmonitor2	config.h	/^static const char *sysmonitor2[]   = { term, exec, "htop"
 tag	dwm.c	/^tag(const Arg *arg)$/;"	f	typeref:typename:void
 tagmon	dwm.c	/^tagmon(const Arg *arg)$/;"	f	typeref:typename:void
 tags	config.def.h	/^static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "🎵", "🗞️" };$/;"	v	typeref:typename:const char * []
-tags	config.h	/^static const char *tags[] = { "home", "extra", "music", "news","💰"};$/;"	v	typeref:typename:const char * []
+tags	config.h	/^static const char *tags[] = { "home", "extra", "music", "news"};$/;"	v	typeref:typename:const char * []
 tags	dwm.c	/^	unsigned int tags;$/;"	m	struct:Client	typeref:typename:unsigned int	file:
 tags	dwm.c	/^	unsigned int tags;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:unsigned int	file:
 tagset	dwm.c	/^	unsigned int tagset[2];$/;"	m	struct:Monitor	typeref:typename:unsigned int[2]	file:
