@@ -1,6 +1,6 @@
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int deltamv = 20; /* deltamvmv = the amount of pixels each movement will be by */
+static const unsigned int deltamv   = 20; /* deltamvmv = the amount of pixels each movement will be by */
 static const unsigned int gappx     = 5;
 static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
@@ -8,11 +8,12 @@ static const int topbar             = 1;  /* 0 means bottom bar */
 static const char *fonts[]          = { "Siji:style=Regular:size=13" };
 static const char dmenufont[]       = "Siji:style=Regular:size=13";
 
-static const char background[]  = "#111314";
+
+static const char background[]  = "#131313";
 static const char foreground[]  = "#B7BBB7";
-
-
-static const char black1[]      = "#505050";
+                                          
+                                          
+static const char black1[]      = "#151515";
 static const char black2[]      = "#505050";
                                           
                                           
@@ -33,7 +34,7 @@ static const char blue2[]       = "#66899D";
                                           
                                           
 static const char magenta1[]    = "#e1a3ee";
-static const char magenta2[]    = "#FF99FF";
+static const char magenta2[]    = "#ff99ff";
                                           
                                           
 static const char cyan1[]       = "#53cdbd";
@@ -43,14 +44,16 @@ static const char cyan2[]       = "#527C77";
 static const char white1[]      = "#d0d0d0";
 static const char white2[]      = "#f5f5f5";
 
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] =	  { blue1, background, background },
 	[SchemeSel]  =	  { red2 , background,  background },
 };
 
+//-------------------------------
 /* tagging */
-static const char *tags[] = { "home", "extra", "music", "news","💰"};
+static const char *tags[] = { "home", "extra", "music", "news"};
 
 
 static const Rule rules[] = {
@@ -61,7 +64,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask  iscentered isfloating	nokill alwaysfloat monitor */
 	{ "Gimp",    NULL, NULL,             0,      0, 1, 0, 0, -1 },
 	{ "Firefox", NULL, NULL,             1 << 3, 0, 0, 0, 0, -1 },
-	{ NULL,      NULL, "newspod",        1 << 3, 0, 0, 0, 0, -1 },
+	{ NULL,      NULL, "newsboat",       1 << 3, 0, 0, 0, 0, -1 },
 	{ "Spotify", NULL, NULL,             1 << 2, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "launch_once.sh", 0,      1, 1, 0, 0, -1 },
@@ -123,7 +126,7 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char term[]           = { "st"};
 static const char exec[]           = { "-e" };
 static const char scratchpadname[] = { "tmuxdd" };
-static const char *termcmd[]       = { term, exec, "fish", NULL };
+static const char *termcmd[]       = { term, exec, "zsh", NULL };
 static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
 static const char *email[]         = { term, exec, "launch_once.sh", "neomutt", NULL };
 static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer", NULL };
@@ -144,8 +147,9 @@ static const char *mprev[]         = { "lmc", "prev", NULL };
 static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
+static const char *browser[]       = { "chromium", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
-static const char *plumb[]         = { "cabl", NULL };
+static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
 static const char *power[]         = { "power_menu.sh", NULL };
 static const char *filemanager[]   = { "dmenu-open.sh", NULL };
@@ -188,6 +192,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_o,            spawn,          {.v = mount } },
 	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
 	{ MODKEY,              XK_w,            spawn,          {.v = search } },
+	{ MODKEY|ShiftMask,    XK_w,            spawn,          {.v = browser } },
 	{ MODKEY,              XK_p,            spawn,          {.v = clip } },
 	{ MODKEY|ShiftMask,    XK_p,            spawn,          {.v = plumb } },
 	{ AltMask|ControlMask, XK_q,            spawn,          {.v = killit } },
@@ -252,10 +257,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_7,                      1)
-	TAGKEYS(                        XK_8,                      2)
-	TAGKEYS(                        XK_9,                      3)
-	TAGKEYS(                        XK_0,                      4)
+	TAGKEYS(                        XK_7,                      0)
+	TAGKEYS(                        XK_8,                      1)
+	TAGKEYS(                        XK_9,                      2)
+	TAGKEYS(                        XK_0,                      3)
 	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 
