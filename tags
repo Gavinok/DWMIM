@@ -257,7 +257,7 @@ dwm	Makefile	/^dwm: ${OBJ}$/;"	t
 dwm - dynamic window manager	README.md	/^dwm - dynamic window manager$/;"	c
 ecalloc	util.c	/^ecalloc(size_t nmemb, size_t size)$/;"	f	typeref:typename:void *
 email	config.def.h	/^static const char *email[]  = { "st", "-e", "neomutt", NULL };$/;"	v	typeref:typename:const char * []
-email	config.h	/^static const char *email[]         = { term, exec, "launch_once.sh", "neomutt", NULL };$/;"	v	typeref:typename:const char * []
+email	config.h	/^static const char *email[]         = { term, "-t", "neomutt", exec, "launch_once.sh", "neomutt",/;"	v	typeref:typename:const char * []
 enternotify	dwm.c	/^enternotify(XEvent *e)$/;"	f	typeref:typename:void
 exec	config.h	/^static const char exec[]           = { "-e" };$/;"	v	typeref:typename:const char[]
 expose	dwm.c	/^expose(XEvent *e)$/;"	f	typeref:typename:void
@@ -410,7 +410,7 @@ restack	dwm.c	/^restack(Monitor *m)$/;"	f	typeref:typename:void
 root	drw.h	/^	Window root;$/;"	m	struct:__anon0f5116480308	typeref:typename:Window
 root	dwm.c	/^static Window root, wmcheckwin;$/;"	v	typeref:typename:Window	file:
 rss	config.def.h	/^static const char *rss[]	= { "st", "-e", "newspod", NULL };$/;"	v	typeref:typename:const char * []
-rss	config.h	/^static const char *rss[]           = { term, exec, "newsboat", NULL };$/;"	v	typeref:typename:const char * []
+rss	config.h	/^static const char *rss[]           = { term, exec, "newspod", NULL };$/;"	v	typeref:typename:const char * []
 rules	config.def.h	/^static const Rule rules[] = {$/;"	v	typeref:typename:const Rule[]
 rules	config.h	/^static const Rule rules[] = {$/;"	v	typeref:typename:const Rule[]
 run	dwm.c	/^run(void)$/;"	f	typeref:typename:void

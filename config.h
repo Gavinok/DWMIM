@@ -73,6 +73,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask  iscentered isfloating	nokill alwaysfloat monitor */
 	{ "Gimp",    NULL, NULL,             0,      0, 1, 0, 0, -1 },
 	{ "Firefox", NULL, NULL,             1 << 3, 0, 0, 0, 0, -1 },
+	{ NULL,      NULL, "newspod",        1 << 3, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "newsboat",       1 << 3, 0, 0, 0, 0, -1 },
 	{ "Spotify", NULL, NULL,             1 << 2, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
@@ -81,7 +82,8 @@ static const Rule rules[] = {
 	{ NULL,      NULL, "calcurse",       0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "scratch",        0,      1, 1, 1, 1, -1 },
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
-	{ NULL,      NULL, "popup",          0,      1, 1, 0, 0, -1 },
+	{ "popup",   NULL, NULL,	     0,      1, 1, 0, 0, -1 },
+	{ "mp3",     NULL, NULL,	     1 << 3, 1, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "tmuxdd",         0,      1, 1, 1, 1, -1 },
@@ -137,11 +139,10 @@ static const char exec[]           = { "-e" };
 static const char scratchpadname[] = { "tmuxdd" };
 static const char *termcmd[]       = { term, exec, "zsh", NULL };
 static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
-static const char *email[]         = { term, exec, "launch_once.sh", "neomutt", NULL };
+static const char *email[]         = { term, "-t", "neomutt", exec, "launch_once.sh", "neomutt", NULL };
 static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer", NULL };
-// static const char *calender[]      = { term, exec, "launch_once.sh", "calcurse", NULL };
 static const char *reddit[]        = { term, exec, "rtv", NULL };
-static const char *rss[]           = { term, exec, "newsboat", NULL };
+static const char *rss[]           = { term, exec, "newspod", NULL };
 static const char *sysmonitor2[]   = { term, exec, "htop", NULL };
 static const char *sysmonitor[]    = { term, exec, "vtop", NULL };
 static const char *nm[]            = { "dmenu_connection_manager.sh", NULL };
@@ -245,9 +246,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Tab,          cyclelayout,    {.i = -1} },
 	{ MODKEY,		XK_6,		cyclelayout,    {.i = +1} },
 	{ MODKEY|ShiftMask,    XK_z,            togglefloating, {0} },
-	// { MODKEY,              XK_0,            view,           {.ui = ~0 } },
+	{ MODKEY,              XK_0,            view,           {.ui = ~0 } },
 	{ MODKEY,              XK_grave,        view,           {.ui = ~0 } },
-	// { MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_grave,        tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_comma,        focusmon,       {.i = -1 } },
 	{ MODKEY,              XK_period,       focusmon,       {.i = +1 } },
@@ -266,10 +267,10 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_7,                      0)
-	TAGKEYS(                        XK_8,                      1)
-	TAGKEYS(                        XK_9,                      2)
-	TAGKEYS(                        XK_0,                      3)
+	TAGKEYS(                        XK_7,                      1)
+	TAGKEYS(                        XK_8,                      2)
+	TAGKEYS(                        XK_9,                      3)
+	// TAGKEYS(                        XK_0,                      3)
 	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 
