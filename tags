@@ -275,6 +275,7 @@ forcekill	nokill.c	/^forcekill(const Arg *arg)$/;"	f	typeref:typename:void
 foreground	config.h	/^static const char foreground[]  = "#B7BBB7";$/;"	v	typeref:typename:const char[]
 func	dwm.c	/^	void (*func)(const Arg *);$/;"	m	struct:__anon0f53a99e0908	typeref:typename:void (*)(const Arg *)	file:
 func	dwm.c	/^	void (*func)(const Arg *arg);$/;"	m	struct:__anon0f53a99e0808	typeref:typename:void (*)(const Arg * arg)	file:
+fzfpass	config.h	/^static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };$/;"	v	typeref:typename:const char * []
 gaplessgrid	layouts.c	/^gaplessgrid(Monitor *m) {$/;"	f	typeref:typename:void
 gappx	config.def.h	/^static const unsigned int gappx     = 6;$/;"	v	typeref:typename:const unsigned int
 gappx	config.h	/^static const unsigned int gappx     = 5;$/;"	v	typeref:typename:const unsigned int
@@ -387,6 +388,7 @@ oldw	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:i
 oldx	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 oldy	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 options	Makefile	/^options:$/;"	t
+pass	config.h	/^static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5",/;"	v	typeref:typename:const char * []
 pattern	drw.h	/^	FcPattern *pattern;$/;"	m	struct:Fnt	typeref:typename:FcPattern *
 plumb	config.h	/^static const char *plumb[]         = { "cabl", "-c", NULL };$/;"	v	typeref:typename:const char * []
 pop	dwm.c	/^pop(Client *c)$/;"	f	typeref:typename:void

@@ -78,12 +78,12 @@ static const Rule rules[] = {
 	{ "Spotify", NULL, NULL,             1 << 2, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "launch_once.sh", 0,      1, 1, 0, 0, -1 },
-	{ NULL,      NULL, "neomutt",        0,      1, 1, 0, 0, -1 },
+	{ NULL,      NULL, "neomutt",        0,      0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "calcurse",       0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "scratch",        0,      1, 1, 1, 1, -1 },
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
-	{ "popup",   NULL, NULL,	     0,      1, 1, 0, 0, -1 },
-	{ "mp3",     NULL, NULL,	     1 << 3, 1, 1, 0, 0, -1 },
+	{ NULL,   "popup", NULL,	     0,      1, 1, 0, 0, -1 },
+	{ NULL,     "mp3", NULL,	     1 << 3, 1, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "tmuxdd",         0,      1, 1, 1, 1, -1 },
@@ -173,6 +173,8 @@ static const char *spell[]         = { "spellcheck.sh", NULL };
 static const char *cast[]          = { "castcontrol.sh", NULL };
 static const char *todo[]          = { "dmenu_googletasks.sh", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
+static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5", NULL };
+static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -213,6 +215,8 @@ static Key keys[] = {
 	{ ShiftMask|MODKEY,    XK_t,            spawn,          {.v = tutoral } },
 	{ ControlMask|AltMask, XK_t,            spawn,          {.v = td } },
 	{ MODKEY,              XK_equal,        spawn,          {.v = kdeconnect } },
+	{ MODKEY,              XK_minus,        spawn,          {.v = pass } },
+	{ MODKEY,		XK_underscore,        spawn,          {.v = fzfpass} },
 	{ MODKEY,              XK_bracketright, spawn,          {.v = mnext } },
 	{ MODKEY,              XK_bracketleft,  spawn,          {.v = mprev } },
 	{ MODKEY,              XK_backslash,    spawn,          {.v = mplay } },
@@ -254,6 +258,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_period,       focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_comma,        tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,    XK_period,       tagmon,         {.i = +1 } },
+	{ MODKEY,              XK_F1,		spawn,		{.v = plumb }},
 	{ MODKEY,              XK_g,            moveplace,      {.ui = WIN_C  }},
 	{ MODKEY,              XK_Up,           moveplace,      {.ui = WIN_C  }},
 	{ MODKEY,              XK_z,            moveplace,      {.ui = WIN_SW }},
