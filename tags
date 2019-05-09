@@ -177,7 +177,7 @@ borderalpha	config.h	/^static const unsigned int borderalpha = 245;$/;"	v	typere
 borderpx	config.def.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 borderpx	config.h	/^static const unsigned int borderpx  = 0;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 broken	dwm.c	/^static const char broken[] = "broken";$/;"	v	typeref:typename:const char[]	file:
-browser	config.h	/^static const char *browser[]       = { "chromium", NULL };$/;"	v	typeref:typename:const char * []
+browser	config.h	/^static const char *browser[]       = { "google-chrome-stable", "--app=https:\/\/varvy.com\/pages/;"	v	typeref:typename:const char * []
 button	dwm.c	/^	unsigned int button;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:unsigned int	file:
 buttonpress	dwm.c	/^buttonpress(XEvent *e)$/;"	f	typeref:typename:void
 buttons	config.def.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button[]
@@ -511,6 +511,7 @@ utfmin	drw.c	/^static const long utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  
 v	dwm.c	/^	const void *v;$/;"	m	union:__anon0f53a99e070a	typeref:typename:const void *	file:
 vdown	config.h	/^static const char *vdown[]         = { "lmc", "down", "5", NULL };$/;"	v	typeref:typename:const char * []
 view	dwm.c	/^view(const Arg *arg)$/;"	f	typeref:typename:void
+viewto	focusajacenttag.c	/^viewto(const Arg *arg) {$/;"	f	typeref:typename:void
 visual	drw.h	/^	Visual *visual;$/;"	m	struct:__anon0f5116480308	typeref:typename:Visual *
 visual	dwm.c	/^static Visual *visual;$/;"	v	typeref:typename:Visual *	file:
 vup	config.h	/^static const char *vup[]           = { "lmc", "up", "5", NULL };$/;"	v	typeref:typename:const char * []

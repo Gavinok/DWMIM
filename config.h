@@ -103,6 +103,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 #include "warp.c"
 #include "scratchpad.c"
 #include "layouts.c"
+#include "focusajacenttag.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -157,7 +158,7 @@ static const char *mprev[]         = { "lmc", "prev", NULL };
 static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
-static const char *browser[]       = { "chromium", NULL };
+static const char *browser[]       = { "google-chrome-stable", "--app=https://varvy.com/pagespeed/wicked-fast.html", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
 static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
@@ -197,10 +198,10 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  XK_s,            spawn,          {.v = ldown } },
 	{ MODKEY|ControlMask,  XK_d,            spawn,          {.v = lup } },
 	{ MODKEY|ControlMask,  XK_f,            spawn,          {.v = vup } },
-	{ MODKEY|ControlMask,  XK_h,            spawn,          {.v = vdown } },
+	{ MODKEY|ControlMask,  XK_h,            viewto,		{.i = +1 } },
 	{ MODKEY|ControlMask,  XK_j,            spawn,          {.v = ldown } },
 	{ MODKEY|ControlMask,  XK_k,            spawn,          {.v = lup } },
-	{ MODKEY|ControlMask,  XK_l,            spawn,          {.v = vup } },
+	{ MODKEY|ControlMask,  XK_l,            viewto,         {.i = -1 } },
 	{ MODKEY,              XK_o,            spawn,          {.v = mount } },
 	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
 	{ MODKEY,              XK_w,            spawn,          {.v = search } },
@@ -215,8 +216,7 @@ static Key keys[] = {
 	{ ShiftMask|MODKEY,    XK_t,            spawn,          {.v = tutoral } },
 	{ ControlMask|AltMask, XK_t,            spawn,          {.v = td } },
 	{ MODKEY,              XK_equal,        spawn,          {.v = kdeconnect } },
-	{ MODKEY,              XK_minus,        spawn,          {.v = pass } },
-	{ MODKEY,		XK_underscore,        spawn,          {.v = fzfpass} },
+	{ MODKEY,              XK_minus,        spawn,          {.v = fzfpass } },
 	{ MODKEY,              XK_bracketright, spawn,          {.v = mnext } },
 	{ MODKEY,              XK_bracketleft,  spawn,          {.v = mprev } },
 	{ MODKEY,              XK_backslash,    spawn,          {.v = mplay } },
@@ -289,7 +289,8 @@ static Button buttons[] = {
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	// I know it should be Button2 but to me this makes more sense
+	{ ClkClientWin,         MODKEY,         Button2,        spawn,		{ .v = plumb } },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
