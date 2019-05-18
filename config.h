@@ -5,8 +5,8 @@ static const unsigned int gappx     = 5;
 static const unsigned int snap      = 60; /* snap pixel */
 static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
-static const char *fonts[]          = { "Siji:style=Regular:size=13" };
-static const char dmenufont[]       = "Siji:style=Regular:size=13";
+static const char *fonts[]          = { "Siji:style=Regular:size=10" };
+static const char dmenufont[]       = "Siji:style=Regular:size=10";
 
 
 static const char background[]  = "#131313";
@@ -52,8 +52,8 @@ static const char *colors[][3]      = {
 };
 
 //-----------alpha---------------
-static const unsigned int baralpha = 245;
-static const unsigned int borderalpha = 245;
+static const unsigned int baralpha = 229;
+static const unsigned int borderalpha = 229;
 
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -94,6 +94,8 @@ static const Rule rules[] = {
 static const float mfact     = 0.52; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+#define FORCE_VSPLIT 1
+
 //custom functions
 #include "maximize.c"
 #include "nokill.c"
@@ -110,6 +112,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "+++",      gaplessgrid },
 	// { "+++",      horizgrid },
+	// { "###",      nrowgrid },
 	{ "|M|",      centeredmaster },
 	{ NULL,       NULL },
 	// { "><>",      NULL },    /* no layout function means floating behavior */
@@ -158,7 +161,7 @@ static const char *mprev[]         = { "lmc", "prev", NULL };
 static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
-static const char *browser[]       = { "google-chrome-stable", "--app=https://varvy.com/pagespeed/wicked-fast.html", NULL };
+static const char *browser[]       = { "google-chrome-stable", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
 static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
@@ -172,7 +175,8 @@ static const char *dock[]          = { "dock_monitor", NULL };
 static const char *undock[]        = { "single_monitor", NULL };
 static const char *spell[]         = { "spellcheck.sh", NULL };
 static const char *cast[]          = { "castcontrol.sh", NULL };
-static const char *todo[]          = { "dmenu_googletasks.sh", NULL };
+static const char *todo[]          = { "dmenu-todo", NULL };
+static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5", NULL };
 static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };
@@ -221,6 +225,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_bracketleft,  spawn,          {.v = mprev } },
 	{ MODKEY,              XK_backslash,    spawn,          {.v = mplay } },
 	{ MODKEY|ShiftMask,    XK_backslash,    spawn,          {.v = cast } },
+	{ MODKEY,		XK_slash,	spawn,          {.v = nm } },
 	{ MODKEY,              XK_F7,           spawn,          {.v = dock } },
 	{ MODKEY,              XK_F8,           spawn,          {.v = undock } },
 	{ MODKEY,              XK_F11,          spawn,          {.v = nm } },
@@ -229,6 +234,8 @@ static Key keys[] = {
 	{ 0,                   0x1008ff11,      spawn,          {.v = vdown } },
 	{ 0,                   0x1008ff13,      spawn,          {.v = vup } },
 	{ 0,                   0x1008ff12,      spawn,          {.v = mute } },
+	{ 0,                   0x1008ff74,      spawn,          {.v = rotate } },
+	{ 0,                   0x1008ff7f,      spawn,          {.v = rotate } },
 
 	{ MODKEY|ControlMask,  XK_b,            togglebar,      {0} },
 	{ MODKEY,              XK_j,            focusstack,     {.i = +1 } },
@@ -250,9 +257,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Tab,          cyclelayout,    {.i = -1} },
 	{ MODKEY,		XK_6,		cyclelayout,    {.i = +1} },
 	{ MODKEY|ShiftMask,    XK_z,            togglefloating, {0} },
-	{ MODKEY,              XK_0,            view,           {.ui = ~0 } },
+	// { MODKEY,              XK_0,            view,           {.ui = ~0 } },
 	{ MODKEY,              XK_grave,        view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
+	// { MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_grave,        tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_comma,        focusmon,       {.i = -1 } },
 	{ MODKEY,              XK_period,       focusmon,       {.i = +1 } },
@@ -272,10 +279,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_7,                      1)
-	TAGKEYS(                        XK_8,                      2)
-	TAGKEYS(                        XK_9,                      3)
-	// TAGKEYS(                        XK_0,                      3)
+	// TAGKEYS(                        XK_5,                      4)
+	// TAGKEYS(                        XK_6,                      0)
+	TAGKEYS(                        XK_7,                      0)
+	TAGKEYS(                        XK_8,                      1)
+	TAGKEYS(                        XK_9,                      2)
+	TAGKEYS(                        XK_0,                      3)
 	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 
@@ -287,6 +296,8 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button1,        max,		{0} },
+	{ ClkWinTitle,          0,              Button3,        forcekill,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	// I know it should be Button2 but to me this makes more sense

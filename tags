@@ -45,6 +45,7 @@ ENABLECENTERWINDOWNAME	dwm.c	/^#define ENABLECENTERWINDOWNAME$/;"	d	file:
 ENABLESCRATCHPAD	dwm.c	/^#define ENABLESCRATCHPAD$/;"	d	file:
 ENABLEUSLESSGAPS	dwm.c	/^#define ENABLEUSLESSGAPS$/;"	d	file:
 ENABLEWARP	dwm.c	/^#define ENABLEWARP$/;"	d	file:
+FORCE_VSPLIT	config.h	/^#define FORCE_VSPLIT /;"	d
 FREETYPEINC	config.mk	/^FREETYPEINC = \/usr\/include\/freetype2$/;"	m
 FREETYPELIBS	config.mk	/^FREETYPELIBS = -lfontconfig -lXft$/;"	m
 Fnt	drw.h	/^typedef struct Fnt {$/;"	s
@@ -159,7 +160,7 @@ arrangemon	dwm.c	/^arrangemon(Monitor *m)$/;"	f	typeref:typename:void
 attach	dwm.c	/^attach(Client *c)$/;"	f	typeref:typename:void
 attachstack	dwm.c	/^attachstack(Client *c)$/;"	f	typeref:typename:void
 background	config.h	/^static const char background[]  = "#131313";$/;"	v	typeref:typename:const char[]
-baralpha	config.h	/^static const unsigned int baralpha = 245;$/;"	v	typeref:typename:const unsigned int
+baralpha	config.h	/^static const unsigned int baralpha = 229;$/;"	v	typeref:typename:const unsigned int
 barwin	dwm.c	/^	Window barwin;$/;"	m	struct:Monitor	typeref:typename:Window	file:
 baseh	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 basew	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -173,11 +174,11 @@ blue1	config.h	/^static const char blue1[]       = "#66899D";$/;"	v	typeref:type
 blue2	config.def.h	/^static const char blue2[]        = "#6fc2ef";$/;"	v	typeref:typename:const char[]
 blue2	config.h	/^static const char blue2[]       = "#66899D";$/;"	v	typeref:typename:const char[]
 blw	dwm.c	/^static int bh, blw = 0;      \/* bar geometry *\/$/;"	v	typeref:typename:int	file:
-borderalpha	config.h	/^static const unsigned int borderalpha = 245;$/;"	v	typeref:typename:const unsigned int
+borderalpha	config.h	/^static const unsigned int borderalpha = 229;$/;"	v	typeref:typename:const unsigned int
 borderpx	config.def.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 borderpx	config.h	/^static const unsigned int borderpx  = 0;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 broken	dwm.c	/^static const char broken[] = "broken";$/;"	v	typeref:typename:const char[]	file:
-browser	config.h	/^static const char *browser[]       = { "google-chrome-stable", "--app=https:\/\/varvy.com\/pages/;"	v	typeref:typename:const char * []
+browser	config.h	/^static const char *browser[]       = { "google-chrome-stable", NULL };$/;"	v	typeref:typename:const char * []
 button	dwm.c	/^	unsigned int button;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:unsigned int	file:
 buttonpress	dwm.c	/^buttonpress(XEvent *e)$/;"	f	typeref:typename:void
 buttons	config.def.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button[]
@@ -226,7 +227,7 @@ dist	Makefile	/^dist: clean$/;"	t
 dmenucmd	config.def.h	/^static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, /;"	v	typeref:typename:const char * []
 dmenucmd	config.h	/^static const char *dmenucmd[] = { "dmenu_run", NULL };$/;"	v	typeref:typename:const char * []
 dmenufont	config.def.h	/^static const char dmenufont[]       = "monospace:size=10";$/;"	v	typeref:typename:const char[]
-dmenufont	config.h	/^static const char dmenufont[]       = "Siji:style=Regular:size=13";$/;"	v	typeref:typename:const char[]
+dmenufont	config.h	/^static const char dmenufont[]       = "Siji:style=Regular:size=10";$/;"	v	typeref:typename:const char[]
 dmenumon	config.def.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v	typeref:typename:char[2]
 dmenumon	config.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v	typeref:typename:char[2]
 dock	config.h	/^static const char *dock[]          = { "dock_monitor", NULL };$/;"	v	typeref:typename:const char * []
@@ -269,7 +270,7 @@ focusin	dwm.c	/^focusin(XEvent *e)$/;"	f	typeref:typename:void
 focusmon	dwm.c	/^focusmon(const Arg *arg)$/;"	f	typeref:typename:void
 focusstack	dwm.c	/^focusstack(const Arg *arg)$/;"	f	typeref:typename:void
 fonts	config.def.h	/^static const char *fonts[]          = { "monospace:size=10" };$/;"	v	typeref:typename:const char * []
-fonts	config.h	/^static const char *fonts[]          = { "Siji:style=Regular:size=13" };$/;"	v	typeref:typename:const char * []
+fonts	config.h	/^static const char *fonts[]          = { "Siji:style=Regular:size=10" };$/;"	v	typeref:typename:const char * []
 fonts	drw.h	/^	Fnt *fonts;$/;"	m	struct:__anon0f5116480308	typeref:typename:Fnt *
 forcekill	nokill.c	/^forcekill(const Arg *arg)$/;"	f	typeref:typename:void
 foreground	config.h	/^static const char foreground[]  = "#B7BBB7";$/;"	v	typeref:typename:const char[]
@@ -379,6 +380,7 @@ nmaster	config.h	/^static const int nmaster     = 1;    \/* number of clients in
 nmaster	dwm.c	/^	int nmaster;$/;"	m	struct:Monitor	typeref:typename:int	file:
 nokill	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
 nokill	dwm.c	/^	int nokill;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:int	file:
+nrowgrid	layouts.c	/^nrowgrid(Monitor *m)$/;"	f	typeref:typename:void
 num	dwm.c	/^	int num;$/;"	m	struct:Monitor	typeref:typename:int	file:
 numlockmask	dwm.c	/^static unsigned int numlockmask = 0;$/;"	v	typeref:typename:unsigned int	file:
 oldbw	dwm.c	/^	int bw, oldbw;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -411,6 +413,7 @@ resizemouse	dwm.c	/^resizemouse(const Arg *arg)$/;"	f	typeref:typename:void
 restack	dwm.c	/^restack(Monitor *m)$/;"	f	typeref:typename:void
 root	drw.h	/^	Window root;$/;"	m	struct:__anon0f5116480308	typeref:typename:Window
 root	dwm.c	/^static Window root, wmcheckwin;$/;"	v	typeref:typename:Window	file:
+rotate	config.h	/^static const char *rotate[]        = { "rotate_screen", NULL };$/;"	v	typeref:typename:const char * []
 rss	config.def.h	/^static const char *rss[]	= { "st", "-e", "newspod", NULL };$/;"	v	typeref:typename:const char * []
 rss	config.h	/^static const char *rss[]           = { term, exec, "newspod", NULL };$/;"	v	typeref:typename:const char * []
 rules	config.def.h	/^static const Rule rules[] = {$/;"	v	typeref:typename:const Rule[]
@@ -472,7 +475,7 @@ termcmd	config.def.h	/^static const char *termcmd[]  = { "st", "-e", "tmux",  NU
 termcmd	config.h	/^static const char *termcmd[]       = { term, exec, "zsh", NULL };$/;"	v	typeref:typename:const char * []
 tile	dwm.c	/^tile(Monitor *m)$/;"	f	typeref:typename:void
 title	dwm.c	/^	const char *title;$/;"	m	struct:__anon0f53a99e0b08	typeref:typename:const char *	file:
-todo	config.h	/^static const char *todo[]          = { "dmenu_googletasks.sh", NULL };$/;"	v	typeref:typename:const char * []
+todo	config.h	/^static const char *todo[]          = { "dmenu-todo", NULL };$/;"	v	typeref:typename:const char * []
 toggleNoKill	nokill.c	/^toggleNoKill(const Arg *arg)$/;"	f	typeref:typename:void
 togglebar	dwm.c	/^togglebar(const Arg *arg)$/;"	f	typeref:typename:void
 togglefloating	dwm.c	/^togglefloating(const Arg *arg)$/;"	f	typeref:typename:void
