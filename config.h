@@ -11,43 +11,43 @@ static const char dmenufont[]       = "Siji:style=Regular:size=10";
 
 static const char background[]  = "#131313";
 static const char foreground[]  = "#B7BBB7";
-                                          
-                                          
+                                                 
+                                                 
 static const char black1[]      = "#151515";
 static const char black2[]      = "#505050";
-                                          
-                                          
+                                                 
+                                                 
 static const char red1[]	= "#fb9fb1";
-static const char red2[]	= "#B04C50";
-                                          
-                                          
+static const char red2[]	= "#BF6262";
+                                                 
+                                                 
 static const char green1[]      = "#acc267";
 static const char green2[]      = "#acc267";
-                                          
-                                          
+                                                 
+                                                 
 static const char yellow1[]     = "#ddb26f";
 static const char yellow2[]     = "#E2995C";
-                                          
-                                          
-static const char blue1[]       = "#66899D";
+                                                 
+                                                 
+static const char blue1[]       = "#789BAD";
 static const char blue2[]       = "#66899D";
-                                          
-                                          
-static const char magenta1[]    = "#e1a3ee";
+                                                 
+                                                 
+static const char magenta1[]    = "#9F7AA5";
 static const char magenta2[]    = "#ff99ff";
-                                          
-                                          
+                                                 
+                                                 
 static const char cyan1[]       = "#53cdbd";
-static const char cyan2[]       = "#527C77";
-                                          
-                                          
-static const char white1[]      = "#d0d0d0";
-static const char white2[]      = "#f5f5f5";
+static const char cyan2[]       = "#638E8A";
+                                                 
+                                                 
+static const char white1[]      = "#d9d0d0";
+static const char white2[]      = "#E3E8E3";
 
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] =	  { blue1, background, background },
+	[SchemeNorm] =	  { blue2, background, background },
 	[SchemeSel]  =	  { red2 , background,  background },
 };
 
@@ -83,9 +83,11 @@ static const Rule rules[] = {
 	{ NULL,      NULL, "scratch",        0,      1, 1, 1, 1, -1 },
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
 	{ NULL,   "popup", NULL,	     0,      1, 1, 0, 0, -1 },
+	{ NULL,   "float", NULL,	     0,      1, 1, 0, 0, -1 },
 	{ NULL,     "mp3", NULL,	     1 << 3, 1, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
+	{ NULL,     "imv", NULL,	     0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "tmuxdd",         0,      1, 1, 1, 1, -1 },
 	{ "mpv",     NULL, NULL,             0,      0, 0, 1, 0, -1 },
 };
@@ -110,11 +112,15 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-	{ "+++",      gaplessgrid },
-	// { "+++",      horizgrid },
+	// { "+++",      gaplessgrid },
+	{ "+++",      horizgrid },
 	// { "###",      nrowgrid },
+ 	// { "[@]",      spiral },
+ 	// { "[\\]",      dwindle },
 	{ "|M|",      centeredmaster },
 	{ NULL,       NULL },
+
+	{ ">M>",      centeredfloatingmaster },
 	// { "><>",      NULL },    /* no layout function means floating behavior */
 	// { "[M]",      monocle },
 };
@@ -126,10 +132,10 @@ static const Layout layouts[] = {
 #define AltMask Mod1Mask
 
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,              KEY, view,       {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,  KEY, toggleview, {.ui = 1 << TAG} }, \
-	{ AltMask,             KEY, tag,        {.ui = 1 << TAG} }, \
-	{ AltMask|ControlMask, KEY, toggletag,  {.ui = 1 << TAG} },
+	{ MODKEY,                       KEY, view,       {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,           KEY, toggleview, {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY, tag,        {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask|ControlMask, KEY, toggletag,  {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -141,7 +147,7 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char term[]           = { "st"};
 static const char exec[]           = { "-e" };
 static const char scratchpadname[] = { "tmuxdd" };
-static const char *termcmd[]       = { term, exec, "zsh", NULL };
+static const char *termcmd[]       = { term, NULL };
 static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
 static const char *email[]         = { term, "-t", "neomutt", exec, "launch_once.sh", "neomutt", NULL };
 static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer", NULL };
@@ -175,7 +181,7 @@ static const char *dock[]          = { "dock_monitor", NULL };
 static const char *undock[]        = { "single_monitor", NULL };
 static const char *spell[]         = { "spellcheck.sh", NULL };
 static const char *cast[]          = { "castcontrol.sh", NULL };
-static const char *todo[]          = { "dmenu-todo", NULL };
+static const char *todo[]          = { "vimtodo.sh", NULL };
 static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5", NULL };
@@ -202,10 +208,10 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  XK_s,            spawn,          {.v = ldown } },
 	{ MODKEY|ControlMask,  XK_d,            spawn,          {.v = lup } },
 	{ MODKEY|ControlMask,  XK_f,            spawn,          {.v = vup } },
-	{ MODKEY|ControlMask,  XK_h,            viewto,		{.i = +1 } },
+	// { MODKEY|ControlMask,  XK_h,            viewto,		{.i = +1 } },
 	{ MODKEY|ControlMask,  XK_j,            spawn,          {.v = ldown } },
 	{ MODKEY|ControlMask,  XK_k,            spawn,          {.v = lup } },
-	{ MODKEY|ControlMask,  XK_l,            viewto,         {.i = -1 } },
+	// { MODKEY|ControlMask,  XK_l,            viewto,         {.i = -1 } },
 	{ MODKEY,              XK_o,            spawn,          {.v = mount } },
 	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
 	{ MODKEY,              XK_w,            spawn,          {.v = search } },
@@ -220,12 +226,12 @@ static Key keys[] = {
 	{ ShiftMask|MODKEY,    XK_t,            spawn,          {.v = tutoral } },
 	{ ControlMask|AltMask, XK_t,            spawn,          {.v = td } },
 	{ MODKEY,              XK_equal,        spawn,          {.v = kdeconnect } },
-	{ MODKEY,              XK_minus,        spawn,          {.v = fzfpass } },
+	{ MODKEY,              XK_minus,        spawn,          {.v = nm } },
 	{ MODKEY,              XK_bracketright, spawn,          {.v = mnext } },
 	{ MODKEY,              XK_bracketleft,  spawn,          {.v = mprev } },
 	{ MODKEY,              XK_backslash,    spawn,          {.v = mplay } },
 	{ MODKEY|ShiftMask,    XK_backslash,    spawn,          {.v = cast } },
-	{ MODKEY,		XK_slash,	spawn,          {.v = nm } },
+	// { MODKEY,		XK_slash,	spawn,          {.v = nm } },
 	{ MODKEY,              XK_F7,           spawn,          {.v = dock } },
 	{ MODKEY,              XK_F8,           spawn,          {.v = undock } },
 	{ MODKEY,              XK_F11,          spawn,          {.v = nm } },
@@ -242,8 +248,14 @@ static Key keys[] = {
 	{ MODKEY,              XK_k,            focusstack,     {.i = -1 } },
 	{ MODKEY,              XK_a,            incnmaster,     {.i = +1 } },
 	{ MODKEY,              XK_s,            incnmaster,     {.i = -1 } },
-	{ MODKEY,              XK_h,            setmfact,       {.f = -0.05} },
-	{ MODKEY,              XK_l,            setmfact,       {.f = +0.05} },
+	// { MODKEY,              XK_h,            setmfact,       {.f = -0.05} },
+	{ MODKEY|ControlMask,  XK_h,            setmfact,       {.f = -0.05} },
+	{ MODKEY|ControlMask,  XK_l,            setmfact,       {.f = +0.05} },
+	{ MODKEY,              XK_h,            focusmon,       {.i = -1 } },
+	{ MODKEY,              XK_l,            focusmon,       {.i = +1 } },
+	// { AltMask,             XK_h,            tagmon,       {.i = -1 } },
+	// { AltMask,             XK_l,            tagmon,       {.i = +1 } },
+	// { MODKEY,           XK_l,            setmfact,       {.f = +0.05} },
 	{ MODKEY,              XK_v,            zoomswap,       {0} },
 	{ MODKEY,              XK_semicolon,    view,		{0} },
 	{ MODKEY,              XK_5,		view,		{0} },
@@ -257,15 +269,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Tab,          cyclelayout,    {.i = -1} },
 	{ MODKEY,		XK_6,		cyclelayout,    {.i = +1} },
 	{ MODKEY|ShiftMask,    XK_z,            togglefloating, {0} },
-	// { MODKEY,              XK_0,            view,           {.ui = ~0 } },
+	{ MODKEY,              XK_0,            view,           {.ui = ~0 } },
 	{ MODKEY,              XK_grave,        view,           {.ui = ~0 } },
-	// { MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,    XK_0,            tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_grave,        tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_comma,        focusmon,       {.i = -1 } },
 	{ MODKEY,              XK_period,       focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_comma,        tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,    XK_period,       tagmon,         {.i = +1 } },
 	{ MODKEY,              XK_F1,		spawn,		{.v = plumb }},
+	{ MODKEY|ShiftMask,    XK_g,            setlayout,      {.v = &layouts[4]  }},
 	{ MODKEY,              XK_g,            moveplace,      {.ui = WIN_C  }},
 	{ MODKEY,              XK_Up,           moveplace,      {.ui = WIN_C  }},
 	{ MODKEY,              XK_z,            moveplace,      {.ui = WIN_SW }},
@@ -280,11 +293,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	// TAGKEYS(                        XK_5,                      4)
-	// TAGKEYS(                        XK_6,                      0)
-	TAGKEYS(                        XK_7,                      0)
-	TAGKEYS(                        XK_8,                      1)
-	TAGKEYS(                        XK_9,                      2)
-	TAGKEYS(                        XK_0,                      3)
+	TAGKEYS(                        XK_6,                      0)
+	TAGKEYS(                        XK_7,                      1)
+	TAGKEYS(                        XK_8,                      2)
+	TAGKEYS(                        XK_9,                      3)
+	// TAGKEYS(                        XK_0,                      3)
 	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
 };
 
@@ -293,14 +306,15 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkLtSymbol,          0,              Button1,        setlayout,      {.v = &layouts[0]} },
+	{ ClkLtSymbol,          0,              Button2,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[1]} },
 	{ ClkWinTitle,          0,              Button1,        max,		{0} },
-	{ ClkWinTitle,          0,              Button3,        forcekill,           {0} },
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          0,              Button3,        forcekill,      {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button1,        tagmon,         {.i = +1 } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	// I know it should be Button2 but to me this makes more sense
 	{ ClkClientWin,         MODKEY,         Button2,        spawn,		{ .v = plumb } },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
