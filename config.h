@@ -74,7 +74,6 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL, NULL,             0,      0, 1, 0, 0, -1 },
 	{ "Firefox", NULL, NULL,             1 << 3, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "newspod",        1 << 3, 0, 0, 0, 0, -1 },
-	{ NULL,      NULL, "newsboat",       1 << 3, 0, 0, 0, 0, -1 },
 	{ "Spotify", NULL, NULL,             1 << 2, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "launch_once.sh", 0,      1, 1, 0, 0, -1 },
