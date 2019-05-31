@@ -166,7 +166,7 @@ static const char *mprev[]         = { "lmc", "prev", NULL };
 static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
-static const char *browser[]       = { "google-chrome-stable", NULL };
+static const char *browser[]       = { "/bin/sh", "-c", "ducksearch \"google-chrome-stable --app=\"", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
 static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
