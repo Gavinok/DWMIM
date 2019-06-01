@@ -178,7 +178,7 @@ borderalpha	config.h	/^static const unsigned int borderalpha = 229;$/;"	v	typere
 borderpx	config.def.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 borderpx	config.h	/^static const unsigned int borderpx  = 0;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 broken	dwm.c	/^static const char broken[] = "broken";$/;"	v	typeref:typename:const char[]	file:
-browser	config.h	/^static const char *browser[]       = { "google-chrome-stable", NULL };$/;"	v	typeref:typename:const char * []
+browser	config.h	/^static const char *browser[]       = { "\/bin\/sh", "-c", "ducksearch \\"google-chrome-stable --/;"	v	typeref:typename:const char * []
 button	dwm.c	/^	unsigned int button;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:unsigned int	file:
 buttonpress	dwm.c	/^buttonpress(XEvent *e)$/;"	f	typeref:typename:void
 buttons	config.def.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button[]
