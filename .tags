@@ -227,7 +227,7 @@ dist	Makefile	/^dist: clean$/;"	t
 dmenucmd	config.def.h	/^static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", black1, /;"	v	typeref:typename:const char * []
 dmenucmd	config.h	/^static const char *dmenucmd[] = { "dmenu_run", NULL };$/;"	v	typeref:typename:const char * []
 dmenufont	config.def.h	/^static const char dmenufont[]       = "monospace:size=10";$/;"	v	typeref:typename:const char[]
-dmenufont	config.h	/^static const char dmenufont[]       = "Siji:style=Regular:size=10";$/;"	v	typeref:typename:const char[]
+dmenufont	config.h	/^static const char dmenufont[]       = "DejaVu Sans Mono:style=Regular:size=10";$/;"	v	typeref:typename:const char[]
 dmenumon	config.def.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v	typeref:typename:char[2]
 dmenumon	config.h	/^static char dmenumon[2] = "0"; \/* component of dmenucmd, manipulated in spawn() *\/$/;"	v	typeref:typename:char[2]
 dock	config.h	/^static const char *dock[]          = { "dock_monitor", NULL };$/;"	v	typeref:typename:const char * []
@@ -272,7 +272,7 @@ focusin	dwm.c	/^focusin(XEvent *e)$/;"	f	typeref:typename:void
 focusmon	dwm.c	/^focusmon(const Arg *arg)$/;"	f	typeref:typename:void
 focusstack	dwm.c	/^focusstack(const Arg *arg)$/;"	f	typeref:typename:void
 fonts	config.def.h	/^static const char *fonts[]          = { "monospace:size=10" };$/;"	v	typeref:typename:const char * []
-fonts	config.h	/^static const char *fonts[]          = { "Siji:style=Regular:size=10" };$/;"	v	typeref:typename:const char * []
+fonts	config.h	/^static const char *fonts[]          = { "DejaVu Sans Mono:style=Regular:size=10" };$/;"	v	typeref:typename:const char * []
 fonts	drw.h	/^	Fnt *fonts;$/;"	m	struct:__anon0f5116480308	typeref:typename:Fnt *
 forcekill	nokill.c	/^forcekill(const Arg *arg)$/;"	f	typeref:typename:void
 foreground	config.h	/^static const char foreground[]  = "#B7BBB7";$/;"	v	typeref:typename:const char[]
