@@ -23,7 +23,7 @@ mv(const Arg *arg)
 		XWarpPointer(dpy, None, c->win, 
 				0, 0, 0, 0, (c->w/2),(c->h/2));
 	}
-	else if (axis == 2 || axis == -2){
+	else if (c->isfloating){
 		int delta = (deltamv * (axis/2));
 		XMoveWindow(dpy, c->win, c->x, (c->y - delta));
 		c->oldy = c->y;
