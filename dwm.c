@@ -756,7 +756,6 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
 	#ifdef ENABLESTATUSCOLORS
-
 		while (1) {
 			if ((unsigned int)*ts > LENGTH(colors)) { ts++; continue ; }
 			ctmp = *ts;
@@ -793,8 +792,7 @@ drawbar(Monitor *m)
 	}
 	w = blw = TEXTW(m->ltsymbol);
 	/* sets the color for the current mode  */
-	drw_setscheme(drw, scheme[SchemeNorm]);
-	/* drw_setscheme(drw, scheme[SchemeSel]); */
+	drw_setscheme(drw, scheme[SchemeSel]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - x) > bh) {

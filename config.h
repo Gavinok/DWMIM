@@ -7,53 +7,51 @@ static const int showbar            = 1;  /* 0 means no bar */
 static const int topbar             = 1;  /* 0 means bottom bar */
 static const char *fonts[]          = { "DejaVu Sans Mono:style=Regular:size=10" };
 static const char dmenufont[]       = "DejaVu Sans Mono:style=Regular:size=10";
-
-
-static const char background[]  = "#131313";
-static const char foreground[]  = "#B7BBB7";
-                                                 
-                                                 
-static const char black1[]      = "#151515";
-static const char black2[]      = "#505050";
-                                                 
-                                                 
-static const char red1[]	= "#fb9fb1";
-static const char red2[]	= "#BF6262";
-                                                 
-                                                 
-static const char green1[]      = "#acc267";
-static const char green2[]      = "#acc267";
-                                                 
-                                                 
-static const char yellow1[]     = "#ddb26f";
-static const char yellow2[]     = "#E2995C";
-                                                 
-                                                 
-static const char blue1[]       = "#789BAD";
-static const char blue2[]       = "#66899D";
-                                                 
-                                                 
-static const char magenta1[]    = "#9F7AA5";
-static const char magenta2[]    = "#ff99ff";
-                                                 
-                                                 
-static const char cyan1[]       = "#53cdbd";
-static const char cyan2[]       = "#638E8A";
-                                                 
-                                                 
-static const char white1[]      = "#d9d0d0";
-static const char white2[]      = "#E3E8E3";
-
+static const char background[] = "#131313";
+static const char foreground[] = "#B7BBB7";
+                                     
+                                     
+static const char black1[]     = "#151515";
+static const char black2[]     = "#505050";
+                                     
+                                     
+static const char red1[]       = "#fb9fb1";
+static const char red2[]       = "#BF6262";
+                                     
+                                     
+static const char green1[]     = "#acc267";
+static const char green2[]     = "#acc267";
+                                     
+                                     
+static const char yellow1[]    = "#ddb26f";
+static const char yellow2[]    = "#E2995C";
+                                     
+                                     
+static const char blue1[]      = "#7D8FA3";
+static const char blue2[]      = "#66899D";
+                                     
+                                     
+static const char magenta1[]   = "#9F7AA5";
+static const char magenta2[]   = "#ff99ff";
+                                     
+                                     
+static const char cyan1[]      = "#53cdbd";
+static const char cyan2[]      = "#638E8A";
+                                     
+                                     
+static const char white1[]     = "#d9d0d0";
+static const char white2[]     = "#E3E8E3";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] =	  { blue2, background, background },
-	[SchemeSel]  =	  { red2 , background,  background },
+	[SchemeNorm] =	  { black2, background, background },
+	[SchemeSel]  =	  { magenta1 , background,  background },
+
 };
 
 //-----------alpha---------------
 static const unsigned int baralpha = 229;
-static const unsigned int borderalpha = 229;
+static const unsigned int borderalpha = 255;
 
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */

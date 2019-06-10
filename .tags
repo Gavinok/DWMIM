@@ -159,22 +159,23 @@ arrange	dwm.c	/^arrange(Monitor *m)$/;"	f	typeref:typename:void
 arrangemon	dwm.c	/^arrangemon(Monitor *m)$/;"	f	typeref:typename:void
 attach	dwm.c	/^attach(Client *c)$/;"	f	typeref:typename:void
 attachstack	dwm.c	/^attachstack(Client *c)$/;"	f	typeref:typename:void
-background	config.h	/^static const char background[]  = "#131313";$/;"	v	typeref:typename:const char[]
+background	config.h	/^static const char background[] = "#131313";$/;"	v	typeref:typename:const char[]
 baralpha	config.h	/^static const unsigned int baralpha = 229;$/;"	v	typeref:typename:const unsigned int
+barmenu	config.h	/^static const char *barmenu[]	   = { "bar", NULL };$/;"	v	typeref:typename:const char * []
 barwin	dwm.c	/^	Window barwin;$/;"	m	struct:Monitor	typeref:typename:Window	file:
 baseh	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 basew	dwm.c	/^	int basew, baseh, incw, inch, maxw, maxh, minw, minh;$/;"	m	struct:Client	typeref:typename:int	file:
 bh	dwm.c	/^static int bh, blw = 0;      \/* bar geometry *\/$/;"	v	typeref:typename:int	file:
 black1	config.def.h	/^static const char black1[]       = "#151515";$/;"	v	typeref:typename:const char[]
-black1	config.h	/^static const char black1[]      = "#151515";$/;"	v	typeref:typename:const char[]
+black1	config.h	/^static const char black1[]     = "#151515";$/;"	v	typeref:typename:const char[]
 black2	config.def.h	/^static const char black2[]       = "#505050";$/;"	v	typeref:typename:const char[]
-black2	config.h	/^static const char black2[]      = "#505050";$/;"	v	typeref:typename:const char[]
+black2	config.h	/^static const char black2[]     = "#505050";$/;"	v	typeref:typename:const char[]
 blue1	config.def.h	/^static const char blue1[]        = "#6fc2ef";$/;"	v	typeref:typename:const char[]
-blue1	config.h	/^static const char blue1[]       = "#789BAD";$/;"	v	typeref:typename:const char[]
+blue1	config.h	/^static const char blue1[]      = "#7D8FA3";$/;"	v	typeref:typename:const char[]
 blue2	config.def.h	/^static const char blue2[]        = "#6fc2ef";$/;"	v	typeref:typename:const char[]
-blue2	config.h	/^static const char blue2[]       = "#66899D";$/;"	v	typeref:typename:const char[]
+blue2	config.h	/^static const char blue2[]      = "#66899D";$/;"	v	typeref:typename:const char[]
 blw	dwm.c	/^static int bh, blw = 0;      \/* bar geometry *\/$/;"	v	typeref:typename:int	file:
-borderalpha	config.h	/^static const unsigned int borderalpha = 229;$/;"	v	typeref:typename:const unsigned int
+borderalpha	config.h	/^static const unsigned int borderalpha = 255;$/;"	v	typeref:typename:const unsigned int
 borderpx	config.def.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 borderpx	config.h	/^static const unsigned int borderpx  = 0;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 broken	dwm.c	/^static const char broken[] = "broken";$/;"	v	typeref:typename:const char[]	file:
@@ -211,9 +212,9 @@ createmon	dwm.c	/^createmon(void)$/;"	f	typeref:typename:Monitor *
 cursor	drw.h	/^	Cursor cursor;$/;"	m	struct:__anon0f5116480108	typeref:typename:Cursor
 cursor	dwm.c	/^static Cur *cursor[CurLast];$/;"	v	typeref:typename:Cur * []	file:
 cyan1	config.def.h	/^static const char cyan1[]        = "#12cfc0";$/;"	v	typeref:typename:const char[]
-cyan1	config.h	/^static const char cyan1[]       = "#53cdbd";$/;"	v	typeref:typename:const char[]
+cyan1	config.h	/^static const char cyan1[]      = "#53cdbd";$/;"	v	typeref:typename:const char[]
 cyan2	config.def.h	/^static const char cyan2[]        = "#12cfc0";$/;"	v	typeref:typename:const char[]
-cyan2	config.h	/^static const char cyan2[]       = "#638E8A";$/;"	v	typeref:typename:const char[]
+cyan2	config.h	/^static const char cyan2[]      = "#638E8A";$/;"	v	typeref:typename:const char[]
 cyclelayout	cyclelayout.c	/^cyclelayout(const Arg *arg) {$/;"	f	typeref:typename:void
 deltamv	config.h	/^static const unsigned int deltamv   = 20; \/* deltamvmv = the amount of pixels each movement wil/;"	v	typeref:typename:const unsigned int
 depth	drw.h	/^	unsigned int depth;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
@@ -275,7 +276,7 @@ fonts	config.def.h	/^static const char *fonts[]          = { "monospace:size=10"
 fonts	config.h	/^static const char *fonts[]          = { "DejaVu Sans Mono:style=Regular:size=10" };$/;"	v	typeref:typename:const char * []
 fonts	drw.h	/^	Fnt *fonts;$/;"	m	struct:__anon0f5116480308	typeref:typename:Fnt *
 forcekill	nokill.c	/^forcekill(const Arg *arg)$/;"	f	typeref:typename:void
-foreground	config.h	/^static const char foreground[]  = "#B7BBB7";$/;"	v	typeref:typename:const char[]
+foreground	config.h	/^static const char foreground[] = "#B7BBB7";$/;"	v	typeref:typename:const char[]
 func	dwm.c	/^	void (*func)(const Arg *);$/;"	m	struct:__anon0f53a99e0908	typeref:typename:void (*)(const Arg *)	file:
 func	dwm.c	/^	void (*func)(const Arg *arg);$/;"	m	struct:__anon0f53a99e0808	typeref:typename:void (*)(const Arg * arg)	file:
 fzfpass	config.h	/^static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };$/;"	v	typeref:typename:const char * []
@@ -290,9 +291,9 @@ gettextprop	dwm.c	/^gettextprop(Window w, Atom atom, char *text, unsigned int si
 grabbuttons	dwm.c	/^grabbuttons(Client *c, int focused)$/;"	f	typeref:typename:void
 grabkeys	dwm.c	/^grabkeys(void)$/;"	f	typeref:typename:void
 green1	config.def.h	/^static const char green1[]        = "#acc267";$/;"	v	typeref:typename:const char[]
-green1	config.h	/^static const char green1[]      = "#acc267";$/;"	v	typeref:typename:const char[]
+green1	config.h	/^static const char green1[]     = "#acc267";$/;"	v	typeref:typename:const char[]
 green2	config.def.h	/^static const char green2[]        = "#acc267";$/;"	v	typeref:typename:const char[]
-green2	config.h	/^static const char green2[]      = "#acc267";$/;"	v	typeref:typename:const char[]
+green2	config.h	/^static const char green2[]     = "#acc267";$/;"	v	typeref:typename:const char[]
 h	drw.h	/^	unsigned int h;$/;"	m	struct:Fnt	typeref:typename:unsigned int
 h	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:unsigned int
 h	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
@@ -328,9 +329,9 @@ lt	dwm.c	/^	const Layout *lt[2];$/;"	m	struct:Monitor	typeref:typename:const Lay
 ltsymbol	dwm.c	/^	char ltsymbol[16];$/;"	m	struct:Monitor	typeref:typename:char[16]	file:
 lup	config.h	/^static const char *lup[]           = { "llc.sh", "up", "7", NULL };$/;"	v	typeref:typename:const char * []
 magenta1	config.def.h	/^static const char magenta1[]        = "#e1a3ee";$/;"	v	typeref:typename:const char[]
-magenta1	config.h	/^static const char magenta1[]    = "#9F7AA5";$/;"	v	typeref:typename:const char[]
+magenta1	config.h	/^static const char magenta1[]   = "#9F7AA5";$/;"	v	typeref:typename:const char[]
 magenta2	config.def.h	/^static const char magenta2[]        = "##FF99FF";$/;"	v	typeref:typename:const char[]
-magenta2	config.h	/^static const char magenta2[]    = "#ff99ff";$/;"	v	typeref:typename:const char[]
+magenta2	config.h	/^static const char magenta2[]   = "#ff99ff";$/;"	v	typeref:typename:const char[]
 main	dwm.c	/^main(int argc, char *argv[])$/;"	f	typeref:typename:int
 main	transient.c	/^int main(void) {$/;"	f	typeref:typename:int
 manage	dwm.c	/^manage(Window w, XWindowAttributes *wa)$/;"	f	typeref:typename:void
@@ -402,9 +403,9 @@ propertynotify	dwm.c	/^propertynotify(XEvent *e)$/;"	f	typeref:typename:void
 quit	dwm.c	/^quit(const Arg *arg)$/;"	f	typeref:typename:void
 recttomon	dwm.c	/^recttomon(int x, int y, int w, int h)$/;"	f	typeref:typename:Monitor *
 red1	config.def.h	/^static const char red1[]       = "#fb9fb1";$/;"	v	typeref:typename:const char[]
-red1	config.h	/^static const char red1[]	= "#fb9fb1";$/;"	v	typeref:typename:const char[]
+red1	config.h	/^static const char red1[]       = "#fb9fb1";$/;"	v	typeref:typename:const char[]
 red2	config.def.h	/^static const char red2[]       = "#fb9fb1";$/;"	v	typeref:typename:const char[]
-red2	config.h	/^static const char red2[]	= "#BF6262";$/;"	v	typeref:typename:const char[]
+red2	config.h	/^static const char red2[]       = "#BF6262";$/;"	v	typeref:typename:const char[]
 reddit	config.def.h	/^static const char *reddit[] = { "st", "-e", "rtv", NULL };$/;"	v	typeref:typename:const char * []
 reddit	config.h	/^static const char *reddit[]        = { term, exec, "rtv", NULL };$/;"	v	typeref:typename:const char * []
 resize	dwm.c	/^resize(Client *c, int x, int y, int w, int h, int interact)$/;"	f	typeref:typename:void
@@ -413,6 +414,7 @@ resizehints	config.def.h	/^static const int resizehints = 0;    \/* 1 means resp
 resizehints	config.h	/^static const int resizehints = 0;    \/* 1 means respect size hints in tiled resizals *\/$/;"	v	typeref:typename:const int
 resizemouse	dwm.c	/^resizemouse(const Arg *arg)$/;"	f	typeref:typename:void
 restack	dwm.c	/^restack(Monitor *m)$/;"	f	typeref:typename:void
+rightclick	config.h	/^static const char *rightclick[]	   = { "globalrightclick.sh", NULL };$/;"	v	typeref:typename:const char * []
 root	drw.h	/^	Window root;$/;"	m	struct:__anon0f5116480308	typeref:typename:Window
 root	dwm.c	/^static Window root, wmcheckwin;$/;"	v	typeref:typename:Window	file:
 rotate	config.h	/^static const char *rotate[]        = { "rotate_screen", NULL };$/;"	v	typeref:typename:const char * []
@@ -525,11 +527,12 @@ w	drw.h	/^	unsigned int w, h;$/;"	m	struct:__anon0f5116480308	typeref:typename:u
 w	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
 warp	warp.c	/^warp(const Client *c)$/;"	f	typeref:typename:void
 wasfloating	dwm.c	/^	int alwaysfloating, wasfloating, isfixed, nokill, iscentered, isfloating, isurgent, neverfocus,/;"	m	struct:Client	typeref:typename:int	file:
+websearch	config.h	/^static const char *websearch[]	   = { "dmenu_websearch", NULL };$/;"	v	typeref:typename:const char * []
 wh	dwm.c	/^	int wx, wy, ww, wh;   \/* window area  *\/$/;"	m	struct:Monitor	typeref:typename:int	file:
 white1	config.def.h	/^static const char white1[]        = "#d0d0d0";$/;"	v	typeref:typename:const char[]
-white1	config.h	/^static const char white1[]      = "#d9d0d0";$/;"	v	typeref:typename:const char[]
+white1	config.h	/^static const char white1[]     = "#d9d0d0";$/;"	v	typeref:typename:const char[]
 white2	config.def.h	/^static const char white2[]        = "#f5f5f5";$/;"	v	typeref:typename:const char[]
-white2	config.h	/^static const char white2[]      = "#E3E8E3";$/;"	v	typeref:typename:const char[]
+white2	config.h	/^static const char white2[]     = "#E3E8E3";$/;"	v	typeref:typename:const char[]
 win	dwm.c	/^	Window win;$/;"	m	struct:Client	typeref:typename:Window	file:
 wintoclient	dwm.c	/^wintoclient(Window w)$/;"	f	typeref:typename:Client *
 wintomon	dwm.c	/^wintomon(Window w)$/;"	f	typeref:typename:Monitor *
@@ -549,8 +552,8 @@ xfont_free	drw.c	/^xfont_free(Fnt *font)$/;"	f	typeref:typename:void	file:
 xinitvisual	dwm.c	/^xinitvisual()$/;"	f	typeref:typename:void
 y	dwm.c	/^	int x, y, w, h;$/;"	m	struct:Client	typeref:typename:int	file:
 yellow1	config.def.h	/^static const char yellow1[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
-yellow1	config.h	/^static const char yellow1[]     = "#ddb26f";$/;"	v	typeref:typename:const char[]
+yellow1	config.h	/^static const char yellow1[]    = "#ddb26f";$/;"	v	typeref:typename:const char[]
 yellow2	config.def.h	/^static const char yellow2[]        = "#ddb26f";$/;"	v	typeref:typename:const char[]
-yellow2	config.h	/^static const char yellow2[]     = "#E2995C";$/;"	v	typeref:typename:const char[]
+yellow2	config.h	/^static const char yellow2[]    = "#E2995C";$/;"	v	typeref:typename:const char[]
 zoom	dwm.c	/^zoom(const Arg *arg)$/;"	f	typeref:typename:void
 zoomswap	zoomswap.c	/^zoomswap(const Arg *arg)$/;"	f	typeref:typename:void
