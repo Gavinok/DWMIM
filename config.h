@@ -82,7 +82,7 @@ static const Rule rules[] = {
 	{ NULL,      NULL, "scratch",        0,      1, 1, 1, 1, -1 },
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
 	{ NULL,   "popup", NULL,	     0,      1, 1, 0, 0, -1 },
-	{ NULL,   "float", NULL,	     0,      1, 1, 0, 0, -1 },
+	{ NULL,   "float", NULL,	     0,      0, 1, 0, 0, -1 },
 	{ NULL,     "mp3", NULL,	     1 << 3, 1, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
@@ -185,6 +185,9 @@ static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5", NULL };
 static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };
+static const char *websearch[]	   = { "dmenu_websearch", NULL };
+static const char *barmenu[]	   = { "bar", NULL };
+static const char *rightclick[]	   = { "globalrightclick.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -224,7 +227,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_u,            togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,              XK_i,            spawn,          {.v = sysmonitor2 } },
 	{ MODKEY|ShiftMask,    XK_i,            spawn,          {.v = sysmonitor } },
-	{ MODKEY,              XK_o,            spawn,          {.v = mount } },
+	{ MODKEY,              XK_o,            spawn,          {.v = websearch } },
 	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
 	{ MODKEY,              XK_p,            spawn,          {.v = clip } },
 	{ MODKEY|ShiftMask,    XK_p,            spawn,          {.v = plumb } },
@@ -306,10 +309,10 @@ static Button buttons[] = {
 	{ ClkWinTitle,          0,              Button1,        max,		{0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkWinTitle,          0,              Button3,        forcekill,      {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button2,        togglefloating, {.v = termcmd } },
+	{ ClkStatusText,        0,              Button3,        spawn,          {.v = barmenu } },
 	{ ClkStatusText,        0,              Button1,        tagmon,         {.i = +1 } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        spawn,		{ .v = plumb } },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
