@@ -54,6 +54,7 @@ Gavins personal fork of dwm	README.md	/^Gavins personal fork of dwm$/;"	c
 HEIGHT	dwm.c	/^	#define HEIGHT(/;"	d	file:
 INCS	config.mk	/^INCS = -I${X11INC} -I${FREETYPEINC}$/;"	m
 INTERSECT	dwm.c	/^#define INTERSECT(/;"	d	file:
+INVERTSTATUSCOLORS	dwm.c	/^#define INVERTSTATUSCOLORS$/;"	d	file:
 ISSUES	dwm.1	/^.SH ISSUES$/;"	s	title:DWM
 ISVISIBLE	dwm.c	/^#define ISVISIBLE(/;"	d	file:
 Installation	README.md	/^Installation$/;"	s
@@ -279,7 +280,6 @@ forcekill	nokill.c	/^forcekill(const Arg *arg)$/;"	f	typeref:typename:void
 foreground	config.h	/^static const char foreground[] = "#B7BBB7";$/;"	v	typeref:typename:const char[]
 func	dwm.c	/^	void (*func)(const Arg *);$/;"	m	struct:__anon0f53a99e0908	typeref:typename:void (*)(const Arg *)	file:
 func	dwm.c	/^	void (*func)(const Arg *arg);$/;"	m	struct:__anon0f53a99e0808	typeref:typename:void (*)(const Arg * arg)	file:
-fzfpass	config.h	/^static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };$/;"	v	typeref:typename:const char * []
 gaplessgrid	layouts.c	/^gaplessgrid(Monitor *m) {$/;"	f	typeref:typename:void
 gappx	config.def.h	/^static const unsigned int gappx     = 6;$/;"	v	typeref:typename:const unsigned int
 gappx	config.h	/^static const unsigned int gappx     = 5;$/;"	v	typeref:typename:const unsigned int
@@ -520,6 +520,7 @@ v	dwm.c	/^	const void *v;$/;"	m	union:__anon0f53a99e070a	typeref:typename:const 
 vdown	config.h	/^static const char *vdown[]         = { "lmc", "down", "5", NULL };$/;"	v	typeref:typename:const char * []
 view	dwm.c	/^view(const Arg *arg)$/;"	f	typeref:typename:void
 viewto	focusajacenttag.c	/^viewto(const Arg *arg) {$/;"	f	typeref:typename:void
+vimclip	config.h	/^static const char *vimclip[]	   = { "vim-anywhere.sh", NULL };$/;"	v	typeref:typename:const char * []
 visual	drw.h	/^	Visual *visual;$/;"	m	struct:__anon0f5116480308	typeref:typename:Visual *
 visual	dwm.c	/^static Visual *visual;$/;"	v	typeref:typename:Visual *	file:
 vup	config.h	/^static const char *vup[]           = { "lmc", "up", "5", NULL };$/;"	v	typeref:typename:const char * []

@@ -45,8 +45,7 @@ static const char white2[]     = "#E3E8E3";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] =	  { black2, background, background },
-	[SchemeSel]  =	  { magenta1 , background,  background },
-
+	[SchemeSel]  =	  { blue1 , background,  background },
 };
 
 //-----------alpha---------------
@@ -182,10 +181,10 @@ static const char *todo[]          = { "vimtodo.sh", NULL };
 static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5", NULL };
-static const char *fzfpass[]	   = { "st", "-n", "popup", "fuzzpass", NULL };
 static const char *websearch[]	   = { "dmenu_websearch", NULL };
 static const char *barmenu[]	   = { "bar", NULL };
 static const char *rightclick[]	   = { "globalrightclick.sh", NULL };
+static const char *vimclip[]	   = { "vim-anywhere.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -203,7 +202,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      2)
 	TAGKEYS(                        XK_0,                      3)
 	{ MODKEY,              XK_minus,        view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,    XK_minus,            tag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,    XK_minus,        tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_equal,        spawn,          {.v = nm } },
 	{ MODKEY,              XK_BackSpace,    killclient,     {0} },
 	{ MODKEY|ShiftMask,    XK_BackSpace,    forcekill,      {0} },
@@ -225,8 +224,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_u,            togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,              XK_i,            spawn,          {.v = sysmonitor2 } },
 	{ MODKEY|ShiftMask,    XK_i,            spawn,          {.v = sysmonitor } },
-	{ MODKEY,              XK_o,            spawn,          {.v = websearch } },
-	{ MODKEY|ShiftMask,    XK_o,            spawn,          {.v = unmount } },
+	{ MODKEY,              XK_o,            spawn,          {.v = vimclip } },
 	{ MODKEY,              XK_p,            spawn,          {.v = clip } },
 	{ MODKEY|ShiftMask,    XK_p,            spawn,          {.v = plumb } },
 	// { MODKEY,              XK_bracketleft,  spawn,          {.v = mprev } },
