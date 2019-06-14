@@ -4,7 +4,7 @@
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	0.0.0	/45968eff/
+!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
 ${OBJ}	Makefile	/^${OBJ}: config.h config.mk$/;"	t
 .c.o	Makefile	/^.c.o:$/;"	t
 AltMask	config.def.h	/^#define AltMask /;"	d
@@ -54,7 +54,6 @@ Gavins personal fork of dwm	README.md	/^Gavins personal fork of dwm$/;"	c
 HEIGHT	dwm.c	/^	#define HEIGHT(/;"	d	file:
 INCS	config.mk	/^INCS = -I${X11INC} -I${FREETYPEINC}$/;"	m
 INTERSECT	dwm.c	/^#define INTERSECT(/;"	d	file:
-INVERTSTATUSCOLORS	dwm.c	/^#define INVERTSTATUSCOLORS$/;"	d	file:
 ISSUES	dwm.1	/^.SH ISSUES$/;"	s	title:DWM
 ISVISIBLE	dwm.c	/^#define ISVISIBLE(/;"	d	file:
 Installation	README.md	/^Installation$/;"	s
@@ -170,7 +169,7 @@ bh	dwm.c	/^static int bh, blw = 0;      \/* bar geometry *\/$/;"	v	typeref:typen
 black1	config.def.h	/^static const char black1[]       = "#151515";$/;"	v	typeref:typename:const char[]
 black1	config.h	/^static const char black1[]     = "#151515";$/;"	v	typeref:typename:const char[]
 black2	config.def.h	/^static const char black2[]       = "#505050";$/;"	v	typeref:typename:const char[]
-black2	config.h	/^static const char black2[]     = "#505050";$/;"	v	typeref:typename:const char[]
+black2	config.h	/^static const char black2[]     = "#636363";$/;"	v	typeref:typename:const char[]
 blue1	config.def.h	/^static const char blue1[]        = "#6fc2ef";$/;"	v	typeref:typename:const char[]
 blue1	config.h	/^static const char blue1[]      = "#7D8FA3";$/;"	v	typeref:typename:const char[]
 blue2	config.def.h	/^static const char blue2[]        = "#6fc2ef";$/;"	v	typeref:typename:const char[]
@@ -180,7 +179,7 @@ borderalpha	config.h	/^static const unsigned int borderalpha = 255;$/;"	v	typere
 borderpx	config.def.h	/^static const unsigned int borderpx  = 1;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 borderpx	config.h	/^static const unsigned int borderpx  = 0;        \/* border pixel of windows *\/$/;"	v	typeref:typename:const unsigned int
 broken	dwm.c	/^static const char broken[] = "broken";$/;"	v	typeref:typename:const char[]	file:
-browser	config.h	/^static const char *browser[]       = { "\/bin\/sh", "-c", "ducksearch \\"google-chrome-stable --/;"	v	typeref:typename:const char * []
+browser	config.h	/^static const char *browser[]       = { "\/bin\/sh", "-c", "ducksearch \\"firefox \\"", NULL };$/;"	v	typeref:typename:const char * []
 button	dwm.c	/^	unsigned int button;$/;"	m	struct:__anon0f53a99e0808	typeref:typename:unsigned int	file:
 buttonpress	dwm.c	/^buttonpress(XEvent *e)$/;"	f	typeref:typename:void
 buttons	config.def.h	/^static Button buttons[] = {$/;"	v	typeref:typename:Button[]
@@ -361,6 +360,7 @@ motionnotify	dwm.c	/^motionnotify(XEvent *e)$/;"	f	typeref:typename:void
 mount	config.h	/^static const char *mount[]         = { "dmenumount", NULL };$/;"	v	typeref:typename:const char * []
 movemouse	dwm.c	/^movemouse(const Arg *arg)$/;"	f	typeref:typename:void
 moveplace	moveplace.c	/^moveplace(const Arg *arg)$/;"	f	typeref:typename:void
+movestack	movestack.c	/^movestack(const Arg *arg) {$/;"	f	typeref:typename:void
 mplay	config.h	/^static const char *mplay[]         = { "lmc", "toggle", NULL };$/;"	v	typeref:typename:const char * []
 mprev	config.h	/^static const char *mprev[]         = { "lmc", "prev", NULL };$/;"	v	typeref:typename:const char * []
 music	config.def.h	/^static const char *music[]  = { "spotify", NULL };$/;"	v	typeref:typename:const char * []
@@ -393,7 +393,7 @@ oldw	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:i
 oldx	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 oldy	dwm.c	/^	int oldx, oldy, oldw, oldh;$/;"	m	struct:Client	typeref:typename:int	file:
 options	Makefile	/^options:$/;"	t
-pass	config.h	/^static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5",/;"	v	typeref:typename:const char * []
+pass	config.h	/^static const char *pass[]	   = { "mypassmenu", "--type", "-p", "Select Password", "-l", "5", NUL/;"	v	typeref:typename:const char * []
 pattern	drw.h	/^	FcPattern *pattern;$/;"	m	struct:Fnt	typeref:typename:FcPattern *
 plumb	config.h	/^static const char *plumb[]         = { "cabl", "-c", NULL };$/;"	v	typeref:typename:const char * []
 pop	dwm.c	/^pop(Client *c)$/;"	f	typeref:typename:void
@@ -464,7 +464,7 @@ stext	dwm.c	/^static char stext[256];		\/* the text used to fill the status bar 
 sw	dwm.c	/^static int sw, sh;           \/* X display screen geometry width, height *\/$/;"	v	typeref:typename:int	file:
 symbol	dwm.c	/^	const char *symbol;$/;"	m	struct:__anon0f53a99e0a08	typeref:typename:const char *	file:
 sysmonitor	config.def.h	/^static const char *sysmonitor[]  = { "st", "-e", "htop", NULL };$/;"	v	typeref:typename:const char * []
-sysmonitor	config.h	/^static const char *sysmonitor[]    = { term, exec, "vtop", NULL };$/;"	v	typeref:typename:const char * []
+sysmonitor	config.h	/^static const char *sysmonitor[]    = { term, exec, "gotop", "-m", "-c", "vice", NULL };$/;"	v	typeref:typename:const char * []
 sysmonitor2	config.def.h	/^static const char *sysmonitor2[]  = { "st", "-e", "vtop", NULL };$/;"	v	typeref:typename:const char * []
 sysmonitor2	config.h	/^static const char *sysmonitor2[]   = { term, exec, "htop", NULL };$/;"	v	typeref:typename:const char * []
 tag	dwm.c	/^tag(const Arg *arg)$/;"	f	typeref:typename:void

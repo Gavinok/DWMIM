@@ -59,6 +59,7 @@ static const unsigned int alphas[][3]      = {
 };
 //-------------------------------
 /* tagging */
+// static const char *tags[] = { "home", "extra", "music", "news"};
 static const char *tags[] = { "home", "extra", "music", "news"};
 
 
@@ -68,14 +69,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask  iscentered isfloating	nokill alwaysfloat monitor */
-	{ "Gimp",    NULL, NULL,             0,      0, 1, 0, 0, -1 },
-	{ "Firefox", NULL, NULL,             1 << 3, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "newspod",        1 << 3, 0, 0, 0, 0, -1 },
-	{ "Spotify", NULL, NULL,             1 << 2, 0, 0, 0, 0, -1 },
 	{ NULL,      NULL, "pulsemixer",     0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "launch_once.sh", 0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "neomutt",        0,      0, 0, 0, 0, -1 },
-	{ NULL,      NULL, "calcurse",       0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "scratch",        0,      1, 1, 1, 1, -1 },
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
 	{ NULL,   "popup", NULL,	     0,      1, 1, 0, 0, -1 },
@@ -84,7 +81,8 @@ static const Rule rules[] = {
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
 	{ NULL,     "imv", NULL,	     0,      1, 1, 0, 0, -1 },
-	{ NULL,      NULL, "tmuxdd",         0,      1, 1, 1, 1, -1 },
+	// { NULL,      NULL, "tmuxdd",         0,      1, 1, 1, 1, -1 },
+	{ NULL,      NULL, "tmuxdd",         0,      0, 1, 1, 1, -1 },
 	{ "mpv",     NULL, NULL,             0,      0, 0, 1, 0, -1 },
 };
 
@@ -150,7 +148,7 @@ static const char *mixer[]         = { term, exec, "launch_once.sh", "pulsemixer
 static const char *reddit[]        = { term, exec, "rtv", NULL };
 static const char *rss[]           = { term, exec, "newspod", NULL };
 static const char *sysmonitor2[]   = { term, exec, "htop", NULL };
-static const char *sysmonitor[]    = { term, exec, "vtop", NULL };
+static const char *sysmonitor[]    = { term, exec, "gotop", "-m", "-c", "vice", NULL };
 static const char *nm[]            = { "dmenu_connection_manager.sh", NULL };
 static const char *mute[]          = { "lmc", "mute", NULL };
 static const char *vdown[]         = { "lmc", "down", "5", NULL };
@@ -163,7 +161,7 @@ static const char *mprev[]         = { "lmc", "prev", NULL };
 static const char *mount[]         = { "dmenumount", NULL };
 static const char *unmount[]       = { "dmenuumount", NULL };
 static const char *search[]        = { "ducksearch", NULL };
-static const char *browser[]       = { "/bin/sh", "-c", "ducksearch \"google-chrome-stable --app=\"", NULL };
+static const char *browser[]       = { "/bin/sh", "-c", "ducksearch \"firefox \"", NULL };
 static const char *clip[]          = { "clipmenu", NULL };
 static const char *plumb[]         = { "cabl", "-c", NULL };
 static const char *killit[]        = { "dmenu-killall", NULL };
@@ -180,7 +178,7 @@ static const char *cast[]          = { "castcontrol.sh", NULL };
 static const char *todo[]          = { "vimtodo.sh", NULL };
 static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
-static const char *pass[]	   = { "passmenu", "--type", "-b", "-p", "Select Password", "-l", "5", NULL };
+static const char *pass[]	   = { "mypassmenu", "--type", "-p", "Select Password", "-l", "5", NULL };
 static const char *websearch[]	   = { "dmenu_websearch", NULL };
 static const char *barmenu[]	   = { "bar", NULL };
 static const char *rightclick[]	   = { "globalrightclick.sh", NULL };
@@ -238,7 +236,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_s,            spawn,          {.v = spell } },
 	{ MODKEY,              XK_d,            spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,  XK_d,            spawn,          {.v = lup } },
-	{ MODKEY,              XK_f,            max,            {.i = 2} },
+	{ MODKEY,              XK_f,            max,            {.i = 0} },
+	{ MODKEY|ShiftMask,    XK_f,            max,            {.i = 1} },
 	{ MODKEY|ControlMask,  XK_f,            spawn,          {.v = vup } },
 	{ MODKEY|ShiftMask,    XK_g,            setlayout,      {.v = &layouts[4]  }},
 	{ MODKEY,              XK_g,            moveplace,      {.ui = WIN_C  }},
@@ -272,7 +271,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_comma,        tagmon,         {.i = -1 } },
 	{ MODKEY,              XK_period,       focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,    XK_period,       tagmon,         {.i = +1 } },
-	// { MODKEY,		XK_slash,	spawn,          {.v = nm } /
+	{ MODKEY,		XK_slash,	spawn,          {.v = pass} }, 
 	
 	{ MODKEY,              XK_F7,           spawn,          {.v = dock } },
 	{ MODKEY,              XK_F8,           spawn,          {.v = undock } },

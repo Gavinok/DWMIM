@@ -50,7 +50,7 @@
 #define ENABLESCRATCHPAD
 #define ENABLEUSLESSGAPS
 #define ENABLECENTERWINDOWNAME
-#define INVERTSTATUSCOLORS
+/* #define INVERTSTATUSCOLORS */
 /* #define ENABLETILEGAPS */
 /* #define ENABLESTATUSCOLORS */
 
@@ -802,11 +802,12 @@ drawbar(Monitor *m)
 
 	if ((w = m->ww - sw - x) > bh) {
 		if (m->sel) {
-			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
                     #ifdef ENABLECENTERWINDOWNAME
 			int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
+			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
                     #else
+			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
                     #endif
 			if (m->sel->isfloating)
