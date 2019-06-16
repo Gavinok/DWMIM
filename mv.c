@@ -10,7 +10,7 @@ mv(const Arg *arg)
 	if (!(c = selmon->sel))
 		return;
 	if (c->isfullscreen ) /* no support moving fullscreen */
-		return;
+		setfullscreen(c, 0);	
 	if ((axis == 1) || (axis == -1)) {
 		if(!c->isfloating){
 		    tagmon(arg);

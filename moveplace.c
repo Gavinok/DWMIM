@@ -10,7 +10,7 @@ moveplace(const Arg *arg)
 	int nh, nw, nx, ny;
 	c = selmon->sel;
 	if (!c || (arg->ui >= 9))
-		 return;
+	&	 return;
 	if (selmon->lt[selmon->sellt]->arrange && c->isfullscreen)
 		setfullscreen(c, 0);
 	if (selmon->lt[selmon->sellt]->arrange && !c->isfloating)

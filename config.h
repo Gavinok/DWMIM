@@ -59,8 +59,7 @@ static const unsigned int alphas[][3]      = {
 };
 //-------------------------------
 /* tagging */
-// static const char *tags[] = { "home", "extra", "music", "news"};
-static const char *tags[] = { "home", "extra", "music", "news"};
+static const char *tags[] = { "home", "foo", "bar", "news"};
 
 
 static const Rule rules[] = {
