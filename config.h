@@ -259,6 +259,7 @@ static Key keys[] = {
 
 	{ MODKEY|ShiftMask,    XK_z,            togglefloating, {0} },
 	{ MODKEY,              XK_z,            moveplace,      {.ui = WIN_SW }},
+	{ MODKEY,		XK_x,            spawn,          {.v = vimclip } },
 	{ MODKEY|ShiftMask,    XK_x,            spawn,          {.v = power } },
 	{ MODKEY,              XK_c,            spawn,          {.v = calc } },
 	{ MODKEY,              XK_v,            zoomswap,       {0} },
