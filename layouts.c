@@ -1,69 +1,95 @@
+#ifdef ENABLEUSLESSGAPS
+
+//for compatibility
+#define OGWIDTH(X)                ((X)->w + 2 * (X)->bw)
+#define OGHEIGHT(X)               ((X)->h + 2 * (X)->bw)
+
 void
-fibonacci(Monitor *mon, int s) {
-	unsigned int i, n, nx, ny, nw, nh;
+vanillaresizeclient(Client *c, int x, int y, int w, int h)
+{
+	XWindowChanges wc;
+
+	c->oldx = c->x; c->x = wc.x = x;
+	c->oldy = c->y; c->y = wc.y = y;
+	c->oldw = c->w; c->w = wc.width = w;
+	c->oldh = c->h; c->h = wc.height = h;
+	wc.border_width = c->bw;
+	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
+	configure(c);
+	XSync(dpy, False);
+}
+
+void
+vanillaresize(Client *c, int x, int y, int w, int h, int interact)
+{
+	if (applysizehints(c, &x, &y, &w, &h, interact))
+		vanillaresizeclient(c, x, y, w, h);
+}
+
+void
+bstack(Monitor *m)
+{
+	unsigned int i, n, w, mh, mx, tx;
 	Client *c;
 
-	for(n = 0, c = nexttiled(mon->clients); c; c = nexttiled(c->next), n++);
-	if(n == 0)
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	if (n == 0)
 		return;
-	
-	nx = mon->wx;
-	ny = 0;
-	nw = mon->ww;
-	nh = mon->wh;
-	
-	for(i = 0, c = nexttiled(mon->clients); c; c = nexttiled(c->next)) {
-		if((i % 2 && nh / 2 > 2 * c->bw)
-		   || (!(i % 2) && nw / 2 > 2 * c->bw)) {
-			if(i < n - 1) {
-				if(i % 2)
-					nh /= 2;
-				else
-					nw /= 2;
-				if((i % 4) == 2 && !s)
-					nx += nw;
-				else if((i % 4) == 3 && !s)
-					ny += nh;
-			}
-			if((i % 4) == 0) {
-				if(s)
-					ny += nh;
-				else
-					ny -= nh;
-			}
-			else if((i % 4) == 1)
-				nx += nw;
-			else if((i % 4) == 2)
-				ny += nh;
-			else if((i % 4) == 3) {
-				if(s)
-					nx += nw;
-				else
-					nx -= nw;
-			}
-			if(i == 0)
-			{
-				if(n != 1)
-					nw = mon->ww * mon->mfact;
-				ny = mon->wy;
-			}
-			else if(i == 1)
-				nw = mon->ww - nw;
-			i++;
+	if(n == 1){
+		c = nexttiled(m->clients);
+		vanillaresize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
+		return;
+	}
+
+	if (n > m->nmaster)
+		mh = m->nmaster ? m->wh * m->mfact : gappx;
+	else
+		mh = m->wh;
+	for (i = 0, mx = tx = gappx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		if (i < m->nmaster) {
+			w = (m->ww - mx) / (MIN(n, m->nmaster) - i) - gappx;
+			vanillaresize(c, m->wx + mx, m->wy + gappx, w - (2*c->bw), mh - 2*(c->bw + gappx), 0);
+			mx += OGWIDTH(c) + gappx;
+		} else {
+			w = (m->ww - tx) / (n - i) - gappx;
+			vanillaresize(c, m->wx + tx, m->wy + mh, w - (2*c->bw), m->wh - mh - 2*(c->bw) - gappx, 0);
+			tx += OGWIDTH(c) + gappx;
 		}
-		resize(c, nx, ny, nw - 2 * c->bw, nh - 2 * c->bw, False);
+}
+#else /* ENABLEUSLESSGAPS */
+/* customized for better horizontal gaps*/
+static void
+bstack(Monitor *m) {
+	int w, h, mh, mx, tx, ty, tw;
+	unsigned int i, n;
+	Client *c;
+
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	if (n == 0)
+		return;
+	if (n > m->nmaster) {
+		mh = m->nmaster ? m->mfact * m->wh : 0;
+		tw = m->ww / (n - m->nmaster);
+		ty = m->wy + mh;
+	} else {
+		mh = m->wh;
+		tw = m->ww;
+		ty = m->wy;
+	}
+	for (i = mx = 0, tx = m->wx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
+		if (i < m->nmaster) {
+			w = (m->ww - mx) / (MIN(n, m->nmaster) - i);
+			resize(c, m->wx + mx, m->wy, w - (2 * c->bw), mh - (2 * c->bw), 0);
+			mx += WIDTH(c);
+		} else {
+			h = m->wh - mh;
+			resize(c, tx, ty, tw - (2 * c->bw), h - (2 * c->bw), 0);
+			if (tw != m->ww)
+				tx += WIDTH(c);
+		}
 	}
 }
-
-void
-dwindle(Monitor *mon) {
-	fibonacci(mon, 1);
-}
-
-void
-spiral(Monitor *mon) {
-	fibonacci(mon, 0);
-}
+#endif /* ifdef ENABLEUSLESSGAPS */
 
 void
 centeredmaster(Monitor *m)
@@ -121,171 +147,37 @@ centeredmaster(Monitor *m)
 }
 
 void
-centeredfloatingmaster(Monitor *m)
+vanitytile(Monitor *m)
 {
-	unsigned int i, n, w, mh, mw, mx, mxo, my, myo, tx;
+
+	static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+	unsigned int i, n, h, r, oe = 1, mw, my, ty;
 	Client *c;
 
-	/* count number of clients in the selected monitor */
 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
 	if (n == 0)
 		return;
 
-	/* initialize nmaster area */
-	if (n > m->nmaster) {
-		/* go mfact box in the center if more than nmaster clients */
-		if (m->ww > m->wh) {
-			mw = m->nmaster ? m->ww * m->mfact : 0;
-			mh = m->nmaster ? m->wh * 0.9 : 0;
+	if (smartgaps == n) {
+		oe = 0; // outer gaps disabled
+	}
+
+	if (n > m->nmaster)
+		mw = m->nmaster ? (m->ww + gappxi) * m->mfact : 0;
+	else
+		mw = m->ww - 2*gappxo*oe + gappxi;
+	for (i = 0, my = ty = gappxo*oe, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		if (i < m->nmaster) {
+			r = MIN(n, m->nmaster) - i;
+			h = (m->wh - my - gappxo*oe - gappxi * (r - 1)) / r;
+			vanillaresize(c, m->wx + gappxo*oe, m->wy + my, mw - (2*c->bw) - gappxi, h - (2*c->bw), 0);
+			/* my += HEIGHT(c) + gappx; */
+			my += OGHEIGHT(c) + gappxi;
 		} else {
-			mh = m->nmaster ? m->wh * m->mfact : 0;
-			mw = m->nmaster ? m->ww * 0.9 : 0;
+			r = n - i;
+			h = (m->wh - ty - gappxo*oe - gappxi * (r - 1)) / r;
+			vanillaresize(c, m->wx + mw + gappxo*oe, m->wy + ty, m->ww - mw - (2*c->bw) - 2*gappxo*oe, h - (2*c->bw), 0);
+			ty += OGHEIGHT(c) + gappxi;
 		}
-		mx = mxo = (m->ww - mw) / 2;
-		my = myo = (m->wh - mh) / 2;
-	} else {
-		/* go fullscreen if all clients are in the master area */
-		mh = m->wh;
-		mw = m->ww;
-		mx = mxo = 0;
-		my = myo = 0;
-	}
-
-	for(i = tx = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-	if (i < m->nmaster) {
-		/* nmaster clients are stacked horizontally, in the center
-		 * of the screen */
-		w = (mw + mxo - mx) / (MIN(n, m->nmaster) - i);
-		resize(c, m->wx + mx, m->wy + my, w - (2*c->bw),
-		       mh - (2*c->bw), 0);
-		mx += WIDTH(c);
-	} else {
-		/* stack clients are stacked horizontally */
-		w = (m->ww - tx) / (n - i);
-		resize(c, m->wx + tx, m->wy, w - (2*c->bw),
-		       m->wh - (2*c->bw), 0);
-		tx += WIDTH(c);
-	}
 }
 
-void
-gaplessgrid(Monitor *m) {
-	unsigned int n, cols, rows, cn, rn, i, cx, cy, cw, ch;
-	Client *c;
-
-	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++) ;
-	if(n == 0)
-		return;
-
-	/* grid dimensions */
-	for(cols = 0; cols <= n/2; cols++)
-		if(cols*cols >= n)
-			break;
-	if(n == 5) /* set layout against the general calculation: not 1:2:2, but 2:3 */
-		cols = 2;
-	rows = n/cols;
-
-	/* window geometries */
-	cw = cols ? m->ww / cols : m->ww;
-	cn = 0; /* current column number */
-	rn = 0; /* current row number */
-	for(i = 0, c = nexttiled(m->clients); c; i++, c = nexttiled(c->next)) {
-		if(i/rows + 1 > cols - n%cols)
-			rows = n/cols + 1;
-		ch = rows ? m->wh / rows : m->wh;
-		cx = m->wx + cn*cw;
-		cy = m->wy + rn*ch;
-		resize(c, cx, cy, cw - 2 * c->bw, ch - 2 * c->bw, False);
-		rn++;
-		if(rn >= rows) {
-			rn = 0;
-			cn++;
-		}
-	}
-}
-
-void
-horizgrid(Monitor *m) {
-	Client *c;
-	unsigned int n, i;
-	int w = 0;
-	int ntop, nbottom = 0;
-
-	/* Count windows */
-	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-
-	if(n == 0)
-		return;
-	else if(n == 1) { /* Just fill the whole screen */
-		c = nexttiled(m->clients);
-		resize(c, m->wx, m->wy, m->ww - (2*c->bw), m->wh - (2*c->bw), False);
-	} else if(n == 2) { /* Split vertically */
-		w = m->ww / 2;
-		c = nexttiled(m->clients);
-		resize(c, m->wx, m->wy, w - (2*c->bw), m->wh - (2*c->bw), False);
-		c = nexttiled(c->next);
-		resize(c, m->wx + w, m->wy, w - (2*c->bw), m->wh - (2*c->bw), False);
-	} else {
-		ntop = n / 2;
-		nbottom = n - ntop;
-		for(i = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
-			if(i < ntop)
-				resize(c, m->wx + i * m->ww / ntop, m->wy, m->ww / ntop - (2*c->bw), m->wh / 2 - (2*c->bw), False);
-			else
-				resize(c, m->wx + (i - ntop) * m->ww / nbottom, m->wy + m->wh / 2, m->ww / nbottom - (2*c->bw), m->wh / 2 - (2*c->bw), False);
-		}
-	}
-}
-
-void
-nrowgrid(Monitor *m)
-{
-    unsigned int n = 0, i = 0, ri = 0, ci = 0;  /* counters */
-    unsigned int cx, cy, cw, ch;                /* client geometry */
-    unsigned int uw = 0, uh = 0, uc = 0;        /* utilization trackers */
-    unsigned int cols, rows = m->nmaster + 1;
-    Client *c;
-
-    /* count clients */
-    for (c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-
-    /* nothing to do here */
-    if (n == 0)
-        return;
-
-    /* force 2 clients to always split vertically */
-    if (FORCE_VSPLIT && n == 2)
-        rows = 1;
-
-    /* never allow empty rows */
-    if (n < rows)
-        rows = n;
-
-    /* define first row */
-    cols = n / rows;
-    uc = cols;
-    cy = m->wy;
-    ch = m->wh / rows;
-    uh = ch;
-
-    for (c = nexttiled(m->clients); c; c = nexttiled(c->next), i++, ci++) {
-        if (ci == cols) {
-            uw = 0;
-            ci = 0;
-            ri++;
-
-            /* next row */
-            cols = (n - uc) / (rows - ri);
-            uc += cols;
-            cy = m->wy + uh;
-            ch = (m->wh - uh) / (rows - ri);
-            uh += ch;
-        }
-
-        cx = m->wx + uw;
-        cw = (m->ww - uw) / (cols - ci);
-        uw += cw;
-
-        resize(c, cx, cy, cw - 2 * c->bw, ch - 2 * c->bw, 0);
-    }
-}
