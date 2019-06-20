@@ -33,6 +33,3 @@ mv(const Arg *arg)
 	}
 }
 
-// TODO
-// needs to be simplified to one function
-// add support for snapping 
