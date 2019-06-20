@@ -180,26 +180,25 @@ static const char *todo[]          = { "vimtodo.sh", NULL };
 static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 static const char *pass[]	   = { "mypassmenu", "--type", "-p", "Select Password", "-l", "5", NULL };
-static const char *websearch[]	   = { "dmenu_websearch", NULL };
 static const char *barmenu[]	   = { "bar", NULL };
 static const char *rightclick[]	   = { "globalrightclick.sh", NULL };
-static const char *vimclip[]	   = { "vim-anywhere.sh", NULL };
+static const char *vimclip[]	   = { "vim-anywhere.sh", "-c", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 
 	{ MODKEY,              XK_grave,        view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_grave,        tag,            {.ui = ~0 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	// TAGKEYS(                        XK_5,                      4)
-	// TAGKEYS(                        XK_6,                      0)
-	TAGKEYS(                        XK_7,                      0)
-	TAGKEYS(                        XK_8,                      1)
-	TAGKEYS(                        XK_9,                      2)
-	TAGKEYS(                        XK_0,                      3)
+	TAGKEYS(				XK_1,                      0)
+	TAGKEYS(                        	XK_2,                      1)
+	TAGKEYS(                        	XK_3,                      2)
+	TAGKEYS(                        	XK_4,                      3)
+	// TAGKEYS(                     	   XK_5,                      4)
+	// TAGKEYS(                     	   XK_6,                      0)
+	TAGKEYS(                        	XK_7,                      0)
+	TAGKEYS(                        	XK_8,                      1)
+	TAGKEYS(                        	XK_9,                      2)
+	TAGKEYS(                        	XK_0,                      3)
 	{ MODKEY,              XK_minus,        view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,    XK_minus,        tag,            {.ui = ~0 } },
 	{ MODKEY,              XK_equal,        spawn,          {.v = nm } },
