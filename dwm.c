@@ -807,6 +807,7 @@ drawbar(Monitor *m)
 			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
                     #else
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+			/* no window namw */
 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
                     #endif
 			if (m->sel->isfloating)
@@ -1365,6 +1366,7 @@ resize(Client *c, int x, int y, int w, int h, int interact)
 	if (applysizehints(c, &x, &y, &w, &h, interact))
 		resizeclient(c, x, y, w, h);
 }
+
 #ifdef ENABLEUSLESSGAPS
 void
 resizeclient(Client *c, int x, int y, int w, int h)

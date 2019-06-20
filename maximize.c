@@ -12,7 +12,7 @@ max(const Arg *arg)
 		/* if arg is 0 use monocle size if 1 use fullscreen */
 		if(selmon->showbar && (arg->i != 1)){
 			setfullscreen(selmon->sel, 2);
-			return 0;
+			return;
 		}
 			setfullscreen(selmon->sel, 1);
 	}
