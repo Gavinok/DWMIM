@@ -286,10 +286,6 @@ static Key keys[] = {
 	{ 0,                   0x1008ff7f,      spawn,          {.v = rotate } },
 	{ MODKEY,              XK_5,		view,		{0} },
 	{ MODKEY,		XK_6,		cyclelayout,    {.i = +1} },
-	{ MODKEY,              XK_Up,           spawn,		{.v = mplay  }},
-	{ MODKEY,		XK_Down,	spawn,          {.v = cast } },
-	{ MODKEY,              XK_Left,         spawn,		{.v = mprev }},
-	{ MODKEY,              XK_Right,        spawn,		{.v = mnext }},
 	{ MODKEY,              0x1008ff27,      spawn,		{.v = mnext }},
 	{ MODKEY,              0x1008ff26,      spawn,		{.v = mprev }},
 };
