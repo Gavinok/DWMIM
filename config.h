@@ -240,7 +240,6 @@ static Key keys[] = {
 	{ MODKEY,              XK_f,            max,            {.i = 0} },
 	{ MODKEY|ShiftMask,    XK_f,            max,            {.i = 1} },
 	{ MODKEY|ControlMask,  XK_f,            spawn,          {.v = vup } },
-	{ MODKEY|ShiftMask,    XK_g,            setlayout,      {.v = &layouts[4]  }},
 	{ MODKEY,              XK_g,            moveplace,      {.ui = WIN_C  }},
 	{ MODKEY|ControlMask,  XK_h,            setmfact,       {.f = -0.05} },
 	{ MODKEY,              XK_h,            focusmon,       {.i = -1 } },
