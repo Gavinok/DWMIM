@@ -103,18 +103,10 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	// { "+++",      gaplessgrid },
-	{ "+++",      horizgrid },
-	// { "###",      nrowgrid },
- 	// { "[@]",      spiral },
- 	// { "[\\]",      dwindle },
+	{ "o=",       vanitytile },    /* first entry is default */
+	{ "TTT",      bstack },
 	{ "|M|",      centeredmaster },
 	{ NULL,       NULL },
-
-	{ ">M>",      centeredfloatingmaster },
-	// { "><>",      NULL },    /* no layout function means floating behavior */
-	// { "[M]",      monocle },
 };
 
 #include "cyclelayout.c"
