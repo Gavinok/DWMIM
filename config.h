@@ -210,7 +210,7 @@ static Key keys[] = {
 	{ MODKEY,              XK_q,            killclient,     {0} },
 	{ AltMask|ControlMask, XK_q,            spawn,          {.v = killit } },
 	{ MODKEY|ShiftMask,    XK_q,            forcekill,      {0} },
-	{ MODKEY|ShiftMask|ControlMask,             XK_q,      quit,           {0} },
+{ MODKEY|ShiftMask|ControlMask,XK_q,		quit,           {0} },
 	{ MODKEY,              XK_w,            spawn,          {.v = search } },
 	{ MODKEY|ShiftMask,    XK_w,            spawn,          {.v = browser } },
 	{ MODKEY,              XK_e,            spawn,          {.v = email } },
