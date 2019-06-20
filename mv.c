@@ -9,7 +9,7 @@ mv(const Arg *arg)
 	int axis = arg->i;
 	if (!(c = selmon->sel))
 		return;
-	if (c->isfullscreen ) /* no support moving fullscreen */
+	if (c->isfullscreen ) /* shrink from fullscreen */
 		setfullscreen(c, 0);	
 	if ((axis == 1) || (axis == -1)) {
 		if(!c->isfloating){
