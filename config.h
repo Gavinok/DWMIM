@@ -78,6 +78,7 @@ static const Rule rules[] = {
 	{ NULL,      NULL, "castnow",        0,      0, 1, 0, 0, -1 },
 	{ NULL,   "popup", NULL,	     0,      1, 1, 0, 0, -1 },
 	{ NULL,   "float", NULL,	     0,      0, 1, 0, 0, -1 },
+	{ NULL,	    NULL, "float",	     0,      0, 1, 0, 0, -1 },
 	{ NULL,     "mp3", NULL,	     1 << 3, 1, 1, 0, 0, -1 },
 	{ "feh",     NULL, NULL,             0,      1, 1, 0, 0, -1 },
 	{ NULL,      NULL, "sxiv",           0,      1, 1, 0, 0, -1 },
@@ -174,7 +175,6 @@ static const char *rotate[]        = { "rotate_screen", NULL };
 static const char *kdeconnect[]    = { "dmenu_kdeconnect.sh", NULL };
 static const char *pass[]	   = { "mypassmenu", "--type", "-p", "Select Password", "-l", "5", NULL };
 static const char *barmenu[]	   = { "bar", NULL };
-static const char *rightclick[]	   = { "globalrightclick.sh", NULL };
 static const char *vimclip[]	   = { "vim-anywhere.sh", "-c", NULL };
 
 static Key keys[] = {
@@ -231,7 +231,6 @@ static Key keys[] = {
 	{ MODKEY,              XK_d,            spawn,          {.v = dmenucmd } },
 	{ MODKEY|ControlMask,  XK_d,            spawn,          {.v = lup } },
 	{ MODKEY,              XK_f,            max,            {.i = 0} },
-	{ MODKEY|ShiftMask,    XK_f,            max,            {.i = 1} },
 	{ MODKEY|ControlMask,  XK_f,            spawn,          {.v = vup } },
 	{ MODKEY,              XK_g,            moveplace,      {.ui = WIN_C  }},
 	{ MODKEY|ControlMask,  XK_h,            setmfact,       {.f = -0.05} },
