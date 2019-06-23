@@ -414,7 +414,6 @@ resizehints	config.def.h	/^static const int resizehints = 0;    \/* 1 means resp
 resizehints	config.h	/^static const int resizehints = 0;    \/* 1 means respect size hints in tiled resizals *\/$/;"	v	typeref:typename:const int
 resizemouse	dwm.c	/^resizemouse(const Arg *arg)$/;"	f	typeref:typename:void
 restack	dwm.c	/^restack(Monitor *m)$/;"	f	typeref:typename:void
-rightclick	config.h	/^static const char *rightclick[]	   = { "globalrightclick.sh", NULL };$/;"	v	typeref:typename:const char * []
 root	drw.h	/^	Window root;$/;"	m	struct:__anon0f5116480308	typeref:typename:Window
 root	dwm.c	/^static Window root, wmcheckwin;$/;"	v	typeref:typename:Window	file:
 rotate	config.h	/^static const char *rotate[]        = { "rotate_screen", NULL };$/;"	v	typeref:typename:const char * []
@@ -428,7 +427,7 @@ scan	dwm.c	/^scan(void)$/;"	f	typeref:typename:void
 scheme	drw.h	/^	Clr *scheme;$/;"	m	struct:__anon0f5116480308	typeref:typename:Clr *
 scheme	dwm.c	/^static Clr **scheme;$/;"	v	typeref:typename:Clr **	file:
 scratchpadcmd	config.h	/^static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-g", "90x24", NULL };$/;"	v	typeref:typename:const char * []
-scratchpadname	config.h	/^static const char scratchpadname[] = { "tmuxdd" };$/;"	v	typeref:typename:const char[]
+scratchpadname	config.h	/^static const char scratchpadname[] = { "scratchpad" };$/;"	v	typeref:typename:const char[]
 scratchtag	scratchpad.c	/^static unsigned int scratchtag = 1 << LENGTH(tags);$/;"	v	typeref:typename:unsigned int	file:
 screen	drw.h	/^	int screen;$/;"	m	struct:__anon0f5116480308	typeref:typename:int
 screen	dwm.c	/^static int screen;$/;"	v	typeref:typename:int	file:
@@ -518,7 +517,6 @@ utfmin	drw.c	/^static const long utfmin[UTF_SIZ + 1] = {       0,    0,  0x80,  
 v	dwm.c	/^	const void *v;$/;"	m	union:__anon0f53a99e070a	typeref:typename:const void *	file:
 vanillaresize	layouts.c	/^vanillaresize(Client *c, int x, int y, int w, int h, int interact)$/;"	f	typeref:typename:void
 vanillaresizeclient	layouts.c	/^vanillaresizeclient(Client *c, int x, int y, int w, int h)$/;"	f	typeref:typename:void
-vanitytile	layouts.c	/^vanitytile(Monitor *m)$/;"	f	typeref:typename:void
 vdown	config.h	/^static const char *vdown[]         = { "lmc", "down", "5", NULL };$/;"	v	typeref:typename:const char * []
 view	dwm.c	/^view(const Arg *arg)$/;"	f	typeref:typename:void
 viewto	focusajacenttag.c	/^viewto(const Arg *arg) {$/;"	f	typeref:typename:void

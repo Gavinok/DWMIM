@@ -56,6 +56,7 @@ bstack(Monitor *m)
 			tx += OGWIDTH(c) + gappx;
 		}
 }
+
 #else /* ENABLEUSLESSGAPS */
 /* customized for better horizontal gaps*/
 static void
@@ -145,39 +146,3 @@ centeredmaster(Monitor *m)
 		}
 	}
 }
-
-void
-vanitytile(Monitor *m)
-{
-
-	static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
-	unsigned int i, n, h, r, oe = 1, mw, my, ty;
-	Client *c;
-
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-	if (n == 0)
-		return;
-
-	if (smartgaps == n) {
-		oe = 0; // outer gaps disabled
-	}
-
-	if (n > m->nmaster)
-		mw = m->nmaster ? (m->ww + gappxi) * m->mfact : 0;
-	else
-		mw = m->ww - 2*gappxo*oe + gappxi;
-	for (i = 0, my = ty = gappxo*oe, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-		if (i < m->nmaster) {
-			r = MIN(n, m->nmaster) - i;
-			h = (m->wh - my - gappxo*oe - gappxi * (r - 1)) / r;
-			vanillaresize(c, m->wx + gappxo*oe, m->wy + my, mw - (2*c->bw) - gappxi, h - (2*c->bw), 0);
-			/* my += HEIGHT(c) + gappx; */
-			my += OGHEIGHT(c) + gappxi;
-		} else {
-			r = n - i;
-			h = (m->wh - ty - gappxo*oe - gappxi * (r - 1)) / r;
-			vanillaresize(c, m->wx + mw + gappxo*oe, m->wy + ty, m->ww - mw - (2*c->bw) - 2*gappxo*oe, h - (2*c->bw), 0);
-			ty += OGHEIGHT(c) + gappxi;
-		}
-}
-
