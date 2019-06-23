@@ -1,20 +1,22 @@
 Gavins personal fork of dwm
 ============================
 Patches added:
-1. uslessgaps /tilegaps (can be alternated or fully disabled in dwm.c)
+1. uslessgaps (can be alternated or fully disabled in dwm.c)
 2. center
 3. scratchpad
 4. max (custom script to merge fullscreen and monocle)
 5. moveplace (customized for corners and centering windows)
-6. mv (custom script for moving floating windows)
-7. ispermanent 
-8. statuscolors
-9. zoomswap
-10. warp
-11. alwaysfloating (custom script to keep a client floating)
-11. centerwindowname
-11. nokill (custom script for prevent accidentally killing a client)
-12. alpha for transparency in the bar
+6. movestack (used in mv)
+7. mv (custom function for moving floating windows)
+8. ispermanent
+9. statuscolors
+10. zoomswap
+11. warp
+12. alwaysfloating (custom script to keep a client floating)
+13. centerwindowname
+14. nokill (custom script for prevent accidentally killing a client)
+15. alpha for transparency in the bar
+16. bstack customized for better gaps
 
 dwm - dynamic window manager
 ============================
