@@ -1130,6 +1130,7 @@ manage(Window w, XWindowAttributes *wa)
 		&& (c->x + (c->w / 2) < c->mon->wx + c->mon->ww)) ? bh : c->mon->my);
 	c->bw = borderpx;
 	#ifdef ENABLESCRATCHPAD
+	selmon->tagset[selmon->seltags] &= ~scratchtag;
 	if (!strcmp(c->name, scratchpadname)) {
 		c->mon->tagset[c->mon->seltags] |= c->tags = scratchtag;
 		c->isfloating = True;
@@ -1792,6 +1793,9 @@ spawn(const Arg *arg)
 {
 	if (arg->v == dmenucmd)
 		dmenumon[0] = '0' + selmon->num;
+	#ifdef ENABLESCRATCHPAD
+	selmon->tagset[selmon->seltags] &= ~scratchtag;
+	#endif
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));

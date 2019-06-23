@@ -132,7 +132,7 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 
 static const char term[]           = { "st"};
 static const char exec[]           = { "-e" };
-static const char scratchpadname[] = { "tmuxdd" };
+static const char scratchpadname[] = { "scratchpad" };
 static const char *termcmd[]       = { term, NULL };
 // static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-e", "tmuxdd", "-g", "90x24", NULL };
 static const char *scratchpadcmd[] = { term, "-t", scratchpadname, "-g", "90x24", NULL };

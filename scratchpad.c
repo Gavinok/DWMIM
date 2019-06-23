@@ -1,6 +1,6 @@
 static unsigned int scratchtag = 1 << LENGTH(tags);
 
- void
+void
 togglescratch(const Arg *arg)
 {
 	Client *c;
